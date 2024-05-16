@@ -19,3 +19,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("test",[\App\Http\Controllers\PatientController::class,"index"]);
+Route::get("test2",[\App\Http\Controllers\PatientController::class,"dataTable"])->name("data-table");

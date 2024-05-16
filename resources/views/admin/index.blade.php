@@ -20,7 +20,16 @@
                         <h3 class="box-title m-b-10"> لیست بیماران </h3>
 
                         <div class="table-responsive">
-
+                            <table class="table table-bordered" id="users-table">
+                                <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Nname</th>
+                                    <th>edit</th>
+                                </tr>
+                                </thead>
+                            </table>
                         </div>
                         <div class="clearfix"></div>
                     </div>
@@ -31,6 +40,32 @@
  @endsection
 
 @push('scripts')
+    <script>
+        $(function() {
+
+            $('#users-table').DataTable({
+
+                processing: true,
+
+                serverSide: true,
+
+                ajax: '{!! route('data-table') !!}',
+
+                columns: [
+
+                    { data: 'id', name: 'id' },
+
+                    { data: 'fullname', name: 'fullname' },
+                    { data: 'national_code', name: 'national_code' },
+                    { data: 'edit', name: 'edit' },
+
+
+                ],
+
+            });
+
+        });
+    </script>
 <script>
   document.addEventListener("DOMContentLoaded", function() {
     var descriptionContainers = document.querySelectorAll('.description-container');
