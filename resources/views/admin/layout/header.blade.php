@@ -4,10 +4,7 @@
       <i class="zmdi zmdi-menu"></i>
     </a>
     <div class="top-left-part text-center">
-      <a class="logo" href="javascript:void(0)">
-        <b id="expanded-logo"><img src="{{ asset('assets/img/sm-Logo.png') }}" alt="home" class="w-75"></b>
-        <b id="collapsed-logo"><img src="{{ asset('assets/img/Logo-white.png') }}" alt="home" class="w-75"></b>
-      </a>
+
     </div>
     <ul class="nav navbar-top-links navbar-left hidden-xs open-close">
       <li>
