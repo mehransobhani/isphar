@@ -51,6 +51,7 @@
 <script src="{{ asset("admin-assets/plugins/waves/waves.min.js") }}"></script>
 <!-- Custom Theme JavaScript -->
 <script src="{{ asset("admin-assets/js/custom.js") }}"></script>
+<script src="{{ asset("admin-assets/js/dataTable.js") }}"></script>
 <!--Style Switcher -->
 <script src="{{ asset("admin-assets/js/style-switcher.js") }}"></script>
 

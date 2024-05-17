@@ -8,9 +8,12 @@
                 <div class="row bg-title">
                     <div class="col-lg-4 col-md-5 col-12">
                         <h4 class="page-title">
-
+                            <a href="{{ route('patient.index') }}">
+                                بیماران
+                            </a>
                             /
-بیماران                        </h4>
+                            ویرایش بیمار
+                        </h4>
                     </div>
                 </div>
                 <div class="row">

@@ -62,9 +62,9 @@
         </a>
       </li>
       <li>
-        <a href= "" class="waves-effect">
+        <a href= "{{route("patient.index")}}" class="waves-effect">
           <i class="fa fa-ticket zmdi-hc-fw fa-fw"></i>
-          <span class="hide-menu"> تیکت ها
+          <span class="hide-menu">  بیماران
               <span class="fa arrow"></span>
             </span>
         </a>

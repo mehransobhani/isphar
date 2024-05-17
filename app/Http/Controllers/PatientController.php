@@ -77,8 +77,10 @@ class PatientController extends Controller
     public function dataTable()
     {
         $model = Patient::get();
-        return DataTables::of($model)->editColumn('edit', function () {
-            return "<a href=''>edit</a>";
-        })->make(true);
+        return DataTables::of($model)->editColumn('edit', function ($data) {
+            return "<a class='btn btn-danger waves-effect waves-light' href='".route('patient.edit',$data->id)."'>ویرایش</a>";
+        })
+            ->rawColumns(['edit'])
+            ->make(true);
     }
 }
