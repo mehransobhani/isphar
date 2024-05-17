@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 
-@section('title', 'داشبورد')
+@section('title', 'کاربران')
 
 @section('content')
     <div id="page-wrapper">
@@ -9,16 +9,16 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <h4 class="page-title">
 
-                    بیماران
+                    کاربران
                     </h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="white-box">
-                        <h3 class="box-title m-b-10"> لیست بیماران </h3>
-                        <a href="{{route("patient.create")}}">
-                            <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن بیمار</button>
+                        <h3 class="box-title m-b-10"> لیست کاربران </h3>
+                        <a href="{{route("user.create")}}">
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن کاربر</button>
                         </a>
                         <hr/>
 
@@ -27,20 +27,15 @@
                                 <thead>
                                 <tr>
                                     <th>شناسه</th>
-                                    <th>نام کامل</th>
-                                    <th>کد ملی</th>
-                                    <th>نام اتاق</th>
-                                    <th>تاریخ تولد</th>
-                                    <th>جنسیت</th>
-                                    <th>تاریخ پذیرش</th>
-                                    <th>شماره فایل</th>
-                                    <th>شماره اتاق</th>
-                                    <th>شماره تخت</th>
-                                    <th>دکتر</th>
-                                    <th>علت</th>
-                                    <th>منبع</th>
-                                    <th>شماره منبع</th>
-                                    <th>توضیحات</th>
+                                    <th>موبایل</th>
+                                     <th>نام  </th>
+                                    <th>شماره  </th>
+                                    <th>نام داروساز</th>
+                                    <th>نام خانوادگی داروساز  </th>
+                                    <th>کد پزشکی</th>
+                                    <th>تصویر امضا</th>
+                                    <th>تاریخ ایجاد</th>
+
                                     <th>عملیات</th>
                                 </tr>
                                 </thead>
@@ -64,7 +59,7 @@
 
                 serverSide: true,
 
-                ajax: '{!! route('patient.dataTable') !!}',
+                ajax: '{!! route('user.dataTable') !!}',
                 language: {
                     "decimal": "",
                     "emptyTable": "هیچ داده‌ای موجود نیست",
@@ -89,22 +84,17 @@
                         "sortDescending": ": فعال سازی نمایش به صورت نزولی"
                     }
                 },
+
                 columns: [
                     { data: 'id', name: 'id' },
-                    { data: 'fullname', name: 'fullname' },
-                    { data: 'national_code', name: 'national_code' },
-                    { data: 'room_name', name: 'room_name' },
-                    { data: 'birth_date', name: 'birth_date' },
-                    { data: 'gender', name: 'gender' },
-                    { data: 'admission_date', name: 'admission_date' },
-                    { data: 'file_number', name: 'file_number' },
-                     { data: 'room_number', name: 'room_number' },
-                    { data: 'bed_number', name: 'bed_number' },
-                    { data: 'doctor', name: 'doctor' },
-                    { data: 'cause', name: 'cause' },
-                    { data: 'source', name: 'source' },
-                    { data: 'source_number', name: 'source_number' },
-                    { data: 'description', name: 'description' },
+                    { data: 'mobile', name: 'mobile' },
+                     { data: 'name', name: 'name' },
+                    { data: 'tell', name: 'tell' },
+                    { data: 'pharmacist_firstname', name: 'pharmacist_firstname' },
+                    { data: 'pharmacist_lastname', name: 'pharmacist_lastname' },
+                    { data: 'medical_code', name: 'medical_code' },
+                     { data: 'sign_image', name: 'sign_image' },
+                    { data: 'created_at', name: 'created_at' },
                     { data: 'edit', name: 'edit' },
                 ],
 
