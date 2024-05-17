@@ -45,9 +45,17 @@ class PatientController extends Controller
                 "birth_date" => $request->birth_date,
                 "gender" => $request->gender,
                 "admission_date" => $request->admission_date,
-                "file_number" => $request->file_number
+                "file_number" => $request->file_number,
+                 "room_number" => $request->room_number,
+                "bed_number" => $request->bed_number,
+                "doctor" => $request->doctor,
+                "cause" => $request->cause,
+                "source" => $request->source,
+                "source_number" => $request->source_number,
+                "description" => $request->description,
             ]);
-        return back()->with('success', 'بیمار با موفقیت ثبت شد.');
+        return back()->with('success', 'بیمار با موفقیت ویرایش شد.');
+
     }
 
     public function store(Request $request)
@@ -68,9 +76,18 @@ class PatientController extends Controller
             "birth_date" => $request->birth_date,
             "gender" => $request->gender,
             "admission_date" => $request->admission_date,
-            "file_number" => $request->file_number
+            "file_number" => $request->file_number,
+            "room_number" => $request->room_number,
+            "bed_number" => $request->bed_number,
+            "doctor" => $request->doctor,
+            "cause" => $request->cause,
+            "source" => $request->source,
+            "source_number" => $request->source_number,
+            "description" => $request->description,
+            "created_date" => date("Y-m-d H:i:s", time())
         ]);
-        return back()->with('success', 'بیمار با موفقیت ویرایش شد.');
+        return back()->with('success', 'بیمار با موفقیت ثبت شد.');
+
 
     }
 
@@ -78,7 +95,7 @@ class PatientController extends Controller
     {
         $model = Patient::get();
         return DataTables::of($model)->editColumn('edit', function ($data) {
-            return "<a class='btn btn-danger waves-effect waves-light' href='".route('patient.edit',$data->id)."'>ویرایش</a>";
+            return "<a class='btn btn-danger waves-effect waves-light' href='" . route('patient.edit', $data->id) . "'>ویرایش</a>";
         })
             ->rawColumns(['edit'])
             ->make(true);

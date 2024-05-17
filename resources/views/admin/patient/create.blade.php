@@ -45,13 +45,13 @@
                             @endif
                             <div class="row">
                                 <div class="col-lg-9 col-md-12 col-12">
-                                    <form action="{{ route('patient.create')}}" method="post">
+                                    <form action="{{ route('patient.store')}}" method="post">
                                         @csrf
 
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="title">نام کامل : </label>
+                                                    <label for="fullname">نام کامل : </label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control" id="fullname"
                                                                name="fullname">
@@ -60,7 +60,7 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="title">کدملی : </label>
+                                                    <label for="national_code">کدملی : </label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control" id="national_code"
                                                                name="national_code">
@@ -71,16 +71,16 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="title">تاریخ تولد : </label>
+                                                    <label for="birth_date">تاریخ تولد : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="birth_date"
+                                                        <input type="date" class="form-control" id="birth_date"
                                                                name="birth_date">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="title">جنسیت : </label>
+                                                    <label for="gender">جنسیت : </label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control" id="gender"
                                                                name="gender">
@@ -91,75 +91,16 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="title">تاریخ تولد : </label>
+                                                    <label for="admission_date">تاریخ بستری : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="birth_date"
-                                                               name="birth_date">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="title">admission_date : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="admission_date"
+                                                        <input type="date" class="form-control" id="admission_date"
                                                                name="admission_date">
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="title">تاریخ تولد : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="file_number"
-                                                               name="file_number">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="title">admission_date : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="room_name"
-                                                               name="room_name">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="title">تاریخ تولد : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="room_number"
-                                                               name="room_number">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="title">admission_date : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="bed_number"
-                                                               name="bed_number">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="title">تاریخ تولد : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="cause" name="cause">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="title">admission_date : </label>
+                                                    <label for="doctor">دکتر : </label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control" id="doctor"
                                                                name="doctor">
@@ -170,16 +111,67 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="title">تاریخ تولد : </label>
+                                                    <label for="file_number">شماره فایل   : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="file_number"
+                                                               name="file_number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="room_name">نام اتاق : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="room_name"
+                                                               name="room_name">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="room_number">شماره اتاق   : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="room_number"
+                                                               name="room_number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="bed_number">شماره تخت : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="bed_number"
+                                                               name="bed_number">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="cause">علت   : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="cause" name="cause">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="source">منبع   : </label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control" id="source"
                                                                name="source">
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row">
+
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="title">admission_date : </label>
+                                                    <label for="source_number">شماره منبع : </label>
                                                     <div class="input-group">
                                                         <input type="text" class="form-control" id="source_number"
                                                                name="source_number">
@@ -189,6 +181,8 @@
                                         </div>
                                         <div class="row">
                                             <div class=" col-12">
+                                                <label for="description">توضیحات : </label>
+
                                                 <textarea type="text" class="form-control" id="description"
                                                           name="description"> </textarea>
                                             </div>
