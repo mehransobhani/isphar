@@ -93,11 +93,21 @@ class PatientController extends Controller
 
     public function dataTable()
     {
-        $model = Patient::get();
+        $model = Patient::with("PatientSpecialCondition")->get();
         return DataTables::of($model)->editColumn('edit', function ($data) {
             return "<a class='btn btn-danger waves-effect waves-light' href='" . route('patient.edit', $data->id) . "'>ویرایش</a>";
+        })->editColumn('PatientSpecialCondition', function ($data) {
+            $check=$data->PatientSpecialCondition;
+            return $check  ?"بله":"خیر";
+        })->editColumn('PatientSpecialConditionView', function ($data) {
+            $check=$data->PatientSpecialCondition;
+
+            if($check)
+            return "<a class='btn btn-danger waves-effect waves-light' href='" . route('PatientSpecialCondition.view', $data->PatientSpecialCondition->id) . "'>مشاهده شرایط خاص بیمار</a>";
+            else
+                return"";
         })
-            ->rawColumns(['edit'])
+            ->rawColumns(['edit' , 'PatientSpecialConditionView'])
             ->make(true);
     }
 }

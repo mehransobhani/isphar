@@ -29,3 +29,12 @@ Route::group(['as' => 'user.', 'prefix' => 'user'], function () {
     Route::post("store", [\App\Http\Controllers\UserController::class, "store"])->name("store");
     Route::post("update", [\App\Http\Controllers\UserController::class, "update"])->name("update");
 });
+Route::group(['as' => 'PatientSpecialCondition.', 'prefix' => 'PatientSpecialCondition'], function () {
+    Route::get("view/{patientId}", [\App\Http\Controllers\PatientSpecialConditionController::class, "view"])->name("view");
+    Route::get("index", [\App\Http\Controllers\PatientSpecialConditionController::class, "index"])->name("index");
+    Route::get("dataTable", [\App\Http\Controllers\PatientSpecialConditionController::class, "dataTable"])->name("dataTable");
+    Route::get("create", [\App\Http\Controllers\PatientSpecialConditionController::class, "create"])->name("create");
+    Route::get("edit/{id}", [\App\Http\Controllers\PatientSpecialConditionController::class, "edit"])->name("edit");
+    Route::post("store", [\App\Http\Controllers\PatientSpecialConditionController::class, "store"])->name("store");
+    Route::post("update", [\App\Http\Controllers\PatientSpecialConditionController::class, "update"])->name("update");
+});

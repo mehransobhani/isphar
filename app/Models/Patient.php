@@ -11,4 +11,9 @@ class Patient extends Model
     protected $guarded=["id"];
     public $timestamps=false;
 
+    public function PatientSpecialCondition()
+    {
+        return $this->hasOne(PatientSpecialCondition::class,"patient_id","id");
+    }
+
 }
