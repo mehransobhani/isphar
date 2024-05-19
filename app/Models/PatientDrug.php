@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PatientDrug extends Model
 {
     use HasFactory;
+    protected $guarded=["id"];
+    public $timestamps=false;
+    public function Patient()
+    {
+        return $this->belongsTo(Patient::class);
+    }
 }

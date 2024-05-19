@@ -24,6 +24,10 @@ Route::resource("PatientSpecialCondition",\App\Http\Controllers\PatientSpecialCo
 Route::get("PatientSpecialCondition/view/{patientId}", [\App\Http\Controllers\PatientSpecialConditionController::class, "view"])->name("PatientSpecialCondition.view");
 Route::get("PatientSpecialCondition/dataTable", [\App\Http\Controllers\PatientSpecialConditionController::class, "dataTable"])->name("PatientSpecialCondition.dataTable");
 
+Route::resource("patient_drug",\App\Http\Controllers\PatientDrugController::class)->except(["destroy","show"]);
+Route::get("PatientSpecialCondition/view/{patientId}", [\App\Http\Controllers\PatientDrugController::class, "view"])->name("PatientSpecialCondition.view");
+Route::get("PatientSpecialCondition/dataTable", [\App\Http\Controllers\PatientDrugController::class, "dataTable"])->name("PatientSpecialCondition.dataTable");
+
 Route::group(['as' => 'DemoRequest.', 'prefix' => 'DemoRequest'], function () {
      Route::get("index", [\App\Http\Controllers\DemoRequestController::class, "index"])->name("index");
     Route::get("dataTable", [\App\Http\Controllers\DemoRequestController::class, "dataTable"])->name("dataTable");
