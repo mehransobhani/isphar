@@ -9,19 +9,15 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <h4 class="page-title">
 
-                        بیماران
+                        درخواست های دمو
                     </h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="white-box">
-                        <h3 class="box-title m-b-10"> لیست بیماران </h3>
-                        <a href="{{route("patient.create")}}">
-                            <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن
-                                بیمار
-                            </button>
-                        </a>
+                        <h3 class="box-title m-b-10"> لیست درخواست های دمو </h3>
+
                         <hr/>
 
                         <div class="table-responsive">

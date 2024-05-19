@@ -32,6 +32,6 @@ Route::resource("drp-report",\App\Http\Controllers\DrpReportController::class)->
 Route::get("drp-report/dataTable", [\App\Http\Controllers\DrpReportController::class, "dataTable"])->name("drp-report.dataTable");
 
 Route::group(['as' => 'DemoRequest.', 'prefix' => 'DemoRequest'], function () {
-     Route::get("index", [\App\Http\Controllers\DemoRequestController::class, "index"])->name("index");
+     Route::get("", [\App\Http\Controllers\DemoRequestController::class, "index"])->name("index");
     Route::get("dataTable", [\App\Http\Controllers\DemoRequestController::class, "dataTable"])->name("dataTable");
 });

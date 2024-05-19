@@ -51,7 +51,7 @@
 
       </li>
       <li>
-        <a href="" class="waves-effect">
+        <a  href= "{{route("user.index")}}" class="waves-effect">
           <i class="fa fa-users zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu"> کاربران
                 <span class="fa arrow"></span>
@@ -62,6 +62,37 @@
         <a href= "{{route("patient.index")}}" class="waves-effect">
           <i class="fa fa-ticket zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu">  بیماران
+              <span class="fa arrow"></span>
+            </span>
+        </a>
+      </li>
+        <li>
+        <a href= "{{route("PatientSpecialCondition.index")}}" class="waves-effect">
+          <i class="fa fa-ticket zmdi-hc-fw fa-fw"></i>
+          <span class="hide-menu">  شرایط خاص بیماران
+              <span class="fa arrow"></span>
+            </span>
+        </a>
+      </li>
+        <li>
+        <a href= "{{route("drp-report.index")}}" class="waves-effect">
+          <i class="fa fa-ticket zmdi-hc-fw fa-fw"></i>
+          <span class="hide-menu"> گزارش Drp
+              <span class="fa arrow"></span>
+            </span>
+        </a>
+      </li>
+        <li>
+        <a href= "{{route("patient_drug.index")}}" class="waves-effect">
+          <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
+          <span class="hide-menu">   تلفیق دارویی
+              <span class="fa arrow"></span>
+            </span>
+        </a>
+      </li> <li>
+        <a href= "{{route("DemoRequest.index")}}" class="waves-effect">
+          <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
+          <span class="hide-menu">   درخواست های دمو
               <span class="fa arrow"></span>
             </span>
         </a>

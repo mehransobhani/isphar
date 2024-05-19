@@ -28,6 +28,8 @@
                                 <thead>
                                 <tr>
                                     <th>شناسه</th>
+                                    <th>دکتر</th>
+                                    <th>بیمار</th>
                                     <th>قد</th>
                                     <th>وزن</th>
                                     <th>نارسایی کلیوی</th>
@@ -47,6 +49,7 @@
                                     <th>شیردهی</th>
                                     <th> واکسن</th>
                                     <th>نام واکسن</th>
+                                    <th> ویرایش</th>
 
                                 </tr>
                                 </thead>
@@ -97,6 +100,9 @@
                 },
                 columns: [
                     {data: 'id', name: 'id'},
+                    {data: 'user.name', name: 'user.name'},
+
+                    {data: 'patient.fullname', name: 'patient.fullname'},
                     {data: 'height', name: 'height'},
                     {data: 'weight', name: 'weight'},
                     {data: 'naresayi_koliavi', name: 'naresayi_koliavi'},
@@ -116,6 +122,8 @@
                     {data: 'shirdehi', name: 'shirdehi'},
                     {data: 'vaksan', name: 'vaksan'},
                     {data: 'vaksan_name', name: 'vaksan_name'},
+                    {data: 'edit', name: 'edit'},
+
                 ],
 
             });
