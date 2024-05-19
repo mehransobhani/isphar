@@ -11,15 +11,21 @@ class PatientDrugDataTable implements DataTableInterface
 
     public function build()
     {
-        $model = PatientDrug::query();
+        $model = PatientDrug::query()->with("user")->with("patient");
         return DataTables::of($model)
-            ->editColumn('is_followed_up', function ($data) {
-            return $data->is_followed_up ? "بله" : "خیر";
-        })
             ->editColumn('created_at', function ($data) {
-            return verta($data->created_at)->format('Y/m/d-H:i');
-        })
-            ->rawColumns(['is_followed_up'])
+                return verta($data->created_at)->format('Y/m/d-H:i');
+            })
+            ->editColumn('user_id', function ($data) {
+                return  ($data->user->name);
+            })->editColumn('patient_id', function ($data) {
+                return  ($data->patient->fullname);
+            })
+            ->addColumn('edit', function ($data) {
+                return "<a class='btn btn-danger waves-effect waves-light' href='" . route('patient_drug.edit', $data->id) . "'>ویرایش</a>";
+            })
+            ->rawColumns(['edit'])
+
             ->make(true);
     }
 }

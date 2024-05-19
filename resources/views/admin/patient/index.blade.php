@@ -41,9 +41,11 @@
                                     <th>منبع</th>
                                     <th>شماره منبع</th>
                                     <th>توضیحات</th>
-                                    <th>شرایط خاص دارویی</th>
+                                    <th>شرایط خاص بیمار</th>
+                                    <th>تلفیق دارویی</th>
                                     <th>عملیات</th>
-                                    <th>مشاهده شرایط خاص دارویی</th>
+                                    <th>مشاهده شرایط خاص بیمار</th>
+                                    <th>مشاهده تلفیق دارویی</th>
 
                                 </tr>
                                 </thead>
@@ -109,8 +111,10 @@
                     { data: 'source_number', name: 'source_number' },
                     { data: 'description', name: 'description' },
                     { data: 'PatientSpecialCondition', name: 'PatientSpecialCondition' },
+                    { data: 'patientDrug', name: 'patientDrug' },
                     { data: 'edit', name: 'edit' },
                     { data: 'PatientSpecialConditionView', name: 'PatientSpecialConditionView' },
+                    { data: 'patientDrugView', name: 'patientDrugView' },
                 ],
 
             });

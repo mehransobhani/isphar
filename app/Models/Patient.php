@@ -15,5 +15,9 @@ class Patient extends Model
     {
         return $this->hasOne(PatientSpecialCondition::class,"patient_id","id");
     }
+    public function patientDrug()
+    {
+        return $this->hasOne(PatientDrug::class,"patient_id","id");
+    }
 
 }

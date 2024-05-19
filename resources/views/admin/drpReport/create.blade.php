@@ -47,70 +47,23 @@
                                     <form action="{{ route('patient_drug.store') }}" method="post">
                                         @csrf
                                         <div class="row">
+
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="user_id">پزشک : </label>
+                                                    <label for="source_number">دکتر : </label>
                                                     <div class="input-group">
-                                                        <select name="user_id">
-                                                            <option>
-                                                                0
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="patient_id">بیمار : </label>
-                                                    <div class="input-group">
-                                                        <select name="patient_id">
-                                                            <option>
-                                                                0
-                                                            </option>
+                                                        <select>
+                                                            <option>0</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="drug_id">دارو : </label>
+                                                    <label for="source_number">بیمار : </label>
                                                     <div class="input-group">
-                                                        <select name="drug_id">
-                                                            <option>
-                                                                0
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="type">نوع دارو : </label>
-                                                    <div class="input-group">
-                                                        <select name="type">
-                                                            <option>
-                                                                0
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="name">نام : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="name" name="name" >
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="gender">زمان مصرف   : </label>
-                                                    <div class="input-group">
-                                                        <select name="type">
-                                                            <option>
-                                                                0
-                                                            </option>
+                                                        <select>
+                                                            <option>0</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -120,48 +73,86 @@
 
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="last_dose_date">زمان آخرین دوز مصرف : </label>
+                                                    <label for="egfr_mdrd">egfr_mdrd : </label>
                                                     <div class="input-group">
-                                                        <input type="datetime-local" class="form-control" id="last_dose_date" name="last_dose_date" >
+                                                        <input type="text" class="form-control" id="egfr_mdrd"
+                                                               name="egfr_mdrd">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="doctor">مقدار دوز : </label>
+                                                    <label for="egfr_ckd_epi">egfr_ckd_epi : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="dose_amount" name="dose_amount" >
+                                                        <input type="text" class="form-control" id="egfr_ckd_epi"
+                                                               name="egfr_ckd_epi">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
+
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="doctor_order">دستور پزشک معالج   : </label>
+                                                    <label for="crcl">crcl : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="doctor_order" name="doctor_order" >
+                                                        <input type="text" class="form-control" id="crcl"
+                                                               name="crcl">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="has_alert">دارای هشدار : </label>
+                                                    <label for="child_pough_score">child_pough_score : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="has_alert" name="has_alert" >
+                                                        <input type="text" class="form-control" id="child_pough_score"
+                                                               name="child_pough_score">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class=" col-12">
-                                                <label for="description">توضیحات : </label>
 
-                                                <textarea type="text" class="form-control" id="description"
-                                                          name="description"  </textarea>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="source">source : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="source"
+                                                               name="source">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="status">status : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="status"
+                                                               name="status">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row">
 
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="description">توضیحات : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="description"
+                                                               name="description">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="form">فرم : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="form"
+                                                               name="form">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-12">
@@ -175,21 +166,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-12">
-                                            <div class="card">
-                                                <div class="card-block">
-                                                    <h4 class="card-title"> ویرایش بیمار</h4>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <small class="text-muted">تاریخ ایجاد: <b class="ltr_text">{{ verta($model->created_at)->format('Y/m/d-H:i')}}</b></small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                             </div>
                         </div>
                     </div>
                 </div>

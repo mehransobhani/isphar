@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use App\Classes\DataTable\DataTableInterface;
 use App\Classes\DataTable\DemoRequest\DemoRequestDataTable;
-use App\Classes\DataTable\DemoRequest\DrpReportDataTable;
+use App\Classes\DataTable\DrpReport\DrpReportDataTable;
 use App\Classes\DataTable\Patient\PatientDataTable;
 use App\Classes\DataTable\PatientDrug\PatientDrugDataTable;
 use App\Classes\DataTable\PatientSpecialCondition\PatientSpecialConditionDataTable;

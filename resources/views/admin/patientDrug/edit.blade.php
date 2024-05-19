@@ -8,7 +8,7 @@
                 <div class="row bg-title">
                     <div class="col-lg-4 col-md-5 col-12">
                         <h4 class="page-title">
-                            <a href="{{ route('patient.index') }}">
+                            <a href="{{ route('patient_drug.index') }}">
                                 بیماران
                             </a>
                             /
@@ -44,21 +44,25 @@
                             @endif
                             <div class="row">
                                 <div class="col-lg-9 col-md-12 col-12">
-                                    <form action="{{ route('patient_drug.update',$model->id) }}" method="post">
+                                    <form action="{{ route('patient_drug.update',$model->id) }}" method="POST">
                                         @csrf
+                                        @method('PATCH')
                                         <input type="hidden" name="id" value="{{$model->id}}">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="user_id">پزشک : </label>
                                                     <div class="input-group">
-                                                        <select name="user_id">
+                                                        <select name="user_id" >
                                                             <option>
                                                                 0
                                                             </option>
                                                         </select>
                                                     </div>
                                                 </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+
                                                 <div class="form-group">
                                                     <label for="patient_id">بیمار : </label>
                                                     <div class="input-group">
@@ -70,6 +74,9 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
+                                        <div class="row">
+
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="drug_id">دارو : </label>
@@ -79,7 +86,7 @@
                                                                 0
                                                             </option>
                                                         </select>
-                                                     </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
@@ -91,22 +98,22 @@
                                                                 0
                                                             </option>
                                                         </select>
-                                                     </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                         </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="name">نام : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="name" name="name" value="{{ $model->name }}">
+                                                        <input type="text" class="form-control" id="name" name="name" value="{{$model->name}}">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="gender">زمان مصرف   : </label>
+                                                    <label for="gender">زمان مصرف : </label>
                                                     <div class="input-group">
                                                         <select name="type">
                                                             <option>
@@ -123,7 +130,8 @@
                                                 <div class="form-group">
                                                     <label for="last_dose_date">زمان آخرین دوز مصرف : </label>
                                                     <div class="input-group">
-                                                        <input type="datetime-local" class="form-control" id="last_dose_date" name="last_dose_date" value="{{ $model->last_dose_date }}">
+                                                        <input type="datetime-local" class="form-control" value="{{$model->last_dose_date}}"
+                                                               id="last_dose_date" name="last_dose_date">
                                                     </div>
                                                 </div>
                                             </div>
@@ -131,7 +139,8 @@
                                                 <div class="form-group">
                                                     <label for="doctor">مقدار دوز : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="dose_amount" name="dose_amount" value="{{ $model->dose_amount }}">
+                                                        <input type="text" class="form-control" id="dose_amount" value="{{$model->dose_amount}}"
+                                                               name="dose_amount">
                                                     </div>
                                                 </div>
                                             </div>
@@ -139,9 +148,10 @@
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="doctor_order">دستور پزشک معالج   : </label>
+                                                    <label for="doctor_order">دستور پزشک معالج : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="doctor_order" name="doctor_order" value="{{ $model->doctor_order }}">
+                                                        <input type="text" class="form-control" id="doctor_order" value="{{$model->doctor_order}}"
+                                                               name="doctor_order">
                                                     </div>
                                                 </div>
                                             </div>
@@ -149,7 +159,8 @@
                                                 <div class="form-group">
                                                     <label for="has_alert">دارای هشدار : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="has_alert" name="has_alert" value="{{ $model->has_alert }}">
+                                                        <input type="text" class="form-control" id="has_alert" value="{{$model->has_alert}}"
+                                                               name="has_alert">
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,9 +170,10 @@
                                                 <label for="description">توضیحات : </label>
 
                                                 <textarea type="text" class="form-control" id="description"
-                                                          name="description"{{$model->description}} </textarea>
+                                                          name="description"> {{ $model->description}} </textarea>
                                             </div>
                                         </div>
+
 
 
                                         <div class="row">

@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
                         <h3 class="box-title m-b-10"> لیست بیماران </h3>
-                        <a href="{{route("patient.create")}}">
+                        <a href="{{route("patient_drug.create")}}">
                             <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن
                                 بیمار
                             </button>
@@ -35,11 +35,14 @@
                                     <th>نوع دارو</th>
                                     <th>نام</th>
                                     <th>  زمان مصرف </th>
-                                    <th>زمان آخرین دوز مصرف</th>
                                     <th>مقدار دوز </th>
-                                    <th> دستور پزشک معالج</th>
                                     <th>دارای هشدار </th>
-                                    
+                                    <th>توضیحات </th>
+
+                                    <th>زمان آخرین دوز مصرف</th>
+                                    <th> دستور پزشک معالج</th>
+                                    <th>عملیات </th>
+
 
                                 </tr>
                                 </thead>
@@ -63,7 +66,7 @@
 
                 serverSide: true,
 
-                ajax: '{!! route('PatientSpecialCondition.dataTable') !!}',
+                ajax: '{!! route('patient_drug.dataTable') !!}',
                 language: {
                     "decimal": "",
                     "emptyTable": "هیچ داده‌ای موجود نیست",
@@ -90,25 +93,18 @@
                 },
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'height', name: 'height'},
-                    {data: 'weight', name: 'weight'},
-                    {data: 'naresayi_koliavi', name: 'naresayi_koliavi'},
-                    {data: 'masrafe_sigar', name: 'masrafe_sigar'},
-                    {data: 'kambode_g6pd', name: 'kambode_g6pd'},
-                    {data: 'naresayi_kabedi', name: 'naresayi_kabedi'},
-                    {data: 'radiology', name: 'radiology'},
-                    {data: 'masrafe_alcol', name: 'masrafe_alcol'},
-                    {data: 'hasasiate_daruyi', name: 'hasasiate_daruyi'},
-                    {data: 'hasasiate_daruyi_desc', name: 'hasasiate_daruyi_desc'},
-                    {data: 'soe_masrafe_mavad', name: 'soe_masrafe_mavad'},
-                    {data: 'soe_masrafe_mavad_desc', name: 'soe_masrafe_mavad_desc'},
-                    {data: 'bardari', name: 'bardari'},
-                    {data: 'bardari_weeks', name: 'bardari_weeks'},
-                    {data: 'anti_biotic', name: 'anti_biotic'},
-                    {data: 'anti_biotic_name', name: 'anti_biotic_name'},
-                    {data: 'shirdehi', name: 'shirdehi'},
-                    {data: 'vaksan', name: 'vaksan'},
-                    {data: 'vaksan_name', name: 'vaksan_name'},
+                    {data: 'user.name', name: 'user.name'},
+                    {data: 'patient.fullname', name: 'patient.fullname'},
+                    {data: 'drug_id', name: 'drug_id'},
+                    {data: 'type', name: 'type'},
+                    {data: 'name', name: 'name'},
+                    {data: 'usage_intervals', name: 'usage_intervals'},
+                    {data: 'dose_amount', name: 'dose_amount'},
+                    {data: 'has_alert', name: 'has_alert'},
+                    {data: 'description', name: 'description'},
+                    {data: 'last_dose_date', name: 'last_dose_date'},
+                    {data: 'doctor_order', name: 'doctor_order'},
+                    {data: 'edit', name: 'edit'},
                 ],
 
             });

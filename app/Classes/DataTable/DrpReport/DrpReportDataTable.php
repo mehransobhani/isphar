@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Classes\DataTable\DemoRequest;
+namespace App\Classes\DataTable\DrpReport;
 
 use App\Classes\DataTable\DataTableInterface;
 use App\Models\DrpReport;
@@ -11,15 +11,17 @@ class DrpReportDataTable implements DataTableInterface
 
     public function build()
     {
-        $model = DrpReport::query();
+        $model = DrpReport::query()->with("user")->with("patient");
         return DataTables::of($model)
-            ->editColumn('is_followed_up', function ($data) {
-            return $data->is_followed_up ? "بله" : "خیر";
-        })
+
             ->editColumn('created_at', function ($data) {
             return verta($data->created_at)->format('Y/m/d-H:i');
         })
-            ->rawColumns(['is_followed_up'])
+            ->addColumn('edit', function ($data) {
+                return "<a class='btn btn-danger waves-effect waves-light' href='" . route('drp-report.edit', $data->id) . "'>ویرایش</a>";
+            })
+            ->rawColumns(['edit'])
+
             ->make(true);
     }
 }

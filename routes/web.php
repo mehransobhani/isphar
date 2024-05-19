@@ -25,8 +25,11 @@ Route::get("PatientSpecialCondition/view/{patientId}", [\App\Http\Controllers\Pa
 Route::get("PatientSpecialCondition/dataTable", [\App\Http\Controllers\PatientSpecialConditionController::class, "dataTable"])->name("PatientSpecialCondition.dataTable");
 
 Route::resource("patient_drug",\App\Http\Controllers\PatientDrugController::class)->except(["destroy","show"]);
-Route::get("PatientSpecialCondition/view/{patientId}", [\App\Http\Controllers\PatientDrugController::class, "view"])->name("PatientSpecialCondition.view");
-Route::get("PatientSpecialCondition/dataTable", [\App\Http\Controllers\PatientDrugController::class, "dataTable"])->name("PatientSpecialCondition.dataTable");
+Route::get("patient_drug/view/{patientId}", [\App\Http\Controllers\PatientDrugController::class, "view"])->name("patient_drug.view");
+Route::get("patient_drug/dataTable", [\App\Http\Controllers\PatientDrugController::class, "dataTable"])->name("patient_drug.dataTable");
+
+Route::resource("drp-report",\App\Http\Controllers\DrpReportController::class)->except(["destroy","show"]);
+Route::get("drp-report/dataTable", [\App\Http\Controllers\DrpReportController::class, "dataTable"])->name("drp-report.dataTable");
 
 Route::group(['as' => 'DemoRequest.', 'prefix' => 'DemoRequest'], function () {
      Route::get("index", [\App\Http\Controllers\DemoRequestController::class, "index"])->name("index");

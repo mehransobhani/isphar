@@ -15,5 +15,9 @@ class PatientSpecialCondition extends Model
     {
      return $this->belongsTo(Patient::class);
     }
+    public function User()
+    {
+        return $this->belongsTo(User::class);
+    }
 
 }

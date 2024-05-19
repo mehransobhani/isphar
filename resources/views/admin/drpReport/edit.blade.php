@@ -48,70 +48,23 @@
                                         @csrf
                                         <input type="hidden" name="id" value="{{$model->id}}">
                                         <div class="row">
+
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="user_id">پزشک : </label>
+                                                    <label for="source_number">دکتر : </label>
                                                     <div class="input-group">
-                                                        <select name="user_id">
-                                                            <option>
-                                                                0
-                                                            </option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="patient_id">بیمار : </label>
-                                                    <div class="input-group">
-                                                        <select name="patient_id">
-                                                            <option>
-                                                                0
-                                                            </option>
+                                                        <select>
+                                                            <option>0</option>
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="drug_id">دارو : </label>
+                                                    <label for="source_number">بیمار : </label>
                                                     <div class="input-group">
-                                                        <select name="drug_id">
-                                                            <option>
-                                                                0
-                                                            </option>
-                                                        </select>
-                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="type">نوع دارو : </label>
-                                                    <div class="input-group">
-                                                        <select name="type">
-                                                            <option>
-                                                                0
-                                                            </option>
-                                                        </select>
-                                                     </div>
-                                                </div>
-                                            </div>
-                                         </div>
-                                        <div class="row">
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="name">نام : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="name" name="name" value="{{ $model->name }}">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="gender">زمان مصرف   : </label>
-                                                    <div class="input-group">
-                                                        <select name="type">
-                                                            <option>
-                                                                0
-                                                            </option>
+                                                        <select>
+                                                            <option>0</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -121,49 +74,86 @@
 
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="last_dose_date">زمان آخرین دوز مصرف : </label>
+                                                    <label for="egfr_mdrd">egfr_mdrd : </label>
                                                     <div class="input-group">
-                                                        <input type="datetime-local" class="form-control" id="last_dose_date" name="last_dose_date" value="{{ $model->last_dose_date }}">
+                                                        <input type="text" class="form-control" id="egfr_mdrd" value="{{$model->egfr_mdrd}}"
+                                                               name="egfr_mdrd">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="doctor">مقدار دوز : </label>
+                                                    <label for="egfr_ckd_epi">egfr_ckd_epi : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="dose_amount" name="dose_amount" value="{{ $model->dose_amount }}">
+                                                        <input type="text" class="form-control" id="egfr_ckd_epi" value="{{$model->egfr_ckd_epi}}"
+                                                               name="egfr_ckd_epi">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
+
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="doctor_order">دستور پزشک معالج   : </label>
+                                                    <label for="crcl">crcl : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="doctor_order" name="doctor_order" value="{{ $model->doctor_order }}">
+                                                        <input type="text" class="form-control" id="crcl" value="{{$model->crcl}}"
+                                                               name="crcl">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="has_alert">دارای هشدار : </label>
+                                                    <label for="child_pough_score">child_pough_score : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="has_alert" name="has_alert" value="{{ $model->has_alert }}">
+                                                        <input type="text" class="form-control" id="child_pough_score" value="{{$model->child_pough_score}}"
+                                                               name="child_pough_score">
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class=" col-12">
-                                                <label for="description">توضیحات : </label>
 
-                                                <textarea type="text" class="form-control" id="description"
-                                                          name="description"{{$model->description}} </textarea>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="source">source : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="source" value="{{$model->source}}"
+                                                               name="source">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="status">status : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="status" value="{{$model->status}}"
+                                                               name="status">
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
+                                        <div class="row">
 
-
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="description">توضیحات : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="description" value="{{$model->description}}"
+                                                               name="description">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="form">فرم : </label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="form" value="{{$model->form}}"
+                                                               name="form">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-12">
                                                 <div class="form-group">
