@@ -69,7 +69,7 @@ class DrpReportController extends Controller
             "patient_id" => "required",
             "crcl" => "required",
             "child_pough_score" => "required",
-            " source " => "required",
+            "source " => "required",
             "form" => "required",
         ]);
         DrpReport::create([

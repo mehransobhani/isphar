@@ -4,11 +4,15 @@ namespace App\Providers;
 
 use App\Classes\DataTable\DataTableInterface;
 use App\Classes\DataTable\DemoRequest\DemoRequestDataTable;
+use App\Classes\DataTable\DemoRequest\DrpReportDataTable;
 use App\Classes\DataTable\Patient\PatientDataTable;
+use App\Classes\DataTable\PatientDrug\PatientDrugDataTable;
 use App\Classes\DataTable\PatientSpecialCondition\PatientSpecialConditionDataTable;
 use App\Classes\DataTable\User\UserDataTable;
 use App\Http\Controllers\DemoRequestController;
+use App\Http\Controllers\DrpReportController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PatientDrugController;
 use App\Http\Controllers\PatientSpecialConditionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\ServiceProvider;
@@ -32,6 +36,14 @@ class DataTableServiceProvider extends ServiceProvider
         $this->app->when(PatientSpecialConditionController::class)
             ->needs(DataTableInterface::class)
             ->give(PatientSpecialConditionDataTable::class);
+
+        $this->app->when(PatientDrugController::class)
+            ->needs(DataTableInterface::class)
+            ->give(PatientDrugDataTable::class);
+
+        $this->app->when(DrpReportController::class)
+            ->needs(DataTableInterface::class)
+            ->give(DrpReportDataTable::class);
 
     }
 }
