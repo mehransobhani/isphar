@@ -46,13 +46,13 @@
                                 <div class="col-lg-9 col-md-12 col-12">
                                     <form action="{{ route('PatientSpecialCondition.update') }}" method="post">
                                         @csrf
-                                         <input type="hidden" name="id" value="{{$model->id}}">
+                                        <input type="hidden" name="id" value="{{$model->id}}">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="fullname">قد : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="fullname" name="fullname" value="{{ $model->height }}">
+                                                        <input type="text" class="form-control" id="height" name="height" value="{{ $model->height }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -60,7 +60,7 @@
                                                 <div class="form-group">
                                                     <label for="national_code">وزن : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="national_code" name="national_code" value="{{ $model->weight }}">
+                                                        <input type="text" class="form-control" id="weight" name="weight" value="{{ $model->weight }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -70,7 +70,7 @@
                                                 <div class="form-group">
                                                     <label for="birth_date">نارسایی کلیوی  : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="birth_date" name="birth_date" value="{{ $model->naresayi_koliavi }}">
+                                                        <input type="text" class="form-control" id="naresayi_koliavi" name="naresayi_koliavi" value="{{ $model->naresayi_koliavi }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +78,7 @@
                                                 <div class="form-group">
                                                     <label for="gender">مصرف سیگار : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="gender" name="gender" value="{{ $model->masrafe_sigar }}">
+                                                        <input type="text" class="form-control" id="masrafe_sigar" name="masrafe_sigar" value="{{ $model->masrafe_sigar }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +89,7 @@
                                                 <div class="form-group">
                                                     <label for="admission_date">کمبود g6pd : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="admission_date" name="admission_date" value="{{ $model->kambode_g6pd }}">
+                                                        <input type="text" class="form-control" id="kambode_g6pd" name="kambode_g6pd" value="{{ $model->kambode_g6pd }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,7 +97,7 @@
                                                 <div class="form-group">
                                                     <label for="doctor">نارسایی کبدی : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="doctor" name="doctor" value="{{ $model->naresayi_kabedi }}">
+                                                        <input type="text" class="form-control" id="naresayi_kabedi" name="naresayi_kabedi" value="{{ $model->naresayi_kabedi }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,7 +107,7 @@
                                                 <div class="form-group">
                                                     <label for="file_number">رادیولوژی   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="file_number" name="file_number" value="{{ $model->radiology }}">
+                                                        <input type="text" class="form-control" id="radiology" name="radiology" value="{{ $model->radiology }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,7 +115,7 @@
                                                 <div class="form-group">
                                                     <label for="room_name">مصرف الکل : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="room_name" name="room_name" value="{{ $model->masrafe_alcol }}">
+                                                        <input type="text" class="form-control" id="masrafe_alcol" name="masrafe_alcol" value="{{ $model->masrafe_alcol }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,7 +125,7 @@
                                                 <div class="form-group">
                                                     <label for="room_number">حساسیت دارویی   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="room_number" name="room_number" value="{{ $model->soe_masrafe_mavad }}">
+                                                        <input type="text" class="form-control" id="hasasiate_daruyi" name="hasasiate_daruyi" value="{{ $model->hasasiate_daruyi }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -133,7 +133,7 @@
                                                 <div class="form-group">
                                                     <label for="bed_number">توضیحات حساسیت دارویی : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="bed_number" name="bed_number" value="{{ $model->hasasiate_daruyi_desc }}">
+                                                        <input type="text" class="form-control" id="hasasiate_daruyi_desc" name="hasasiate_daruyi_desc" value="{{ $model->hasasiate_daruyi_desc }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,7 +143,7 @@
                                                 <div class="form-group">
                                                     <label for="cause">سو مصرف مواد   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="cause" name="cause" value="{{ $model->soe_masrafe_mavad }}">
+                                                        <input type="text" class="form-control" id="soe_masrafe_mavad" name="soe_masrafe_mavad" value="{{ $model->soe_masrafe_mavad }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -151,7 +151,7 @@
                                                 <div class="form-group">
                                                     <label for="source">توضیحات سو مصرف مواد   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="source" name="source" value="{{ $model->soe_masrafe_mavad_desc }}">
+                                                        <input type="text" class="form-control" id="soe_masrafe_mavad_desc" name="soe_masrafe_mavad_desc" value="{{ $model->soe_masrafe_mavad_desc }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,7 +162,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">بارداری : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="source_number" name="source_number" value="{{ $model->bardari }}">
+                                                        <input type="text" class="form-control" id="bardari" name="bardari" value="{{ $model->bardari }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -170,7 +170,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">هفته بارداری : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="source_number" name="source_number" value="{{ $model->bardari_weeks }}">
+                                                        <input type="text" class="form-control" id="bardari_weeks" name="bardari_weeks" value="{{ $model->bardari_weeks }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,7 +182,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">آنتی بیوتیک : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="source_number" name="source_number" value="{{ $model->anti_biotic }}">
+                                                        <input type="text" class="form-control" id="anti_biotic" name="anti_biotic" value="{{ $model->anti_biotic }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,7 +190,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">نام آنتی بیوتیک : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="source_number" name="source_number" value="{{ $model->anti_biotic_name }}">
+                                                        <input type="text" class="form-control" id="anti_biotic_name" name="anti_biotic_name" value="{{ $model->anti_biotic_name }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,7 +200,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">شیردهی : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="source_number" name="source_number" value="{{ $model->shirdehi }}">
+                                                        <input type="text" class="form-control" id="shirdehi" name="shirdehi" value="{{ $model->shirdehi }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -241,7 +241,7 @@
                                             <div class="card">
                                                 <div class="card-block">
                                                     <h4 class="card-title"> ویرایش بیمار</h4>
-                                                 </div>
+                                                </div>
                                                 <div class="card-footer">
                                                     <small class="text-muted">تاریخ ایجاد: <b class="ltr_text">{{ verta($model->created_at)->format('Y/m/d-H:i')}}</b></small>
                                                 </div>

@@ -38,3 +38,7 @@ Route::group(['as' => 'PatientSpecialCondition.', 'prefix' => 'PatientSpecialCon
     Route::post("store", [\App\Http\Controllers\PatientSpecialConditionController::class, "store"])->name("store");
     Route::post("update", [\App\Http\Controllers\PatientSpecialConditionController::class, "update"])->name("update");
 });
+Route::group(['as' => 'DemoRequest.', 'prefix' => 'DemoRequest'], function () {
+     Route::get("index", [\App\Http\Controllers\PatientSpecialConditionController::class, "index"])->name("index");
+    Route::get("dataTable", [\App\Http\Controllers\PatientSpecialConditionController::class, "dataTable"])->name("dataTable");
+});

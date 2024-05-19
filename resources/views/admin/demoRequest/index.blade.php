@@ -25,29 +25,15 @@
                         <hr/>
 
                         <div class="table-responsive">
-                            <table class="table table-bordered" id="users-table">
+                            <table class="table table-bordered" id="data_table">
                                 <thead>
                                 <tr>
                                     <th>شناسه</th>
-                                    <th>قد</th>
-                                    <th>وزن</th>
-                                    <th>نارسایی کلیوی</th>
-                                    <th>مصرف سیگار</th>
-                                    <th>کمبود g6pd</th>
-                                    <th>نارسایی کبدی</th>
-                                    <th>رادیولوژی</th>
-                                    <th>مصرف الکل</th>
-                                    <th> حساسیت دارویی</th>
-                                    <th>توضیحات حساسیت دارویی</th>
-                                    <th>سو مصرف مواد</th>
-                                    <th>توضیحات سو مصرف مواد</th>
-                                    <th>بارداری</th>
-                                    <th>هفته بارداری</th>
-                                    <th>آنتی بیوتیک</th>
-                                    <th>نام آنتی بیوتیک</th>
-                                    <th>شیردهی</th>
-                                    <th> واکسن</th>
-                                    <th>نام واکسن</th>
+                                    <th>نام</th>
+                                    <th>شماره</th>
+                                    <th>بررسی شده</th>
+                                    <th>تاریخ ایجاد</th>
+
 
                                 </tr>
                                 </thead>
@@ -65,13 +51,13 @@
     <script>
         $(function () {
 
-            $('#users-table').DataTable({
+            $('#data_table').DataTable({
 
                 processing: true,
 
                 serverSide: true,
 
-                ajax: '{!! route('PatientSpecialCondition.dataTable') !!}',
+                ajax: '{!! route('DemoRequest.dataTable') !!}',
                 language: {
                     "decimal": "",
                     "emptyTable": "هیچ داده‌ای موجود نیست",
@@ -98,25 +84,11 @@
                 },
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'height', name: 'height'},
-                    {data: 'weight', name: 'weight'},
-                    {data: 'naresayi_koliavi', name: 'naresayi_koliavi'},
-                    {data: 'masrafe_sigar', name: 'masrafe_sigar'},
-                    {data: 'kambode_g6pd', name: 'kambode_g6pd'},
-                    {data: 'naresayi_kabedi', name: 'naresayi_kabedi'},
-                    {data: 'radiology', name: 'radiology'},
-                    {data: 'masrafe_alcol', name: 'masrafe_alcol'},
-                    {data: 'hasasiate_daruyi', name: 'hasasiate_daruyi'},
-                    {data: 'hasasiate_daruyi_desc', name: 'hasasiate_daruyi_desc'},
-                    {data: 'soe_masrafe_mavad', name: 'soe_masrafe_mavad'},
-                    {data: 'soe_masrafe_mavad_desc', name: 'soe_masrafe_mavad_desc'},
-                    {data: 'bardari', name: 'bardari'},
-                    {data: 'bardari_weeks', name: 'bardari_weeks'},
-                    {data: 'anti_biotic', name: 'anti_biotic'},
-                    {data: 'anti_biotic_name', name: 'anti_biotic_name'},
-                    {data: 'shirdehi', name: 'shirdehi'},
-                    {data: 'vaksan', name: 'vaksan'},
-                    {data: 'vaksan_name', name: 'vaksan_name'},
+                    {data: 'name', name: 'name'},
+                    {data: 'mobile', name: 'mobile'},
+                    {data: 'is_followed_up', name: 'is_followed_up'},
+                    {data: 'created_at', name: 'created_at'},
+
                 ],
 
             });
