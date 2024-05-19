@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DemoRequest;
-use Yajra\DataTables\DataTables;
+use App\Classes\DataTable\DataTableInterface;
+use App\Classes\DataTable\DemoRequest\DemoRequestDataTable;
 
 class DemoRequestController extends Controller
 {
+    private $dataTable;
+
+    public function __construct(DataTableInterface $dataTable)
+    {
+        $this->dataTable = $dataTable;
+    }
     public function index()
     {
         return view("admin.demoRequest.index");
@@ -14,11 +20,6 @@ class DemoRequestController extends Controller
 
     public function dataTable()
     {
-        $model=DemoRequest::get();
-        return DataTables::of($model)->editColumn('is_followed_up', function ($data) {
-            return $data->is_followed_up?"بله":"خیر";
-        })
-            ->rawColumns(['is_followed_up'])
-            ->make(true);
+         return $this->dataTable->build();
     }
 }

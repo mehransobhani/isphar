@@ -2,11 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\DataTable\DataTableInterface;
 use App\Models\PatientSpecialCondition;
 use Yajra\DataTables\DataTables;
 
 class PatientSpecialConditionController extends Controller
 {
+    private DataTableInterface $dataTable;
+
+    public function __construct(DataTableInterface $dataTable)
+    {
+        $this->dataTable = $dataTable;
+    }
+
     public function view($id)
     {
         $model=PatientSpecialCondition::with("Patient")->find($id);
@@ -104,8 +112,7 @@ class PatientSpecialConditionController extends Controller
 
     public function dataTable()
     {
-        $model = PatientSpecialCondition::with("PatientSpecialCondition")->get();
-        return DataTables::of($model)
-            ->make(true);
+        return $this->dataTable->build();
+
     }
 }

@@ -44,7 +44,7 @@
                             @endif
                             <div class="row">
                                 <div class="col-lg-9 col-md-12 col-12">
-                                    <form action="{{ route('user.update') }}" method="post">
+                                    <form action="{{ route('user.update',$model->id) }}" method="post">
                                         @csrf
                                          <input type="hidden" name="id" value="{{$model->id}}">
                                         <div class="row">

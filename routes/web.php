@@ -13,32 +13,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::group(['as' => 'patient.', 'prefix' => 'patient'], function () {
-    Route::get("index", [\App\Http\Controllers\PatientController::class, "index"])->name("index");
-    Route::get("dataTable", [\App\Http\Controllers\PatientController::class, "dataTable"])->name("dataTable");
-    Route::get("create", [\App\Http\Controllers\PatientController::class, "create"])->name("create");
-    Route::get("edit/{id}", [\App\Http\Controllers\PatientController::class, "edit"])->name("edit");
-    Route::post("store", [\App\Http\Controllers\PatientController::class, "store"])->name("store");
-    Route::post("update", [\App\Http\Controllers\PatientController::class, "update"])->name("update");
-});
-Route::group(['as' => 'user.', 'prefix' => 'user'], function () {
-    Route::get("index", [\App\Http\Controllers\UserController::class, "index"])->name("index");
-    Route::get("dataTable", [\App\Http\Controllers\UserController::class, "dataTable"])->name("dataTable");
-    Route::get("create", [\App\Http\Controllers\UserController::class, "create"])->name("create");
-    Route::get("edit/{id}", [\App\Http\Controllers\UserController::class, "edit"])->name("edit");
-    Route::post("store", [\App\Http\Controllers\UserController::class, "store"])->name("store");
-    Route::post("update", [\App\Http\Controllers\UserController::class, "update"])->name("update");
-});
-Route::group(['as' => 'PatientSpecialCondition.', 'prefix' => 'PatientSpecialCondition'], function () {
-    Route::get("view/{patientId}", [\App\Http\Controllers\PatientSpecialConditionController::class, "view"])->name("view");
-    Route::get("index", [\App\Http\Controllers\PatientSpecialConditionController::class, "index"])->name("index");
-    Route::get("dataTable", [\App\Http\Controllers\PatientSpecialConditionController::class, "dataTable"])->name("dataTable");
-    Route::get("create", [\App\Http\Controllers\PatientSpecialConditionController::class, "create"])->name("create");
-    Route::get("edit/{id}", [\App\Http\Controllers\PatientSpecialConditionController::class, "edit"])->name("edit");
-    Route::post("store", [\App\Http\Controllers\PatientSpecialConditionController::class, "store"])->name("store");
-    Route::post("update", [\App\Http\Controllers\PatientSpecialConditionController::class, "update"])->name("update");
-});
+Route::resource("patient",\App\Http\Controllers\PatientController::class)->except("destroy","show");
+Route::get("patient/dataTable", [\App\Http\Controllers\PatientController::class, "dataTable"])->name("patient.dataTable");
+
+Route::resource("user",\App\Http\Controllers\UserController::class)->except(["destroy","show"]);
+Route::get("user/dataTable", [\App\Http\Controllers\UserController::class, "dataTable"])->name("user.dataTable");
+
+
+Route::resource("PatientSpecialCondition",\App\Http\Controllers\PatientSpecialConditionController::class)->except(["destroy","show"]);
+Route::get("PatientSpecialCondition/view/{patientId}", [\App\Http\Controllers\PatientSpecialConditionController::class, "view"])->name("PatientSpecialCondition.view");
+Route::get("PatientSpecialCondition/dataTable", [\App\Http\Controllers\PatientSpecialConditionController::class, "dataTable"])->name("PatientSpecialCondition.dataTable");
+
 Route::group(['as' => 'DemoRequest.', 'prefix' => 'DemoRequest'], function () {
-     Route::get("index", [\App\Http\Controllers\PatientSpecialConditionController::class, "index"])->name("index");
-    Route::get("dataTable", [\App\Http\Controllers\PatientSpecialConditionController::class, "dataTable"])->name("dataTable");
+     Route::get("index", [\App\Http\Controllers\DemoRequestController::class, "index"])->name("index");
+    Route::get("dataTable", [\App\Http\Controllers\DemoRequestController::class, "dataTable"])->name("dataTable");
 });

@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\DataTable\DataTableInterface;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
 
 class UserController extends Controller
 {
+    private DataTableInterface $dataTable;
+
+    public function __construct(DataTableInterface $dataTable)
+    {
+        $this->dataTable = $dataTable;
+    }
+
     public function index()
     {
         return view("admin.user.index");
@@ -70,11 +77,6 @@ class UserController extends Controller
 
     public function dataTable()
     {
-        $model = User::get();
-        return DataTables::of($model)->editColumn('edit', function ($data) {
-            return "<a class='btn btn-danger waves-effect waves-light' href='" . route('user.edit', $data->id) . "'>ویرایش</a>";
-        })
-            ->rawColumns(['edit'])
-            ->make(true);
+        return $this->dataTable->build();
     }
 }

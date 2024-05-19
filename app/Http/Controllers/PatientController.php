@@ -2,20 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\DataTable\DataTableInterface;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class PatientController extends Controller
 {
+    private DataTableInterface $dataTable;
+
+    public function __construct(DataTableInterface $dataTable)
+    {
+        $this->dataTable = $dataTable;
+    }
+
     public function index()
     {
         return view("admin.patient.index");
     }
 
-    public function edit($id)
+    public function edit(Patient $patient)
     {
-        $model = Patient::find($id);
+        $model = $patient;
         return view("admin.patient.edit", compact("model"));
     }
 
@@ -93,21 +101,6 @@ class PatientController extends Controller
 
     public function dataTable()
     {
-        $model = Patient::with("PatientSpecialCondition")->get();
-        return DataTables::of($model)->editColumn('edit', function ($data) {
-            return "<a class='btn btn-danger waves-effect waves-light' href='" . route('patient.edit', $data->id) . "'>ویرایش</a>";
-        })->editColumn('PatientSpecialCondition', function ($data) {
-            $check=$data->PatientSpecialCondition;
-            return $check  ?"بله":"خیر";
-        })->editColumn('PatientSpecialConditionView', function ($data) {
-            $check=$data->PatientSpecialCondition;
-
-            if($check)
-            return "<a class='btn btn-danger waves-effect waves-light' href='" . route('PatientSpecialCondition.view', $data->PatientSpecialCondition->id) . "'>مشاهده شرایط خاص بیمار</a>";
-            else
-                return"";
-        })
-            ->rawColumns(['edit' , 'PatientSpecialConditionView'])
-            ->make(true);
+        return $this->dataTable->build();
     }
 }
