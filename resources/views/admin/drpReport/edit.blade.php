@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 
-@section('title','ویرایش بیمار')
+@section('title','ویرایش گزارش drp')
 @section('content')
     <div id="wrapper">
         <div id="page-wrapper">
@@ -8,11 +8,11 @@
                 <div class="row bg-title">
                     <div class="col-lg-4 col-md-5 col-12">
                         <h4 class="page-title">
-                            <a href="{{ route('patient.index') }}">
-                                بیماران
+                            <a href="{{ route('drp-report.index') }}">
+                                گزارش drp
                             </a>
                             /
-                            ویرایش بیمار
+                            ویرایش گزارش drp
                         </h4>
                     </div>
                 </div>
@@ -46,6 +46,7 @@
                                 <div class="col-lg-9 col-md-12 col-12">
                                     <form action="{{ route('patient_drug.update',$model->id) }}" method="post">
                                         @csrf
+                                        @method('PATCH')
                                         <input type="hidden" name="id" value="{{$model->id}}">
                                         <div class="row">
 
@@ -171,7 +172,7 @@
                                         <div class="col-lg-12 col-md-12 col-12">
                                             <div class="card">
                                                 <div class="card-block">
-                                                    <h4 class="card-title"> ویرایش بیمار</h4>
+                                                    <h4 class="card-title"> ویرایش گزارش drp</h4>
                                                 </div>
                                                 <div class="card-footer">
                                                     <small class="text-muted">تاریخ ایجاد: <b class="ltr_text">{{ verta($model->created_at)->format('Y/m/d-H:i')}}</b></small>

@@ -8,18 +8,17 @@
             <div class="row bg-title">
                 <div class="col-lg-4 col-md-6 col-12">
                     <h4 class="page-title">
-
-                        بیماران
+                        شرایط خاص بیماران
                     </h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="white-box">
-                        <h3 class="box-title m-b-10"> لیست بیماران </h3>
-                        <a href="{{route("patient.create")}}">
+                        <h3 class="box-title m-b-10"> لیست  شرایط خاص بیماران </h3>
+                        <a href="{{route("PatientSpecialCondition.create")}}">
                             <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن
-                                بیمار
+                                شرایط خاص بیمار
                             </button>
                         </a>
                         <hr/>

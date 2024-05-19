@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 
-@section('title','ویرایش بیمار')
+@section('title','ایجاد شرایط خاص ')
 @section('content')
     <div id="wrapper">
         <div id="page-wrapper">
@@ -8,11 +8,11 @@
                 <div class="row bg-title">
                     <div class="col-lg-4 col-md-5 col-12">
                         <h4 class="page-title">
-                            <a href="{{ route('patient.index') }}">
-                                بیماران
+                            <a href="{{ route('PatientSpecialCondition.index') }}">
+                                شرایط خاص بیماران
                             </a>
                             /
-                            ویرایش بیمار
+                            ایجاد شرایط خاص بیمار
                         </h4>
                     </div>
                 </div>

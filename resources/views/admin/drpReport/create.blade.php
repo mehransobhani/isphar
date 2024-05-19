@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 
-@section('title','ویرایش بیمار')
+@section('title','ایجاد گزارش drp')
 @section('content')
     <div id="wrapper">
         <div id="page-wrapper">
@@ -8,11 +8,11 @@
                 <div class="row bg-title">
                     <div class="col-lg-4 col-md-5 col-12">
                         <h4 class="page-title">
-                            <a href="{{ route('patient.index') }}">
-                                بیماران
+                            <a href="{{ route('drp-report.index') }}">
+                                گزارش drp
                             </a>
                             /
-                            ویرایش بیمار
+                            ایجاد گزارش drp
                         </h4>
                     </div>
                 </div>

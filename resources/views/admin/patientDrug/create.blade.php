@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 
-@section('title','ویرایش بیمار')
+@section('title','ایجاد تلفیق دارویی')
 @section('content')
     <div id="wrapper">
         <div id="page-wrapper">
@@ -9,10 +9,10 @@
                     <div class="col-lg-4 col-md-5 col-12">
                         <h4 class="page-title">
                             <a href="{{ route('patient_drug.index') }}">
-                                بیماران
+                                تلفیق دارویی
                             </a>
                             /
-                            ویرایش بیمار
+                           ایجاد تلفیق دارویی
                         </h4>
                     </div>
                 </div>
