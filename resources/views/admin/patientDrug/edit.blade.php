@@ -53,7 +53,7 @@
                                                 <div class="form-group">
                                                     <label for="user_id">پزشک : </label>
                                                     <div class="input-group">
-                                                        <select name="user_id" >
+                                                        <select  class="form-control select2"name="user_id" >
                                                             <option>
                                                                 0
                                                             </option>
@@ -66,7 +66,7 @@
                                                 <div class="form-group">
                                                     <label for="patient_id">بیمار : </label>
                                                     <div class="input-group">
-                                                        <select name="patient_id">
+                                                        <select  class="form-control select2"name="patient_id">
                                                             <option>
                                                                 0
                                                             </option>
@@ -81,7 +81,7 @@
                                                 <div class="form-group">
                                                     <label for="drug_id">دارو : </label>
                                                     <div class="input-group">
-                                                        <select name="drug_id">
+                                                        <select  class="form-control select2"name="drug_id">
                                                             <option>
                                                                 0
                                                             </option>
@@ -93,7 +93,7 @@
                                                 <div class="form-group">
                                                     <label for="type">نوع دارو : </label>
                                                     <div class="input-group">
-                                                        <select name="type">
+                                                        <select  class="form-control select2"name="type">
                                                             <option>
                                                                 0
                                                             </option>
@@ -115,7 +115,7 @@
                                                 <div class="form-group">
                                                     <label for="gender">زمان مصرف : </label>
                                                     <div class="input-group">
-                                                        <select name="type">
+                                                        <select  class="form-control select2"name="type">
                                                             <option>
                                                                 0
                                                             </option>

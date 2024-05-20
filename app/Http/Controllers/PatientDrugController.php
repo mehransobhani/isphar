@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Classes\DataTable\DataTableInterface;
+use App\Models\Patient;
 use App\Models\PatientDrug;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class PatientDrugController extends Controller
@@ -22,8 +24,10 @@ class PatientDrugController extends Controller
     }
     public function edit($id)
     {
-        $model=PatientDrug::with("Patient")->find($id);
-        return  view("admin.patientDrug.edit",compact("model"));
+        $users=User::all();
+        $patients=Patient::all();
+        $model=PatientDrug::find($id);
+        return  view("admin.patientDrug.edit",compact("model" , "patients" , "users"));
     }
     public function index()
     {
@@ -31,7 +35,9 @@ class PatientDrugController extends Controller
     }
     public function create()
     {
-        return view("admin.patientDrug.create");
+        $users=User::all();
+        $patients=Patient::all();
+        return view("admin.patientDrug.create",compact("patients" , "users"));
     }
 
     public function update(Request $request ,$id)

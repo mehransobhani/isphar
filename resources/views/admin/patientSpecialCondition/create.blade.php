@@ -46,7 +46,38 @@
                                 <div class="col-lg-9 col-md-12 col-12">
                                     <form action="{{ route('PatientSpecialCondition.store') }}" method="post">
                                         @csrf
-                                        <input type="hidden" name="id" value="{{$model->id}}">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="user_id">پزشک : </label>
+                                                    <div class="input-group">
+                                                        <select  class="form-control select2" name="user_id">
+                                                            @foreach($users as $user)
+                                                            <option value="{{$user->id}}">
+                                                                {{$user->name}}
+                                                            </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+
+                                                <div class="form-group">
+                                                    <label for="patient_id">بیمار : </label>
+                                                    <div class="input-group">
+                                                        <select  class="form-control select2"name="patient_id">
+                                                            @foreach($patients as $patient)
+                                                                <option value="{{$patient->id}}">
+                                                                    {{$patient->fullname}}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
@@ -70,16 +101,20 @@
                                                 <div class="form-group">
                                                     <label for="birth_date">نارسایی کلیوی  : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="naresayi_koliavi" name="naresayi_koliavi"  >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1"id="naresayi_koliavi" name="naresayi_koliavi" >
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="gender">مصرف سیگار : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="masrafe_sigar" name="masrafe_sigar" >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1" id="masrafe_sigar" name="masrafe_sigar">
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -89,16 +124,20 @@
                                                 <div class="form-group">
                                                     <label for="admission_date">کمبود g6pd : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="kambode_g6pd" name="kambode_g6pd"  >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1"  id="kambode_g6pd" name="kambode_g6pd">
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="doctor">نارسایی کبدی : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="naresayi_kabedi" name="naresayi_kabedi" >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1" id="naresayi_kabedi" name="naresayi_kabedi">
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -107,16 +146,20 @@
                                                 <div class="form-group">
                                                     <label for="file_number">رادیولوژی   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="radiology" name="radiology" >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1" id="radiology" name="radiology">
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="room_name">مصرف الکل : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="masrafe_alcol" name="masrafe_alcol" >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1" id="masrafe_alcol" name="masrafe_alcol" >
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -125,8 +168,10 @@
                                                 <div class="form-group">
                                                     <label for="room_number">حساسیت دارویی   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="hasasiate_daruyi" name="hasasiate_daruyi"  >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1"id="hasasiate_daruyi" name="hasasiate_daruyi"   >
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
@@ -143,8 +188,10 @@
                                                 <div class="form-group">
                                                     <label for="cause">سو مصرف مواد   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="soe_masrafe_mavad" name="soe_masrafe_mavad" >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1"id="soe_masrafe_mavad" name="soe_masrafe_mavad"  >
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
@@ -162,8 +209,10 @@
                                                 <div class="form-group">
                                                     <label for="source_number">بارداری : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="bardari" name="bardari"  >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1"id="bardari" name="bardari"  >
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
@@ -182,8 +231,10 @@
                                                 <div class="form-group">
                                                     <label for="source_number">آنتی بیوتیک : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="anti_biotic" name="anti_biotic" >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1"id="anti_biotic" name="anti_biotic"  >
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
@@ -200,16 +251,20 @@
                                                 <div class="form-group">
                                                     <label for="source_number">شیردهی : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="shirdehi" name="shirdehi" >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1"id="shirdehi" name="shirdehi"  >
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="source_number">واکسن : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="vaksan" name="vaksan" >
-                                                    </div>
+                                                        <div class="switchery-demo m-b-30">
+                                                            <input type="checkbox" checked class="js-switch" data-color="#f96262"  value="1"id="vaksan" name="vaksan" >
+                                                        </div>
+                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
@@ -235,20 +290,7 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="col-lg-3">
-                                    <div class="row">
-                                        <div class="col-lg-12 col-md-12 col-12">
-                                            <div class="card">
-                                                <div class="card-block">
-                                                    <h4 class="card-title"> ویرایش بیمار</h4>
-                                                </div>
-                                                <div class="card-footer">
-                                                    <small class="text-muted">تاریخ ایجاد: <b class="ltr_text">{{ verta($model->created_at)->format('Y/m/d-H:i')}}</b></small>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -257,3 +299,4 @@
         </div>
     </div>
 @endsection
+

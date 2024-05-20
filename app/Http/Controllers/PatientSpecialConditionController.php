@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Classes\DataTable\DataTableInterface;
+use App\Models\Patient;
 use App\Models\PatientSpecialCondition;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class PatientSpecialConditionController extends Controller
@@ -23,7 +26,9 @@ class PatientSpecialConditionController extends Controller
     public function edit($id)
     {
         $model=PatientSpecialCondition::with("Patient")->find($id);
-        return  view("admin.patientSpecialCondition.edit",compact("model"));
+        $users=User::all();
+        $patients=Patient::all();
+        return  view("admin.patientSpecialCondition.edit",compact("model","users","patients"));
     }
     public function index()
     {
@@ -31,7 +36,9 @@ class PatientSpecialConditionController extends Controller
     }
     public function create()
     {
-        return view("admin.patientSpecialCondition.create");
+        $users=User::all();
+        $patients=Patient::all();
+        return view("admin.patientSpecialCondition.create",compact( "users","patients"));
     }
 
     public function update(Request $request)
@@ -50,22 +57,22 @@ class PatientSpecialConditionController extends Controller
                 "patient_id" => $request->patient_id,
                 "height" => $request->height,
                 "weight" => $request->weight,
-                "naresayi_koliavi" => $request->naresayi_koliavi,
-                "masrafe_sigar" => $request->masrafe_sigar,
-                "kambode_g6pd" => $request->kambode_g6pd,
-                "naresayi_kabedi" => $request->naresayi_kabedi,
-                "radiology" => $request->radiology,
-                "masrafe_alcol" => $request->masrafe_alcol,
-                "hasasiate_daruyi" => $request->hasasiate_daruyi,
+                "naresayi_koliavi" => $request->naresayi_koliavi??0,
+                "masrafe_sigar" => $request->masrafe_sigar??0,
+                "kambode_g6pd" => $request->kambode_g6pd??0,
+                "naresayi_kabedi" => $request->naresayi_kabedi??0,
+                "radiology" => $request->radiology??0,
+                "masrafe_alcol" => $request->masrafe_alcol??0,
+                "hasasiate_daruyi" => $request->hasasiate_daruyi??0,
                 "hasasiate_daruyi_desc" => $request->hasasiate_daruyi_desc,
-                "soe_masrafe_mavad" => $request->soe_masrafe_mavad,
+                "soe_masrafe_mavad" => $request->soe_masrafe_mavad??0,
                 "soe_masrafe_mavad_desc" => $request->soe_masrafe_mavad_desc,
-                "bardari" => $request->bardari,
+                "bardari" => $request->bardari??0,
                 "bardari_weeks" => $request->bardari_weeks,
-                "anti_biotic" => $request->anti_biotic,
+                "anti_biotic" => $request->anti_biotic??0,
                 "anti_biotic_name" => $request->anti_biotic_name,
-                "shirdehi" => $request->shirdehi,
-                "vaksan" => $request->vaksan,
+                "shirdehi" => $request->shirdehi??0,
+                "vaksan" => $request->vaksan??0,
                 "vaksan_name" => $request->vaksan_name,
 
             ]);
@@ -86,24 +93,24 @@ class PatientSpecialConditionController extends Controller
             "patient_id" => $request->patient_id,
             "height" => $request->height,
             "weight" => $request->weight,
-            "naresayi_koliavi" => $request->naresayi_koliavi,
-            "masrafe_sigar" => $request->masrafe_sigar,
-            "kambode_g6pd" => $request->kambode_g6pd,
-            "naresayi_kabedi" => $request->naresayi_kabedi,
-            "radiology" => $request->radiology,
-            "masrafe_alcol" => $request->masrafe_alcol,
-            "hasasiate_daruyi" => $request->hasasiate_daruyi,
+            "naresayi_koliavi" => $request->naresayi_koliavi??0,
+            "masrafe_sigar" => $request->masrafe_sigar??0,
+            "kambode_g6pd" => $request->kambode_g6pd??0,
+            "naresayi_kabedi" => $request->naresayi_kabedi??0,
+            "radiology" => $request->radiology??0,
+            "masrafe_alcol" => $request->masrafe_alcol??0,
+            "hasasiate_daruyi" => $request->hasasiate_daruyi??0,
             "hasasiate_daruyi_desc" => $request->hasasiate_daruyi_desc,
-            "soe_masrafe_mavad" => $request->soe_masrafe_mavad,
+            "soe_masrafe_mavad" => $request->soe_masrafe_mavad??0,
             "soe_masrafe_mavad_desc" => $request->soe_masrafe_mavad_desc,
-            "bardari" => $request->bardari,
+            "bardari" => $request->bardari??0,
             "bardari_weeks" => $request->bardari_weeks,
-            "anti_biotic" => $request->anti_biotic,
+            "anti_biotic" => $request->anti_biotic??0,
             "anti_biotic_name" => $request->anti_biotic_name,
-            "shirdehi" => $request->shirdehi,
-            "vaksan" => $request->vaksan,
+            "shirdehi" => $request->shirdehi??0,
+            "vaksan" => $request->vaksan??0,
             "vaksan_name" => $request->vaksan_name,
-            "created_date" => date("Y-m-d H:i:s", time())
+            "created_at" => date("Y-m-d H:i:s", time())
         ]);
         return back()->with('success', 'بیمار با موفقیت ثبت شد.');
 

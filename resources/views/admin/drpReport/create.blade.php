@@ -52,7 +52,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">دکتر : </label>
                                                     <div class="input-group">
-                                                        <select>
+                                                        <select  class="form-control select2">
                                                             <option>0</option>
                                                         </select>
                                                     </div>
@@ -62,7 +62,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">بیمار : </label>
                                                     <div class="input-group">
-                                                        <select>
+                                                        <select  class="form-control select2">
                                                             <option>0</option>
                                                         </select>
                                                     </div>

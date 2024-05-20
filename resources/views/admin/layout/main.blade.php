@@ -19,7 +19,10 @@
   <link href="{{ asset("admin-assets/plugins/font-awesome/css/font-awesome.min.css") }}" rel="stylesheet">
   <link href="{{ asset("admin-assets/plugins/material-design-iconic-font/css/material-design-iconic-font.css") }}" rel="stylesheet">
   <link href="{{ asset("admin-assets/css/style.css") }}" rel="stylesheet">
-  @stack('styles')
+  <link href="{{ asset("admin-assets/plugins/switchery/dist/switchery.min.css") }}" rel="stylesheet">
+  <link href="{{ asset("admin-assets/plugins/custom-select/custom-select.css") }}" rel="stylesheet">
+
+    @stack('styles')
 </head>
 
 <body class="fix-header fix-sidebar">
@@ -62,6 +65,14 @@
 <script src="{{ asset("admin-assets/plugins/datatables/buttons/buttons.flash.min.js") }}"></script>
 <script src="{{ asset("admin-assets/plugins/datatables/buttons/buttons.html5.min.js") }}"></script>
 <script src="{{ asset("admin-assets/plugins/datatables/buttons/buttons.print.min.js") }}"></script>
+
+<script src="{{  asset("admin-assets/js/style-switcher.js")  }}"></script>
+<script src="{{  asset("admin-assets/plugins/switchery/dist/switchery.min.js")  }}"></script>
+
+<script src="{{  asset("admin-assets/plugins/custom-select/custom-select.min.js")  }}"></script>
+
+
+
 <script>
 $(document).ready(function () {
         var isNavbarOpen = false;
@@ -78,6 +89,19 @@ $(document).ready(function () {
         });
     });
 </script>
+     <script>
+        jQuery(document).ready(function() {
+            // Switchery
+            var elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+            $('.js-switch').each(function () {
+                new Switchery($(this)[0], $(this).data());
+
+            });
+
+            $(".select2").select2();
+
+        });
+    </script>
 
 @stack('scripts')
 </body>

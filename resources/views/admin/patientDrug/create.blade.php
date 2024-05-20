@@ -51,10 +51,12 @@
                                                 <div class="form-group">
                                                     <label for="user_id">پزشک : </label>
                                                     <div class="input-group">
-                                                        <select name="user_id">
-                                                            <option>
-                                                                0
-                                                            </option>
+                                                        <select  class="form-control select2" name="user_id">
+                                                            @foreach($users as $user)
+                                                                <option value="{{$user->id}}">
+                                                                    {{$user->name}}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -64,10 +66,12 @@
                                                 <div class="form-group">
                                                     <label for="patient_id">بیمار : </label>
                                                     <div class="input-group">
-                                                        <select name="patient_id">
-                                                            <option>
-                                                                0
-                                                            </option>
+                                                        <select  class="form-control select2"name="patient_id">
+                                                            @foreach($patients as $patient)
+                                                                <option value="{{$patient->id}}">
+                                                                    {{$patient->fullname}}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -79,7 +83,7 @@
                                                 <div class="form-group">
                                                     <label for="drug_id">دارو : </label>
                                                     <div class="input-group">
-                                                        <select name="drug_id">
+                                                        <select  class="form-control select2"name="drug_id">
                                                             <option>
                                                                 0
                                                             </option>
@@ -91,7 +95,7 @@
                                                 <div class="form-group">
                                                     <label for="type">نوع دارو : </label>
                                                     <div class="input-group">
-                                                        <select name="type">
+                                                        <select  class="form-control select2"name="type">
                                                             <option>
                                                                 0
                                                             </option>
@@ -113,7 +117,7 @@
                                                 <div class="form-group">
                                                     <label for="gender">زمان مصرف : </label>
                                                     <div class="input-group">
-                                                        <select name="type">
+                                                        <select  class="form-control select2"name="type">
                                                             <option>
                                                                 0
                                                             </option>

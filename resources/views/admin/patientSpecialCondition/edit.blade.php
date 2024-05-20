@@ -44,9 +44,42 @@
                             @endif
                             <div class="row">
                                 <div class="col-lg-9 col-md-12 col-12">
-                                    <form action="{{ route('PatientSpecialCondition.update') }}" method="post">
+                                    <form action="{{ route('PatientSpecialCondition.update',$model->id) }}" method="post">
                                         @csrf
+                                        @method('PATCH')
                                         <input type="hidden" name="id" value="{{$model->id}}">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-6 col-12">
+                                                <div class="form-group">
+                                                    <label for="user_id">پزشک : </label>
+                                                    <div class="input-group">
+                                                        <select  class="form-control select2" name="user_id">
+                                                            @foreach($users as $user)
+                                                                <option value="{{$user->id}}" @selected(old('user_id',$model->user_id ) == $user->id)>
+                                                                    {{$user->name}}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-12">
+
+                                                <div class="form-group">
+                                                    <label for="patient_id">بیمار : </label>
+                                                    <div class="input-group">
+                                                        <select  class="form-control select2"name="patient_id">
+                                                            @foreach($patients as $patient)
+                                                                <option value="{{$patient->id}}" @selected(old('patient_id',$model->patient_id ) == $patient->id)>
+                                                                    {{$patient->fullname}}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
@@ -70,7 +103,7 @@
                                                 <div class="form-group">
                                                     <label for="birth_date">نارسایی کلیوی  : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="naresayi_koliavi" name="naresayi_koliavi" value="{{ $model->naresayi_koliavi }}">
+                                                           <input  type="checkbox" @checked($model->naresayi_koliavi) class="js-switch" data-color="#f96262"   id="naresayi_koliavi" name="naresayi_koliavi" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -78,7 +111,7 @@
                                                 <div class="form-group">
                                                     <label for="gender">مصرف سیگار : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="masrafe_sigar" name="masrafe_sigar" value="{{ $model->masrafe_sigar }}">
+                                                           <input  type="checkbox" @checked($model->masrafe_sigar) class="js-switch" data-color="#f96262"   id="masrafe_sigar" name="masrafe_sigar" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -89,7 +122,7 @@
                                                 <div class="form-group">
                                                     <label for="admission_date">کمبود g6pd : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="kambode_g6pd" name="kambode_g6pd" value="{{ $model->kambode_g6pd }}">
+                                                           <input  type="checkbox" @checked($model->kambode_g6pd) class="js-switch" data-color="#f96262"   id="kambode_g6pd" name="kambode_g6pd" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,7 +130,7 @@
                                                 <div class="form-group">
                                                     <label for="doctor">نارسایی کبدی : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="naresayi_kabedi" name="naresayi_kabedi" value="{{ $model->naresayi_kabedi }}">
+                                                           <input  type="checkbox" @checked($model->naresayi_kabedi) class="js-switch" data-color="#f96262"   id="naresayi_kabedi" name="naresayi_kabedi" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,7 +140,7 @@
                                                 <div class="form-group">
                                                     <label for="file_number">رادیولوژی   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="radiology" name="radiology" value="{{ $model->radiology }}">
+                                                           <input  type="checkbox" @checked($model->radiology) class="js-switch" data-color="#f96262"   id="radiology" name="radiology" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -115,7 +148,7 @@
                                                 <div class="form-group">
                                                     <label for="room_name">مصرف الکل : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="masrafe_alcol" name="masrafe_alcol" value="{{ $model->masrafe_alcol }}">
+                                                           <input  type="checkbox" @checked($model->masrafe_alcol) class="js-switch" data-color="#f96262"   id="masrafe_alcol" name="masrafe_alcol" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -125,7 +158,7 @@
                                                 <div class="form-group">
                                                     <label for="room_number">حساسیت دارویی   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="hasasiate_daruyi" name="hasasiate_daruyi" value="{{ $model->hasasiate_daruyi }}">
+                                                           <input  type="checkbox" @checked($model->hasasiate_daruyi) class="js-switch" data-color="#f96262"   id="hasasiate_daruyi" name="hasasiate_daruyi" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -143,7 +176,7 @@
                                                 <div class="form-group">
                                                     <label for="cause">سو مصرف مواد   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="soe_masrafe_mavad" name="soe_masrafe_mavad" value="{{ $model->soe_masrafe_mavad }}">
+                                                           <input  type="checkbox" @checked($model->soe_masrafe_mavad) class="js-switch" data-color="#f96262"   id="soe_masrafe_mavad" name="soe_masrafe_mavad" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -162,7 +195,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">بارداری : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="bardari" name="bardari" value="{{ $model->bardari }}">
+                                                           <input  type="checkbox" @checked($model->bardari) class="js-switch" data-color="#f96262"   id="bardari" name="bardari" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,7 +215,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">آنتی بیوتیک : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="anti_biotic" name="anti_biotic" value="{{ $model->anti_biotic }}">
+                                                           <input  type="checkbox" @checked($model->anti_biotic) class="js-switch" data-color="#f96262"   id="anti_biotic" name="anti_biotic" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -190,7 +223,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">نام آنتی بیوتیک : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="anti_biotic_name" name="anti_biotic_name" value="{{ $model->anti_biotic_name }}">
+                                                           <input  type="text"  class="form-control"   id="anti_biotic_name" name="anti_biotic_name" value="{{ $model->anti_biotic_name }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,7 +233,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">شیردهی : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="shirdehi" name="shirdehi" value="{{ $model->shirdehi }}">
+                                                        <input  type="checkbox" @checked($model->shirdehi) class="js-switch" data-color="#f96262"   id="shirdehi" name="shirdehi" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -208,7 +241,7 @@
                                                 <div class="form-group">
                                                     <label for="source_number">واکسن : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="vaksan" name="vaksan" value="{{ $model->vaksan }}">
+                                                        <input  type="checkbox" @checked($model->vaksan) class="js-switch" data-color="#f96262"  id="vaksan" name="vaksan" value="1">
                                                     </div>
                                                 </div>
                                             </div>
