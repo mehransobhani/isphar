@@ -73,7 +73,7 @@
                                                 <div class="form-group">
                                                     <label for="birth_date">تاریخ تولد : </label>
                                                     <div class="input-group">
-                                                        <input type="date" class="form-control" id="birth_date"
+                                                        <input type="text" class="form-control" id="birth_date"
                                                                name="birth_date">
                                                     </div>
                                                 </div>
@@ -92,10 +92,8 @@
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="admission_date">تاریخ بستری : </label>
-                                                    <div class="input-group">
-                                                        <input type="date" class="form-control" id="admission_date"
-                                                               name="admission_date">
-                                                    </div>
+                                                         <input name="admission_date" id="admission_date" type="text" class="form-control" autocomplete="off" />
+
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
@@ -214,3 +212,30 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        $(function() {
+            $("#admission_date").pDatepicker({
+                "format": "L  ",
+                "initialValue": true,
+                "initialValueType": 'persian',
+                "autoClose": true,
+                "timePicker": {
+                    "enabled": false,
+
+                }
+            });
+            $("#birth_date").pDatepicker({
+                "format": "L  ",
+                "initialValue": true,
+                "initialValueType": 'persian',
+                "autoClose": true,
+                "timePicker": {
+                    "enabled": false,
+
+                }
+            });
+
+        });
+    </script>
+@endpush

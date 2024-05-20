@@ -207,3 +207,30 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script>
+        $(function() {
+            $("#admission_date").pDatepicker({
+                "format": "L  ",
+                "initialValue": true,
+                "initialValueType": 'persian',
+                "autoClose": true,
+                "timePicker": {
+                    "enabled": false,
+
+                }
+            });
+            $("#birth_date").pDatepicker({
+                "format": "L  ",
+                "initialValue": true,
+                "initialValueType": 'persian',
+                "autoClose": true,
+                "timePicker": {
+                    "enabled": false,
+
+                }
+            });
+
+        });
+    </script>
+@endpush

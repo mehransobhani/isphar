@@ -21,6 +21,7 @@
   <link href="{{ asset("admin-assets/css/style.css") }}" rel="stylesheet">
   <link href="{{ asset("admin-assets/plugins/switchery/dist/switchery.min.css") }}" rel="stylesheet">
   <link href="{{ asset("admin-assets/plugins/custom-select/custom-select.css") }}" rel="stylesheet">
+  <link href="{{ asset("admin-assets/css/datePicker.css") }}" rel="stylesheet">
 
     @stack('styles')
 </head>
@@ -48,6 +49,9 @@
 <script src="{{ asset("admin-assets/plugins/bootstrap-extension/js/bootstrap-extension.min.js") }}"></script>
 <!-- Menu Plugin JavaScript -->
 <script src="{{ asset("admin-assets/plugins/sidebar-nav/dist/sidebar-nav.min.js") }}"></script>
+
+<script src="{{ asset("admin-assets/js/persian-date.js") }}"></script>
+<script src="{{ asset("admin-assets/js/persian-datepicker.js") }}"></script>
 <!--slimscroll JavaScript -->
 <script src="{{ asset("admin-assets/plugins/jquery.slimscroll/jquery.slimscroll.min.js") }}"></script>
 <!--Wave Effects -->
