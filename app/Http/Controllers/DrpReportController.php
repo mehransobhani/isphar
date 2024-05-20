@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Classes\DataTable\DataTableInterface;
+use App\Http\Requests\DrpReportRequest;
 use App\Models\DrpReport;
-use Illuminate\Http\Request;
+use App\Models\Patient;
+use App\Models\User;
 
 class DrpReportController extends Controller
 {
@@ -14,85 +16,41 @@ class DrpReportController extends Controller
     {
         $this->dataTable = $dataTable;
     }
+
     public function edit($id)
     {
-        $model=DrpReport::with("Patient")->find($id);
-        return  view("admin.drpReport.edit",compact("model"));
+        $model = DrpReport::with("Patient")->find($id);
+        $users = User::all();
+        $patients = Patient::all();
+        return view("admin.drpReport.edit", compact("model", "patients", "users"));
     }
+
     public function index()
     {
         return view("admin.drpReport.index");
     }
+
     public function create()
     {
-        return view("admin.drpReport.create");
+        $users = User::all();
+        $patients = Patient::all();
+        return view("admin.drpReport.create", compact("patients", "users"));
     }
 
-    public function update(Request $request ,$id)
+    public function update(DrpReportRequest $request, $id)
     {
-        $this->validate($request, [
-            "id" => "required ",
-            "egfr_mdrd" => "required",
-            "user_id" => "required",
-            "egfr_ckd_epi" => "required",
-            "patient_id" => "required",
-            "crcl" => "required",
-            "child_pough_score" => "required",
-            "source " => "required",
-            "form" => "required",
-        ]);
-
-        DrpReport::where("id", $request->id)
-            ->update([
-                "egfr_mdrd" => $request->egfr_mdrd,
-                "user_id" => $request->user_id,
-                "egfr_ckd_epi" => $request->egfr_ckd_epi,
-                "patient_id" => $request->patient_id,
-                "crcl" => $request->crcl,
-                "child_pough_score" => $request->child_pough_score,
-                "source" => $request->source,
-                "form" => $request->form,
-                "status" => $request->status,
-                "description" => $request->description,
-
-            ]);
-        return back()->with('success', 'تلفیق دارویی بیمار با موفقیت ویرایش شد.');
-
+        DrpReport::where("id", $id)->update($request->update());
+        return back()->with('success', 'گزارش drp با موفقیت ویرایش شد.');
     }
 
-    public function store(Request $request)
+    public function store(DrpReportRequest $request)
     {
-        $this->validate($request, [
-            "egfr_mdrd" => "required",
-            "user_id" => "required",
-            "egfr_ckd_epi" => "required",
-            "patient_id" => "required",
-            "crcl" => "required",
-            "child_pough_score" => "required",
-            "source " => "required",
-            "form" => "required",
-        ]);
-        DrpReport::create([
-            "egfr_mdrd" => $request->egfr_mdrd,
-            "user_id" => $request->user_id,
-            "egfr_ckd_epi" => $request->egfr_ckd_epi,
-            "patient_id" => $request->patient_id,
-            "crcl" => $request->crcl,
-            "child_pough_score" => $request->child_pough_score,
-            "source" => $request->source,
-            "form" => $request->form,
-            "status" => $request->status,
-            "description" => $request->description,
-            "created_date" => date("Y-m-d H:i:s", time())
-        ]);
-        return back()->with('success', 'تلفیق دارویی بیمار با موفقیت ثبت شد.');
-
-
+        DrpReport::create($request->store());
+        return back()->with('success', 'گزارش drp با موفقیت ثبت شد.');
     }
 
     public function dataTable()
     {
         return $this->dataTable->build();
-
     }
 }

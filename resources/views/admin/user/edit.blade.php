@@ -46,7 +46,7 @@
                                 <div class="col-lg-9 col-md-12 col-12">
                                     <form action="{{ route('user.update',$model->id) }}" method="post">
                                         @csrf
-                                         <input type="hidden" name="id" value="{{$model->id}}">
+                                        @method('PATCH')
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">

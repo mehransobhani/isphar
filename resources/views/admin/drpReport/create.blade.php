@@ -44,26 +44,34 @@
                             @endif
                             <div class="row">
                                 <div class="col-lg-9 col-md-12 col-12">
-                                    <form action="{{ route('patient_drug.store') }}" method="post">
+                                    <form action="{{ route('drp-report.store') }}" method="post">
                                         @csrf
                                         <div class="row">
-
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="source_number">دکتر : </label>
+                                                    <label for="user_id">پزشک : </label>
                                                     <div class="input-group">
-                                                        <select  class="form-control select2">
-                                                            <option>0</option>
+                                                        <select  class="form-control select2" name="user_id">
+                                                            @foreach($users as $user)
+                                                                <option value="{{$user->id}}">
+                                                                    {{$user->name}}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
+
                                                 <div class="form-group">
-                                                    <label for="source_number">بیمار : </label>
+                                                    <label for="patient_id">بیمار : </label>
                                                     <div class="input-group">
-                                                        <select  class="form-control select2">
-                                                            <option>0</option>
+                                                        <select  class="form-control select2"name="patient_id">
+                                                            @foreach($patients as $patient)
+                                                                <option value="{{$patient->id}}">
+                                                                    {{$patient->fullname}}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

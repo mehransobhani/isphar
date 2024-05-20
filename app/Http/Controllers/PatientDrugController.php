@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\DataTable\DataTableInterface;
+use App\Http\Requests\PatientDrugRequest;
 use App\Models\Patient;
 use App\Models\PatientDrug;
 use App\Models\User;
@@ -40,68 +41,17 @@ class PatientDrugController extends Controller
         return view("admin.patientDrug.create",compact("patients" , "users"));
     }
 
-    public function update(Request $request ,$id)
+    public function update(PatientDrugRequest $request ,$id)
     {
-        $this->validate($request, [
-            "id" => "required ",
-            "type" => "required",
-            "user_id" => "required",
-            "name" => "required",
-            "patient_id" => "required",
-            "usage_intervals" => "required",
-            "dose_amount" => "required",
-            "has_alert" => "required",
-            "description" => "required",
-        ]);
-
-        PatientDrug::where("id", $request->id)
-            ->update([
-                "type" => $request->type,
-                "user_id" => $request->user_id,
-                "name" => $request->name,
-                "patient_id" => $request->patient_id,
-                "usage_intervals" => $request->usage_intervals,
-                "dose_amount" => $request->dose_amount,
-                "has_alert" => $request->has_alert,
-                "description" => $request->description,
-                "drug_id" => $request->drug_id,
-                "last_dose_date" => $request->last_dose_date,
-                "doctor_order" => $request->doctor_order,
-
-            ]);
+        PatientDrug::where("id", $id)
+            ->update($request->update());
         return back()->with('success', 'تلفیق دارویی بیمار با موفقیت ویرایش شد.');
-
     }
 
-    public function store(Request $request)
+    public function store(PatientDrugRequest $request)
     {
-        $this->validate($request, [
-            "type" => "required",
-            "user_id" => "required",
-            "name" => "required",
-            "patient_id" => "required",
-            "usage_intervals" => "required",
-            "dose_amount" => "required",
-            "has_alert" => "required",
-            "description" => "required",
-        ]);
-        PatientDrug::create([
-            "type" => $request->type,
-            "user_id" => $request->user_id,
-            "name" => $request->name,
-            "patient_id" => $request->patient_id,
-            "usage_intervals" => $request->usage_intervals,
-            "dose_amount" => $request->dose_amount,
-            "has_alert" => $request->has_alert,
-            "description" => $request->description,
-            "drug_id" => $request->drug_id,
-            "last_dose_date" => $request->last_dose_date,
-            "doctor_order" => $request->doctor_order,
-            "created_date" => date("Y-m-d H:i:s", time())
-        ]);
+        PatientDrug::create($request->store());
         return back()->with('success', 'تلفیق دارویی بیمار با موفقیت ثبت شد.');
-
-
     }
 
     public function dataTable()

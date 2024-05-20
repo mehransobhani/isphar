@@ -47,7 +47,6 @@
                                     <form action="{{ route('PatientSpecialCondition.update',$model->id) }}" method="post">
                                         @csrf
                                         @method('PATCH')
-                                        <input type="hidden" name="id" value="{{$model->id}}">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">

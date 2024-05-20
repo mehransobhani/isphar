@@ -47,16 +47,17 @@
                                     <form action="{{ route('patient_drug.update',$model->id) }}" method="POST">
                                         @csrf
                                         @method('PATCH')
-                                        <input type="hidden" name="id" value="{{$model->id}}">
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="user_id">پزشک : </label>
                                                     <div class="input-group">
-                                                        <select  class="form-control select2"name="user_id" >
-                                                            <option>
-                                                                0
-                                                            </option>
+                                                        <select  class="form-control select2" name="user_id">
+                                                            @foreach($users as $user)
+                                                                <option value="{{$user->id}}" @selected(old('user_id',$model->user_id ) == $user->id)>
+                                                                    {{$user->name}}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
@@ -67,9 +68,11 @@
                                                     <label for="patient_id">بیمار : </label>
                                                     <div class="input-group">
                                                         <select  class="form-control select2"name="patient_id">
-                                                            <option>
-                                                                0
-                                                            </option>
+                                                            @foreach($patients as $patient)
+                                                                <option value="{{$patient->id}}" @selected(old('patient_id',$model->patient_id ) == $patient->id)>
+                                                                    {{$patient->fullname}}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>
