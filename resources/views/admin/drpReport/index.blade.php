@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 
-@section('title', 'داشبورد')
+@section('title', ' گزارش drp')
 
 @section('content')
     <div id="page-wrapper">
@@ -9,17 +9,17 @@
                 <div class="col-lg-4 col-md-6 col-12">
                     <h4 class="page-title">
 
-                        بیماران
+                        گزارش drp
                     </h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="white-box">
-                        <h3 class="box-title m-b-10"> لیست بیماران </h3>
+                        <h3 class="box-title m-b-10"> لیست گزارش drp </h3>
                         <a href="{{route("patient.create")}}">
                             <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن
-                                بیمار
+                                گزارش drp
                             </button>
                         </a>
                         <hr/>

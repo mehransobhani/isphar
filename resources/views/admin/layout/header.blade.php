@@ -89,7 +89,8 @@
               <span class="fa arrow"></span>
             </span>
         </a>
-      </li> <li>
+      </li>
+        <li>
         <a href= "{{route("DemoRequest.index")}}" class="waves-effect">
           <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu">   درخواست های دمو
@@ -97,48 +98,23 @@
             </span>
         </a>
       </li>
-      <li class="nav-small-cap">--- مالی</li>
-        @if(0)
-          <li>
-            <a href="{{ route('admin.card.index') }}" class="waves-effect">
-              <i class="fa fa-credit-card zmdi-hc-fw fa-fw"></i>
-              <span class="hide-menu"> کارت های بانکی
-                  <span class="fa arrow"></span>
-                </span>
-            </a>
-          </li>
-        @endif
-        @if(0)
-          <li>
-            <a href="{{ route('admin.index-invoice-irr') }}" class="waves-effect">
-              <i class="fa fa-money zmdi-hc-fw fa-fw"></i>
-              <span class="hide-menu"> فاکتور های ریالی
-                <span class="fa arrow"></span>
-              </span>
-            </a>
-          </li>
-
-          <li>
-            <a href="{{ route('admin.index-invoice-crypto') }}" class="waves-effect">
-              <i class="fa fa-dollar zmdi-hc-fw fa-fw"></i>
-              <span class="hide-menu"> فاکتور های دلاری
-                <span class="fa arrow"></span>
-              </span>
-            </a>
-          </li>
-        @endif
-        @if(0)
-          <li>
-            <a href="{{ route('admin.checkout') }}" class="waves-effect">
-              <i class="fa fa-check zmdi-hc-fw fa-fw"></i>
-              <span class="hide-menu"> درخواست تسویه
+        <li>
+        <a href= "{{route("drug.index")}}" class="waves-effect">
+          <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
+          <span class="hide-menu">  دارو ها
               <span class="fa arrow"></span>
             </span>
-            </a>
-          </li>
-        @endif
+        </a>
+      </li>
+        <li>
+        <a href= "{{route("content.index")}}" class="waves-effect">
+          <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
+          <span class="hide-menu"> محتوای سایت
+              <span class="fa arrow"></span>
+            </span>
+        </a>
+      </li>
 
-      <li class="nav-small-cap">--- تنظیمات</li>
 
 
     </ul>

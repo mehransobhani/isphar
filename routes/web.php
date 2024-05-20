@@ -34,6 +34,9 @@ Route::get("drp-report/dataTable", [\App\Http\Controllers\DrpReportController::c
 Route::resource("drug",\App\Http\Controllers\DrugController::class)->except(["destroy","show"]);
 Route::get("drug/dataTable", [\App\Http\Controllers\DrugController::class, "dataTable"])->name("drug.dataTable");
 
+Route::resource("content",\App\Http\Controllers\ContentController::class)->except(["destroy","show","create","store"]);
+Route::get("content/dataTable", [\App\Http\Controllers\ContentController::class, "dataTable"])->name("content.dataTable");
+
 Route::group(['as' => 'DemoRequest.', 'prefix' => 'DemoRequest'], function () {
      Route::get("", [\App\Http\Controllers\DemoRequestController::class, "index"])->name("index");
     Route::get("dataTable", [\App\Http\Controllers\DemoRequestController::class, "dataTable"])->name("dataTable");

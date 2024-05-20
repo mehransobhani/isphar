@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 
-@section('title', 'تلفیق دارویی ')
+@section('title', 'محتوای سایت')
 
 @section('content')
     <div id="page-wrapper">
@@ -8,19 +8,15 @@
             <div class="row bg-title">
                 <div class="col-lg-4 col-md-6 col-12">
                     <h4 class="page-title">
-                        تلفیق دارویی
+                        محتوای سایت
                     </h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="white-box">
-                        <h3 class="box-title m-b-10"> لیست تلفیق دارویی  </h3>
-                        <a href="{{route("patient_drug.create")}}">
-                            <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن
-                                تلفیق دارویی
-                            </button>
-                        </a>
+                        <h3 class="box-title m-b-10"> لیست محتوای سایت </h3>
+
                         <hr/>
 
                         <div class="table-responsive">
@@ -28,20 +24,18 @@
                                 <thead>
                                 <tr>
                                     <th>شناسه</th>
-                                    <th>پزشک</th>
-                                    <th>بیمار</th>
-                                    <th>دارو</th>
-                                    <th>نوع دارو</th>
-                                    <th>نام</th>
-                                    <th>  زمان مصرف </th>
-                                    <th>مقدار دوز </th>
-                                    <th>دارای هشدار </th>
-                                    <th>توضیحات </th>
-
-                                    <th>زمان آخرین دوز مصرف</th>
-                                    <th> دستور پزشک معالج</th>
-                                    <th>عملیات </th>
-
+                                    <th>صفحه</th>
+                                    <th>موقعیت</th>
+                                    <th> نام مستعار</th>
+                                    <th> عنوان</th>
+                                    <th>عنوان فرعی</th>
+                                    <th>محتوا</th>
+                                    <th>عکس</th>
+                                    <th>دارای عنوان</th>
+                                    <th>دارای عنوان فرعی</th>
+                                    <th>دارای عکس</th>
+                                    <th>دارای محتوا</th>
+                                    <th>ویرایش</th>
 
                                 </tr>
                                 </thead>
@@ -65,7 +59,7 @@
 
                 serverSide: true,
 
-                ajax: '{!! route('patient_drug.dataTable') !!}',
+                ajax: '{!! route('content.dataTable') !!}',
                 language: {
                     "decimal": "",
                     "emptyTable": "هیچ داده‌ای موجود نیست",
@@ -92,37 +86,19 @@
                 },
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'user.name', name: 'user.name'},
-                    {data: 'patient.fullname', name: 'patient.fullname'},
-                    {data: 'drug_id', name: 'drug_id'},
-                    {data: 'type', name: 'type'},
-                    {data: 'name', name: 'name'},
-                    {data: 'usage_intervals', name: 'usage_intervals'},
-                    {data: 'dose_amount', name: 'dose_amount'},
-                    {data: 'has_alert', name: 'has_alert'},
-                    {data: 'description', name: 'description'},
-                    {data: 'last_dose_date', name: 'last_dose_date'},
-                    {data: 'doctor_order', name: 'doctor_order'},
+                    {data: 'page', name: 'page'},
+                    {data: 'location', name: 'location'},
+                    {data: 'alias', name: 'alias'},
+                    {data: 'title', name: 'title'},
+                    {data: 'subtitle', name: 'subtitle'},
+                    {data: 'content', name: 'content'},
+                    {data: 'image', name: 'image'},
+                    {data: 'has_title', name: 'has_title'},
+                    {data: 'has_subtitle', name: 'has_subtitle'},
+                    {data: 'has_content', name: 'has_content'},
+                    {data: 'has_image', name: 'has_image'},
                     {data: 'edit', name: 'edit'},
                 ],
-
-            });
-
-        });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var descriptionContainers = document.querySelectorAll('.description-container');
-
-            descriptionContainers.forEach(function (container) {
-                var fullDescription = container.getAttribute('data-full-description');
-
-                if (fullDescription.length <= 60) {
-                    container.innerHTML = fullDescription;
-                } else {
-                    var maxLength = Math.floor(fullDescription.length * 0.8);
-                    container.innerHTML = fullDescription.substring(0, maxLength) + '...';
-                }
             });
         });
     </script>
