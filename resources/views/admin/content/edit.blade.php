@@ -102,10 +102,9 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="content">محتوا : </label>
+                                                    <label for="strength">دارای محتوا : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="content" value="{{$model->content}}"
-                                                               name="content">
+                                                        <input  type="checkbox" @checked($model->has_content) class="js-switch" data-color="#f96262"   id="has_content" name="has_content" value="1">
                                                     </div>
                                                 </div>
                                             </div>
@@ -153,15 +152,16 @@
                                             </div>
                                          </div>
                                         <div class="row">
-
-                                            <div class="col-lg-6 col-md-6 col-12">
+                                            <div class="  col-12">
                                                 <div class="form-group">
-                                                    <label for="strength">دارای محتوا : </label>
+                                                    <label for="content">محتوا : </label>
                                                     <div class="input-group">
-                                                        <input  type="checkbox" @checked($model->has_content) class="js-switch" data-color="#f96262"   id="has_content" name="has_content" value="1">
+                                                        <textarea id="mymce" name="content">{{old("content",$model->content)}}</textarea>
+
                                                     </div>
                                                 </div>
                                             </div>
+
                                          </div>
                                         <div class="row">
                                             <div class="col-lg-12 col-md-12 col-12">
@@ -197,3 +197,28 @@
         </div>
     </div>
 @endsection
+@push("scripts")
+
+    <script src={{asset("admin-assets/plugins/tinymce/langs/fa_IR.js")}}></script>
+    <script src={{asset("admin-assets/plugins/tinymce/tinymce.min.js")}}></script>
+    <script>
+        $(document).ready(function() {
+
+            if ($("#mymce").length > 0) {
+                tinymce.init({
+                    selector: "textarea#mymce",
+                    directionality : 'rtl',
+                    theme: "modern",
+                    height: 300,
+                    plugins: [
+                        "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+                        "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+                        "save table contextmenu directionality emoticons template paste textcolor"
+                    ],
+                    toolbar: "newdocument | undo redo | styleselect | bold italic removeformat | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons",
+
+                });
+            }
+        });
+    </script>
+@endpush
