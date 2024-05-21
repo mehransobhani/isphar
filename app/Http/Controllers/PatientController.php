@@ -5,8 +5,7 @@ namespace App\Http\Controllers;
 use App\Classes\DataTable\DataTableInterface;
 use App\Http\Requests\PatientRequest;
 use App\Models\Patient;
-use Illuminate\Http\Request;
-use Yajra\DataTables\DataTables;
+use Morilog\Jalali\Jalalian;
 
 class PatientController extends Controller
 {

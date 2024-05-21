@@ -24,6 +24,8 @@ class PatientRequest extends FormRequest
         $data=$this->input();
         unset($data["_token"]);
         $data["created_date"]=date("Y-m-d H:i:s", time());
+        $data["admission_date"]=Shamsi2Miladi($data["admission_date"] );
+        $data["birth_date"]=Shamsi2Miladi($data["birth_date"],"Y/m/d");
         return $data;
     }
     public function update()
@@ -31,6 +33,9 @@ class PatientRequest extends FormRequest
         $data=$this->input();
         unset($data["_token"]);
         unset($data["_method"]);
+
+        $data["admission_date"]=Shamsi2Miladi($data["admission_date"] );
+        $data["birth_date"]=Shamsi2Miladi($data["birth_date"] );
         return $data;
     }
 

@@ -172,6 +172,8 @@ return [
 
         //DataTable
         \App\Providers\DataTableServiceProvider::class,
+        //Helper
+        \App\Providers\HelpersServiceProvider::class
     ])->toArray(),
 
     /*

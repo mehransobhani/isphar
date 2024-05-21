@@ -216,18 +216,34 @@
     <script>
         $(function() {
             $("#admission_date").pDatepicker({
-                "format": "L  ",
-                "initialValue": true,
+                "format": "L hh:mm:ss",
+                "initialValue": false,
                 "initialValueType": 'persian',
+
                 "autoClose": true,
                 "timePicker": {
-                    "enabled": false,
-
+                    "enabled": true,
+                    "step": 1,
+                    "hour": {
+                        "enabled": true,
+                        "step": null
+                    },
+                    "minute": {
+                        "enabled": true,
+                        "step": null
+                    },
+                    "second": {
+                        "enabled": false,
+                        "step": null
+                    },
+                    "meridian": {
+                        "enabled": false
+                    }
                 }
             });
             $("#birth_date").pDatepicker({
-                "format": "L  ",
-                "initialValue": true,
+                "format": "L hh:mm:ss",
+                "initialValue": false,
                 "initialValueType": 'persian',
                 "autoClose": true,
                 "timePicker": {

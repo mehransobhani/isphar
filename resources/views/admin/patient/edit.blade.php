@@ -69,7 +69,7 @@
                                                 <div class="form-group">
                                                     <label for="birth_date">تاریخ تولد   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="birth_date" name="birth_date" value="{{ $model->birth_date }}">
+                                                        <input type="text" class="form-control" id="birth_date" name="birth_date" value="{{ Dash2Slash(verta($model->birth_date)) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -87,7 +87,7 @@
                                                 <div class="form-group">
                                                     <label for="admission_date">تاریخ بستری : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="admission_date" name="admission_date" value="{{ $model->admission_date }}">
+                                                        <input type="text" class="form-control" id="admission_date" name="admission_date" value="{{Dash2Slash(verta($model->admission_date)) }}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -211,18 +211,34 @@
     <script>
         $(function() {
             $("#admission_date").pDatepicker({
-                "format": "L  ",
-                "initialValue": true,
+                "format": "L hh:mm:ss",
+                "initialValue": false,
                 "initialValueType": 'persian',
+
                 "autoClose": true,
                 "timePicker": {
-                    "enabled": false,
-
+                    "enabled": true,
+                    "step": 1,
+                    "hour": {
+                        "enabled": true,
+                        "step": null
+                    },
+                    "minute": {
+                        "enabled": true,
+                        "step": null
+                    },
+                    "second": {
+                        "enabled": false,
+                        "step": null
+                    },
+                    "meridian": {
+                        "enabled": false
+                    }
                 }
             });
             $("#birth_date").pDatepicker({
-                "format": "L  ",
-                "initialValue": true,
+                "format": "L hh:mm:ss",
+                "initialValue": false,
                 "initialValueType": 'persian',
                 "autoClose": true,
                 "timePicker": {
