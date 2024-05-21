@@ -16,7 +16,7 @@
     <ul class="nav navbar-top-links navbar-right pull-left">
        <li class="dropdown">
         <a class="dropdown-toggle  zmdi zmdi-account-box" data-toggle="dropdown" href="#">
-          <b class="hidden-xs">mehran</b>
+          <b class="hidden-xs">{{auth("admin")->user()->name}}</b>
         </a>
         <ul class="dropdown-menu dropdown-user scale-up">
           <li><a href=" "><i class=" zmdi zmdi-account-o"></i> پروفایل من</a></li>
@@ -40,11 +40,10 @@
       </li>
       <li>
         <a href="#" class="waves-effect">
-          <span class="hide-menu"> mehran<span class="fa arrow"></span></span>
+          <span class="hide-menu"> {{auth("admin")->user()->name}}<span class="fa arrow"></span></span>
         </a>
         <ul class="nav nav-second-level">
-          <li><a href=" "><i class="ti-user"></i> پروفایل من</a></li>
-          <li><a href=" "><i class="fa fa-power-off"></i> خروج</a></li>
+           <li><a href="{{route("logout")}}"><i class="fa fa-power-off"></i> خروج</a></li>
         </ul>
       </li>
       <li>
