@@ -44,7 +44,7 @@
                             @endif
                             <div class="row">
                                 <div class="col-lg-9 col-md-12 col-12">
-                                    <form action="{{ route('content.update',$model->id) }}" method="post">
+                                    <form action="{{ route('content.update',$model->id) }}" method="post" enctype="multipart/form-data">
                                         @csrf
                                         @method('PATCH')
                                          <div class="row">
@@ -116,7 +116,7 @@
                                                 <div class="form-group">
                                                     <label for="image">عکس : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="image" value="{{$model->image}}"
+                                                        <input type="file" class="form-control" id="image" value="{{$model->image}}"
                                                                name="image">
                                                     </div>
                                                 </div>

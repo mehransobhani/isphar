@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Classes\DataTable\DataTableInterface;
-use App\Classes\DataTable\DemoRequest\DemoRequestDataTable;
+use App\Models\DemoRequest;
 
 class DemoRequestController extends Controller
 {
@@ -18,6 +18,11 @@ class DemoRequestController extends Controller
         return view("admin.demoRequest.index");
     }
 
+    public function delete($id)
+    {
+        DemoRequest::find($id)->delete();
+        return redirect(route("demoRequest.index"));
+    }
     public function dataTable()
     {
          return $this->dataTable->build();

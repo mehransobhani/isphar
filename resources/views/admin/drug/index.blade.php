@@ -37,6 +37,7 @@
                                     <th>قدرت</th>
                                     <th>تاریخ ایجاد</th>
                                     <th>ویرایش</th>
+                                    <th>حذف</th>
 
                                 </tr>
                                 </thead>
@@ -96,6 +97,7 @@
                     {data: 'strength', name: 'strength'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'edit', name: 'edit'},
+                    {data: 'delete', name: 'delete'},
                 ],
 
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Classes\DataTable\DataTableInterface;
 use App\Http\Requests\ContentRequest;
 use App\Models\Content;
+use Illuminate\Support\Facades\Auth;
 
 class ContentController extends Controller
 {
@@ -18,7 +19,7 @@ class ContentController extends Controller
     public function edit($id)
     {
         $model = Content::find($id);
-        return view("admin.content.edit", compact("model" ));
+        return view("admin.content.edit", compact("model"));
     }
 
     public function index()
@@ -28,9 +29,15 @@ class ContentController extends Controller
 
     public function update(ContentRequest $request, $id)
     {
-        Content::where("id", $id)->update($request->update());
+        if($request->file('image')) {
+            $fileName = time() . '.' . $request->image->extension();
+            $request->file('image')->storeAs('contents', $fileName, 'public');
+            $request["image"] = $fileName;
+        }
+         Content::where("id", $id)->update($request->update());
         return back()->with('success', 'محتوای سایت با موفقیت ویرایش شد.');
     }
+
     public function dataTable()
     {
         return $this->dataTable->build();

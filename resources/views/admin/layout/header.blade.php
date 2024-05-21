@@ -91,7 +91,7 @@
         </a>
       </li>
         <li>
-        <a href= "{{route("DemoRequest.index")}}" class="waves-effect">
+        <a href= "{{route("demoRequest.index")}}" class="waves-effect">
           <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu">   درخواست های دمو
               <span class="fa arrow"></span>

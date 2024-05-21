@@ -18,7 +18,13 @@ class DrugController extends Controller
     public function edit($id)
     {
         $model = Drug::find($id);
-        return view("admin.drug.edit", compact("model" ));
+        return view("admin.drug.edit", compact("model"));
+    }
+
+    public function delete($id)
+    {
+        Drug::find($id)->delete();
+        return redirect(route("drug.index"));
     }
 
     public function index()
@@ -28,7 +34,7 @@ class DrugController extends Controller
 
     public function create()
     {
-        return view("admin.drug.create" );
+        return view("admin.drug.create");
     }
 
     public function update(DrugRequest $request, $id)

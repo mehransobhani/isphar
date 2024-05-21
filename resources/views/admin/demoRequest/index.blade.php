@@ -29,6 +29,7 @@
                                     <th>شماره</th>
                                     <th>بررسی شده</th>
                                     <th>تاریخ ایجاد</th>
+                                    <th>حذف</th>
 
 
                                 </tr>
@@ -53,7 +54,7 @@
 
                 serverSide: true,
 
-                ajax: '{!! route('DemoRequest.dataTable') !!}',
+                ajax: '{!! route('demoRequest.dataTable') !!}',
                 language: {
                     "decimal": "",
                     "emptyTable": "هیچ داده‌ای موجود نیست",
@@ -84,6 +85,7 @@
                     {data: 'mobile', name: 'mobile'},
                     {data: 'is_followed_up', name: 'is_followed_up'},
                     {data: 'created_at', name: 'created_at'},
+                    {data: 'delete', name: 'delete'},
 
                 ],
 
