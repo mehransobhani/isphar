@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::group(['middleware' => 'auth:admin'], function () {
+//Route::group(['middleware' => 'auth:admin'], function () {
+Route::group([ ], function () {
     Route::get("logout", [\App\Http\Controllers\AuthController::class, "logout"])->name("logout");
 
     Route::resource("patient", \App\Http\Controllers\PatientController::class)->except("destroy", "show");
@@ -42,6 +43,15 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::resource("demoRequest", \App\Http\Controllers\DemoRequestController::class)->except(["destroy", "update","edit", "show", "create", "store"]);
     Route::get("demoRequest/dataTable", [\App\Http\Controllers\DemoRequestController::class, "dataTable"])->name("demoRequest.dataTable");
     Route::get("demoRequest/delete/{id}", [\App\Http\Controllers\DemoRequestController::class, "delete"])->name("demoRequest.delete");
+
+
+    Route::resource("post_cat", \App\Http\Controllers\PostCatController::class)->except(["destroy","show"]);
+    Route::get("post_cat/dataTable", [\App\Http\Controllers\PostCatController::class, "dataTable"])->name("post_cat.dataTable");
+
+    Route::resource("post", \App\Http\Controllers\PostController::class)->except(["destroy","show"]);
+    Route::get("post/dataTable", [\App\Http\Controllers\PostController::class, "dataTable"])->name("post.dataTable");
+
+
 
 });
 

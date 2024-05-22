@@ -10,6 +10,8 @@ use App\Classes\DataTable\Drug\DrugDataTable;
 use App\Classes\DataTable\Patient\PatientDataTable;
 use App\Classes\DataTable\PatientDrug\PatientDrugDataTable;
 use App\Classes\DataTable\PatientSpecialCondition\PatientSpecialConditionDataTable;
+use App\Classes\DataTable\Post\PostDataTable;
+use App\Classes\DataTable\PostCat\PostCatDataTable;
 use App\Classes\DataTable\User\UserDataTable;
 use App\Http\Controllers\ContentController;
 use App\Http\Controllers\DemoRequestController;
@@ -18,6 +20,8 @@ use App\Http\Controllers\DrugController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PatientDrugController;
 use App\Http\Controllers\PatientSpecialConditionController;
+use App\Http\Controllers\PostCatController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\ServiceProvider;
 
@@ -56,6 +60,14 @@ class DataTableServiceProvider extends ServiceProvider
         $this->app->when(ContentController::class)
             ->needs(DataTableInterface::class)
             ->give(ContentDataTable::class);
+
+        $this->app->when(PostCatController::class)
+            ->needs(DataTableInterface::class)
+            ->give(PostCatDataTable::class);
+
+        $this->app->when(PostController::class)
+            ->needs(DataTableInterface::class)
+            ->give(PostDataTable::class);
 
     }
 }
