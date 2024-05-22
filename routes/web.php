@@ -47,9 +47,11 @@ Route::group([ ], function () {
 
     Route::resource("post_cat", \App\Http\Controllers\PostCatController::class)->except(["destroy","show"]);
     Route::get("post_cat/dataTable", [\App\Http\Controllers\PostCatController::class, "dataTable"])->name("post_cat.dataTable");
+    Route::get("post_cat/delete/{id}", [\App\Http\Controllers\PostCatController::class, "delete"])->name("post_cat.delete");
 
     Route::resource("post", \App\Http\Controllers\PostController::class)->except(["destroy","show"]);
     Route::get("post/dataTable", [\App\Http\Controllers\PostController::class, "dataTable"])->name("post.dataTable");
+    Route::get("post/delete/{id}", [\App\Http\Controllers\PostController::class, "delete"])->name("post.delete");
 
 
 

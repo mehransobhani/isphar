@@ -19,7 +19,7 @@ class DrugDataTable  implements  DataTableInterface
             ->editColumn('created_at', function ($data) {
                 return verta($data->created_at)->format('Y/m/d-H:i');
             })
-            ->editColumn('delete', function ($data) {
+            ->addColumn('delete', function ($data) {
                 return
                     "<form  action='" . route("drug.delete", $data->id) . "' method='delete'>
                            <button class='btn btn-danger waves-effect waves-light' >حذف</button>

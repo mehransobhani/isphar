@@ -23,6 +23,8 @@ class PatientDrugDataTable implements DataTableInterface
             })
             ->addColumn('edit', function ($data) {
                 return "<a class='btn btn-danger waves-effect waves-light' href='" . route('patient_drug.edit', $data->id) . "'>ویرایش</a>";
+            })     ->addColumn('has_alert', function ($data) {
+                return $data->has_alert?"بله":"خیر";
             })
             ->rawColumns(['edit'])
 

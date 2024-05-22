@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Classes\DataTable\DataTableInterface;
 use App\Http\Requests\DrugRequest;
 use App\Http\Requests\PostCatRequest;
+use App\Models\Post;
 use App\Models\PostCat;
 
 class PostCatController extends Controller

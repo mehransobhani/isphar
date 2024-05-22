@@ -52,8 +52,8 @@
                                                 <div class="form-group">
                                                     <label for="fa_name">نام   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="fa_name"
-                                                               name="fa_name">
+                                                        <input type="text" class="form-control" id="name"
+                                                               name="name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -61,8 +61,8 @@
                                                 <div class="form-group">
                                                     <label for="en_name">نام مستعار : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="en_name"
-                                                               name="en_name">
+                                                        <input type="text" class="form-control" id="alias"
+                                                               name="alias">
                                                     </div>
                                                 </div>
                                             </div>

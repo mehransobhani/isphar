@@ -1,6 +1,6 @@
 @extends('admin.layout.main')
 
-@section('title', 'دارو ها')
+@section('title', 'دسته بندی بلاگ ها')
 
 @section('content')
     <div id="page-wrapper">
@@ -8,17 +8,17 @@
             <div class="row bg-title">
                 <div class="col-lg-4 col-md-6 col-12">
                     <h4 class="page-title">
-                        دارو ها
+                        دسته بندی بلاگ ها
                     </h4>
                 </div>
             </div>
             <div class="row">
                 <div class="col-lg-12">
                     <div class="white-box">
-                        <h3 class="box-title m-b-10"> لیست دارو ها </h3>
+                        <h3 class="box-title m-b-10"> لیست دسته بندی بلاگ ها </h3>
                         <a href="{{route("drug.create")}}">
                             <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن
-                                دارو
+                                دسته بندی بلاگ
                             </button>
                         </a>
                         <hr/>
@@ -28,14 +28,10 @@
                                 <thead>
                                 <tr>
                                     <th>شناسه</th>
-                                    <th>نام فارسی</th>
-                                    <th>نام انگلیسی</th>
-                                    <th>نام برند فارسی</th>
-                                    <th>نام برند انگلیسی</th>
-                                    <th>طریقه مصرف</th>
-                                    <th>شکل</th>
-                                    <th>قدرت</th>
-                                    <th>تاریخ ایجاد</th>
+                                    <th>نام </th>
+                                    <th>نام مستعار</th>
+                                    <th>تصویر</th>
+                                     <th>تاریخ ایجاد</th>
                                     <th>ویرایش</th>
                                     <th>حذف</th>
 
@@ -61,7 +57,7 @@
 
                 serverSide: true,
 
-                ajax: '{!! route('drug.dataTable') !!}',
+                ajax: '{!! route('post_cat.dataTable') !!}',
                 language: {
                     "decimal": "",
                     "emptyTable": "هیچ داده‌ای موجود نیست",
@@ -88,13 +84,9 @@
                 },
                 columns: [
                     {data: 'id', name: 'id'},
-                    {data: 'fa_name', name: 'fa_name'},
-                    {data: 'en_name', name: 'en_name'},
-                    {data: 'fa_brand', name: 'fa_brand'},
-                    {data: 'en_brand', name: 'en_brand'},
-                    {data: 'usage_way', name: 'usage_way'},
-                    {data: 'shape', name: 'shape'},
-                    {data: 'strength', name: 'strength'},
+                    {data: 'name', name: 'name'},
+                    {data: 'alias', name: 'alias'},
+                    {data: 'image', name: 'image'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'edit', name: 'edit'},
                     {data: 'delete', name: 'delete'},

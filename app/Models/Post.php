@@ -9,4 +9,10 @@ class Post  extends Model
 {
     use HasFactory;
     protected $guarded=["id"];
-    public $timestamps=false;}
+    public $timestamps=false;
+
+    public function cat()
+    {
+        return $this->hasOne(PostCat::class,"id","cat_id");
+    }
+}
