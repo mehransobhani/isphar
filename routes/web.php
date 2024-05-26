@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//Route::group(['middleware' => 'auth:admin'], function () {
-Route::group([ ], function () {
+Route::group(['middleware' => 'auth:admin'], function () {
+//Route::group([ ], function () {
     Route::get("logout", [\App\Http\Controllers\AuthController::class, "logout"])->name("logout");
 
     Route::resource("patient", \App\Http\Controllers\PatientController::class)->except("destroy", "show");
@@ -53,6 +53,10 @@ Route::group([ ], function () {
     Route::get("post/dataTable", [\App\Http\Controllers\PostController::class, "dataTable"])->name("post.dataTable");
     Route::get("post/delete/{id}", [\App\Http\Controllers\PostController::class, "delete"])->name("post.delete");
 
+    Route::get("profile", [\App\Http\Controllers\AuthController::class, "profile"])->name("profile");
+    Route::post("profile/update", [\App\Http\Controllers\AuthController::class, "updateProfile"])->name("profile.update");
+    Route::get("profile/edit-password", [\App\Http\Controllers\AuthController::class, "editPassword"])->name("profile.editPassword");
+    Route::post("profile/update-password", [\App\Http\Controllers\AuthController::class, "updatePassword"])->name("profile.updatePassword");
 
 
 });

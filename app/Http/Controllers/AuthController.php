@@ -36,4 +36,44 @@ class AuthController extends Controller
         auth("admin")->logout();
         return redirect(route("login"));
     }
+    public function profile()
+    {
+        $model=auth("admin")->user();
+        return view("admin.auth.profile",compact("model"));
+
+    }
+    public function editPassword()
+    {
+        return view("admin.auth.resetPassword");
+    }
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'email' => ['required', 'email'],
+            'name' => ['required'],
+        ]);
+        $model=auth("admin")->user();
+        $model->update(["email"=>$request->email,"name"=>$request->name]);
+        return back()->with('success', 'پروفایل با موفقیت ویرایش شد.');
+
+
+    }
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'password' => ['required' ],
+            'newPassword' => ['required'],
+        ]);
+        $model=auth("admin")->user();
+        if(bcrypt($request->password)!=$model->password)
+        {
+            return back()->with('error', 'کلمه عبور نادرست است.');
+        }
+
+        $model->update(["password"=>bcrypt($request->newPassword)]);
+        return back()->with('success', 'کلمه عبور با موفقیت ویرایش شد.');
+
+
+    }
+
 }

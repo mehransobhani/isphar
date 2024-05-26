@@ -44,6 +44,7 @@
         </a>
         <ul class="nav nav-second-level">
            <li><a href="{{route("logout")}}"><i class="fa fa-power-off"></i> خروج</a></li>
+           <li><a href="{{route("profile")}}"><i class="fa fa-pencil"></i> ویرایش پروفایل</a></li>
         </ul>
       </li>
       <li>
@@ -59,7 +60,7 @@
       </li>
       <li>
         <a href= "{{route("patient.index")}}" class="waves-effect">
-          <i class="fa fa-ticket zmdi-hc-fw fa-fw"></i>
+          <i class="fa fa-heartbeat zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu">  بیماران
               <span class="fa arrow"></span>
             </span>
@@ -67,7 +68,7 @@
       </li>
         <li>
         <a href= "{{route("PatientSpecialCondition.index")}}" class="waves-effect">
-          <i class="fa fa-ticket zmdi-hc-fw fa-fw"></i>
+          <i class="fa fa-stethoscope zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu">  شرایط خاص بیماران
               <span class="fa arrow"></span>
             </span>
@@ -75,7 +76,7 @@
       </li>
         <li>
         <a href= "{{route("drp-report.index")}}" class="waves-effect">
-          <i class="fa fa-ticket zmdi-hc-fw fa-fw"></i>
+          <i class="fa fa-file zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu"> گزارش Drp
               <span class="fa arrow"></span>
             </span>
@@ -83,7 +84,7 @@
       </li>
         <li>
         <a href= "{{route("patient_drug.index")}}" class="waves-effect">
-          <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
+          <i class="fa fa-plus-square zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu">   تلفیق دارویی
               <span class="fa arrow"></span>
             </span>
@@ -99,7 +100,7 @@
       </li>
         <li>
         <a href= "{{route("drug.index")}}" class="waves-effect">
-          <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
+          <i class="fa fa-medkit zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu">  دارو ها
               <span class="fa arrow"></span>
             </span>
@@ -107,7 +108,7 @@
       </li>
         <li>
         <a href= "{{route("content.index")}}" class="waves-effect">
-          <i class="fa fa-deaf zmdi-hc-fw fa-fw"></i>
+          <i class="fa fa-book zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu"> محتوای سایت
               <span class="fa arrow"></span>
             </span>
