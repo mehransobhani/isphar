@@ -29,3 +29,7 @@ Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'regi
 Route::post('/forgot', [\App\Http\Controllers\Api\AuthController::class, 'forgot']);
 Route::post('/forgot_code_verify', [\App\Http\Controllers\Api\AuthController::class, 'forgotCodeVerify']);
 Route::post('/reset_password', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
+
+Route::get("test",function (){
+    \App\Classes\sms\Sms::send("09194961416","Salam");
+});
