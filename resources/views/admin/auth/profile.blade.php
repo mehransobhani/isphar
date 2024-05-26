@@ -48,8 +48,8 @@
                                                 <div class="form-group">
                                                     <label for="fa_name">نام   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="fa_name" value="{{$model->name}}"
-                                                               name="fa_name">
+                                                        <input type="text" class="form-control" id="name" value="{{$model->name}}"
+                                                               name="name">
                                                     </div>
                                                 </div>
                                             </div>
@@ -57,8 +57,8 @@
                                                 <div class="form-group">
                                                     <label for="en_name">ایمیل   : </label>
                                                     <div class="input-group">
-                                                        <input type="text" class="form-control" id="en_name" value="{{$model->email}}"
-                                                               name="en_name">
+                                                        <input type="text" class="form-control" id="email" value="{{$model->email}}"
+                                                               name="email">
                                                     </div>
                                                 </div>
                                             </div>

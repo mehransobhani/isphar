@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -65,7 +66,7 @@ class AuthController extends Controller
             'newPassword' => ['required'],
         ]);
         $model=auth("admin")->user();
-        if(bcrypt($request->password)!=$model->password)
+         if(!Hash::check($request->password, $model->password))
         {
             return back()->with('error', 'کلمه عبور نادرست است.');
         }

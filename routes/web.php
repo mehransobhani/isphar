@@ -54,9 +54,9 @@ Route::group(['middleware' => 'auth:admin'], function () {
     Route::get("post/delete/{id}", [\App\Http\Controllers\PostController::class, "delete"])->name("post.delete");
 
     Route::get("profile", [\App\Http\Controllers\AuthController::class, "profile"])->name("profile");
-    Route::post("profile/update", [\App\Http\Controllers\AuthController::class, "updateProfile"])->name("profile.update");
+    Route::patch("profile/update", [\App\Http\Controllers\AuthController::class, "updateProfile"])->name("profile.update");
     Route::get("profile/edit-password", [\App\Http\Controllers\AuthController::class, "editPassword"])->name("profile.editPassword");
-    Route::post("profile/update-password", [\App\Http\Controllers\AuthController::class, "updatePassword"])->name("profile.updatePassword");
+    Route::patch("profile/update-password", [\App\Http\Controllers\AuthController::class, "updatePassword"])->name("profile.updatePassword");
 
 
 });
