@@ -19,3 +19,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("home_page",[\App\Http\Controllers\Api\HomePageController::class,"index"]);
+
+Route::get("blog",[\App\Http\Controllers\Api\BlogController::class,"getByCatId"]);
+Route::get("blog/{id}",[\App\Http\Controllers\Api\BlogController::class,"view"]);
