@@ -72,18 +72,32 @@ class AuthController extends Controller
 
     public function resetPassword(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'newPassword' => 'required|string',
+            'code' => 'required|string',
+            'mobile' => 'required|string',
+        ]);
+        if ($validator->fails()) {
+            $this->apiResponse(['error' => $validator->errors()], 422);
+        }
         $newPassword = $request->newPassword;
         $code = $request->code;
         $mobile = $request->mobile;
         $user = User::where("mobile", $mobile)->where("reset_pwd_code", $code)->first();
         if (!$user)
             return $this->apiResponse(['message' => "The user not find"], 400);
-        $user->update(["password" => bcrypt($newPassword)]);
+        $user->update(["password" => bcrypt($newPassword) , 'reset_pwd_code'=>null ]);
         return $this->apiResponse(['message' => "completed"]);
     }
 
     public function forgot(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'mobile' => 'required|string',
+        ]);
+        if ($validator->fails()) {
+            $this->apiResponse(['error' => $validator->errors()], 422);
+        }
         $code = rand(10000, 99999);
         $mobile = $request->mobile;
         $user = User::where("mobile", $mobile)->first();
