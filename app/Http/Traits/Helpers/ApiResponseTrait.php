@@ -10,6 +10,6 @@ trait ApiResponseTrait
             "data" => $response,
             "res_code" => $resCode,
             "res_msg" => $resMsg
-        ]);
+        ],$resCode);
     }
 }

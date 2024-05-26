@@ -22,3 +22,10 @@ Route::get("home_page",[\App\Http\Controllers\Api\HomePageController::class,"ind
 
 Route::get("blog",[\App\Http\Controllers\Api\BlogController::class,"getByCatId"]);
 Route::get("blog/{id}",[\App\Http\Controllers\Api\BlogController::class,"view"]);
+
+
+Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
+Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
+Route::post('/forgot', [\App\Http\Controllers\Api\AuthController::class, 'forgot']);
+Route::post('/forgot_code_verify', [\App\Http\Controllers\Api\AuthController::class, 'forgotCodeVerify']);
+Route::post('/reset_password', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
