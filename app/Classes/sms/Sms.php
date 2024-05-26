@@ -10,10 +10,10 @@ class Sms
     {
         $data = [
             'receptor' => $receptor,
-            'sender' => config("kavenegar.sender"),
+            'sender' => config("sms_setting.sender"),
             'message' => $message
         ];
-        $result = Http::post("http://api.kavenegar.com/v1/" . config("kavenegar.token") . "/sms/send.json", $data);
+        $result = Http::post("http://api.kavenegar.com/v1/" . config("sms_setting.token") . "/sms/send.json", $data);
         return $result->json();
     }
 }
