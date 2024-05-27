@@ -6,7 +6,7 @@ class Sms
 {
     public static function send($receptor, $message)
     {
-        $data = array("receptor" => $receptor, "token" => $message, "template" => "");
+        $data = array("receptor" => $receptor, "token" => $message, "template" => config("sms_setting.template"));
 
         $url = "https://api.kavenegar.com/v1/".config("sms_setting.token")."/verify/lookup.json";
         $ch = curl_init();

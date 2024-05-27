@@ -76,7 +76,3 @@ Route::group(["as" => "user", "prefix" => "user"], function () {
 
 
 });
-
-Route::get("test", function () {
-    \App\Classes\sms\Sms::send("09194961416", "Salam");
-});
