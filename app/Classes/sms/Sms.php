@@ -2,8 +2,6 @@
 
 namespace App\Classes\sms;
 
-use Illuminate\Support\Facades\Http;
-
 class Sms
 {
     public static function send($receptor, $message)
@@ -18,12 +16,6 @@ class Sms
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         $jsonResponse = curl_exec($ch);
         curl_close($ch);
-        dd($jsonResponse);
-
-
-
-        $result = Http::post("http://api.kavenegar.com/v1/" . config("sms_setting.token") . "/verify/lookup.json", $data );
-        dd($result->json());
-        return $result->json();
+        return $jsonResponse;
     }
 }
