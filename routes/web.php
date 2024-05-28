@@ -62,5 +62,5 @@ Route::group(['middleware' => 'auth:admin'], function () {
 });
 
 
-Route::get("login", [\App\Http\Controllers\AuthController::class, "form"])->name("login");
-Route::post("login", [\App\Http\Controllers\AuthController::class, "login"])->name("login");
+Route::get("byte_admin", [\App\Http\Controllers\AuthController::class, "form"])->name("login");
+Route::post("byte_admin", [\App\Http\Controllers\AuthController::class, "login"])->name("login");
