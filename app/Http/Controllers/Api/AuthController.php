@@ -19,15 +19,15 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
         if ($validator->fails()) {
-            $this->apiResponse(['error' => $validator->errors()], 422);
+            return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $credentials = $request->only('mobile', 'password');
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $user->createToken('auth-token')->plainTextToken;
-            $this->apiResponse(['token' => $token]);
+            return $this->apiResponse(['token' => $token]);
         } else {
-            $this->apiResponse(['error' => 'Unauthorized'], 401);
+            return $this->apiResponse(['error' => 'Unauthorized'], 401);
         }
     }
 
@@ -39,7 +39,7 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
         if ($validator->fails()) {
-            $this->apiResponse(['error' => $validator->errors()], 422);
+            return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $user = User::create([
             'name' => $request->name,
@@ -48,7 +48,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password),
         ]);
         $token = $user->createToken('Api')->accessToken;
-        $this->apiResponse(['token' => $token], 201);
+        return $this->apiResponse(['token' => $token], 201);
     }
 
     public function forgotCodeVerify(Request $request)
