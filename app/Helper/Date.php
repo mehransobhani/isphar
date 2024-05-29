@@ -7,3 +7,7 @@ function Shamsi2Miladi($date , $format='Y/m/d H:i:s')
 {
     return Jalalian::fromFormat($format, P2E($date))->toCarbon()->format($format);
 }
+function createdAt()
+{
+    return date("Y-m-d H:i:s", time());
+}

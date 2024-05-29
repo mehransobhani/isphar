@@ -9,4 +9,6 @@ class CalcsHistory extends Model
 {
     protected $table="calcs_history";
     use HasFactory;
+    protected $guarded=["id"];
+    public $timestamps=false;
 }

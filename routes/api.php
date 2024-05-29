@@ -29,17 +29,18 @@ Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'regi
 Route::post('/forgot', [\App\Http\Controllers\Api\AuthController::class, 'forgot']);
 Route::post('/forgot_code_verify', [\App\Http\Controllers\Api\AuthController::class, 'forgotCodeVerify']);
 Route::post('/reset_password', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
-Route::group(["as" => "user", "prefix" => "user"], function () {
-//    ,'middleware' => 'auth:admin'
+Route::group(["as" => "user", "prefix" => "user"   ,'middleware' => 'auth:sanctum'], function () {
+//    ,'middleware' => 'auth:sanctum'
     Route::group(["as" => "patient", "prefix" => "patient"], function () {
         Route::get("/", [\App\Http\Controllers\Api\PatientController::class, "index"]);
-        Route::get("/{id}", [\App\Http\Controllers\Api\PatientController::class, "find"]);
         Route::get("search", [\App\Http\Controllers\Api\PatientController::class, "search"]);
         Route::delete("delete", [\App\Http\Controllers\Api\PatientController::class, "delete"]);
         Route::post("insert", [\App\Http\Controllers\Api\PatientController::class, "insert"]);
         Route::patch("update", [\App\Http\Controllers\Api\PatientController::class, "update"]);
         Route::patch("tarkhis", [\App\Http\Controllers\Api\PatientController::class, "tarkhis"]);
         Route::patch("dead", [\App\Http\Controllers\Api\PatientController::class, "dead"]);
+        Route::get("/{id}", [\App\Http\Controllers\Api\PatientController::class, "find"]);
+
 
     });
 
@@ -51,23 +52,18 @@ Route::group(["as" => "user", "prefix" => "user"], function () {
     });
 
     Route::group(["as" => "calcs", "prefix" => "calcs"], function () {
+        Route::post("calc_insert", [\App\Http\Controllers\Api\CalcsHistoryController::class, "calc_insert"]);
         Route::get("crcl_history", [\App\Http\Controllers\Api\CalcsHistoryController::class, "crcl_history"]);
-        Route::get("egfr_mdrd_history", [\App\Http\Controllers\Api\CalcsHistoryController::class, "egfr_mdrd_history"]);
-        Route::get("egfr_ckd_epi_history", [\App\Http\Controllers\Api\CalcsHistoryController::class, "egfr_ckd_epi_history"]);
-        Route::get("child_pough_score_history", [\App\Http\Controllers\Api\CalcsHistoryController::class, "child_pough_score_history"]);
-        Route::post("crcl_calc", [\App\Http\Controllers\Api\CalcsHistoryController::class, "crcl_calc"]);
-        Route::post("egfr_mdrd_calc", [\App\Http\Controllers\Api\CalcsHistoryController::class, "egfr_mdrd_calc"]);
-        Route::post("egfr_ckd_epi_calc", [\App\Http\Controllers\Api\CalcsHistoryController::class, "egfr_ckd_epi_calc"]);
-        Route::post("child_pough_score_calc", [\App\Http\Controllers\Api\CalcsHistoryController::class, "child_pough_score_calc"]);
+
     });
 
-    Route::get("add_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "insert"]);
+    Route::post("add_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "insert"]);
     Route::delete("delete_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "delete"]);
     Route::patch("update_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "update"]);
 
-    Route::get("add_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "insert"]);
-    Route::delete("delete_special_conditions", [\App\Http\Controllers\Api\PatientDrugController::class, "delete"]);
-    Route::patch("update_special_conditions", [\App\Http\Controllers\Api\PatientDrugController::class, "update"]);
+    Route::post("add_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "insert"]);
+    Route::delete("delete_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "delete"]);
+    Route::patch("update_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "update"]);
 
     Route::get("drugs/search", [\App\Http\Controllers\Api\DrugController::class, "search"]);
     Route::get("dashboard", [\App\Http\Controllers\Api\DashboardController::class, "index"]);

@@ -10,8 +10,8 @@ class DrugController extends Controller
 {
     public function search(Request $request)
     {
-        $query=$request->q;
-        $patient=Drug::whereRaw("fa_name","like %$query%")->paginate();
-        return $this->apiResponse(["data"=>$patient]);
+        $query = $request->q;
+        $patient = Drug::whereRaw("fa_name like ?", "%{$query}%")->orWhereRaw("en_name like ?", "%{$query}%")->paginate();
+        return $this->apiResponse(["data" => $patient]);
     }
 }

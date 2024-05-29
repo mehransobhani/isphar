@@ -96,8 +96,9 @@
                                                     <label for="type">نوع دارو : </label>
                                                     <div class="input-group">
                                                         <select  class="form-control select2"name="type">
-                                                            <option>
-                                                                0
+                                                            @foreach(config("PatientDrug.type") as $item) @endforeach
+                                                            <option value="{{$item->id}}">
+                                                                {{$item->name}}
                                                             </option>
                                                         </select>
                                                     </div>
@@ -115,11 +116,12 @@
                                             </div>
                                             <div class="col-lg-6 col-md-6 col-12">
                                                 <div class="form-group">
-                                                    <label for="gender">زمان مصرف : </label>
+                                                    <label for="gender">فواصل مصرف : </label>
                                                     <div class="input-group">
-                                                        <select  class="form-control select2"name="type">
-                                                            <option>
-                                                                0
+                                                         <select  class="form-control select2"name="usage_intervals">
+                                                             @foreach(config("PatientDrug.usage_intervals") as $item) @endforeach
+                                                            <option value="{{$item}}">
+                                                                {{$item}}
                                                             </option>
                                                         </select>
                                                     </div>

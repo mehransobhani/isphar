@@ -9,13 +9,13 @@ class PatientRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "room_name" => "required",
-            "fullname" => "required",
-            "national_code" => "required",
-            "birth_date" => "required",
-            "gender" => "required",
-            "admission_date" => "required",
-            "file_number" => "required",
+            'fullname' => 'required|string',
+            'national_code' => 'required|size:10|unique:patients|numeric',
+            'birth_date' => 'required|date',
+            'gender' => 'required|in:man,woman',
+            'admission_date' => 'required|date',
+            'file_number' => 'required|string',
+            'room_name' => 'required|string',
         ];
     }
 

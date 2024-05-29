@@ -5,22 +5,64 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\PatientSpecialCondition;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class PatientSpecialConditionController extends Controller
 {
     public function insert(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            "weight" => "required",
+            "height" => "required",
+            "patient_id" => "required",
+            "naresayi_koliavi" => "required|in:1,0",
+            "masrafe_sigar" => "required|in:1,0",
+            "kambode_g6pd" => "required|in:1,0",
+            "naresayi_kabedi" => "required|in:1,0",
+            "radiology" => "required|in:1,0",
+            "masrafe_alcol" => "required|in:1,0",
+            "hasasiate_daruyi" => "required|in:1,0",
+            "soe_masrafe_mavad" => "required|in:1,0",
+            "anti_biotic" => "required|in:1,0",
+            "vaksan" => "required|in:1,0",
+        ]);
+        if ($validator->fails()) {
+            return $this->apiResponse(['error' => $validator->errors()], 422);
+        }
+        $request["created_at"] = createdAt();
+        $request["user_id"] = userId();
         PatientSpecialCondition::create($request->all());
-        return $this->apiResponse(["message"=>"Completed"]);
+        return $this->apiResponse(["message" => "Completed"]);
     }
+
     public function delete($id)
     {
-        PatientSpecialCondition::find($id)->delete();
-        return $this->apiResponse(["message"=>"Completed"]);
+        PatientSpecialCondition::findOrFail($id)->delete();
+        return $this->apiResponse(["message" => "Completed"]);
     }
+
     public function update(Request $request)
     {
-        PatientSpecialCondition::where("id",$request->id)->update($request->all());
-        return $this->apiResponse(["message"=>"Completed"]);
+        $validator = Validator::make($request->all(), [
+            "id" => "required|numeric",
+            "weight" => "required",
+            "height" => "required",
+            "patient_id" => "required|numeric",
+            "naresayi_koliavi" => "required|in:1,0",
+            "masrafe_sigar" => "required|in:1,0",
+            "kambode_g6pd" => "required|in:1,0",
+            "naresayi_kabedi" => "required|in:1,0",
+            "radiology" => "required|in:1,0",
+            "masrafe_alcol" => "required|in:1,0",
+            "hasasiate_daruyi" => "required|in:1,0",
+            "soe_masrafe_mavad" => "required|in:1,0",
+            "anti_biotic" => "required|in:1,0",
+            "vaksan" => "required|in:1,0",
+        ]);
+        if ($validator->fails()) {
+            return $this->apiResponse(['error' => $validator->errors()], 422);
+        }
+        PatientSpecialCondition::where("id", $request->id)->update($request->all());
+        return $this->apiResponse(["message" => "Completed"]);
     }
 }
