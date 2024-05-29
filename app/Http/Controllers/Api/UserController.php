@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
@@ -17,7 +18,14 @@ class UserController extends Controller
 
     public function changePwd(Request $request)
     {
-        $user = auth()->user();
+        $validator = Validator::make($request->all(), [
+            'password' => 'required|string',
+            'newPassword' => 'required|string',
+        ]);
+        if ($validator->fails()) {
+            return $this->apiResponse(['error' => $validator->errors()], 422);
+        }
+        $user =myUser();
         if (!Hash::check($request->password, $user->password)) {
             return $this->apiResponse(["message" => "current password is wrong !"], 400);
         }

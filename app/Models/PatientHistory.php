@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PatientHistory extends Model
 {
     protected $table="patient_history";
+
+    protected $guarded=["id"];
+    public $timestamps=false;
+
     use HasFactory;
 }

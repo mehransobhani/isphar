@@ -12,13 +12,14 @@ class PatientDrugController extends Controller
     public function insert(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'patient_id' => 'required|string',
+            'patient_id' => 'required|numeric',
              'name' => 'required|string',
              'type' => 'required|string|in:1,2',
              'dose_amount' => 'required|string',
              'usage_intervals' => 'required|in:Daily,BD,TDS,QID,Every Other Day,Weekly,Monthly,PRN,نا مشخص,سایر',
              'has_alert' => 'required|in:0,1',
              'description' => 'required|string',
+             'last_dose_date' => 'date',
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
@@ -39,13 +40,16 @@ class PatientDrugController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'patient_id' => 'required|string',
+            'id' => 'required|numeric',
+            'patient_id' => 'required|numeric',
             'name' => 'required|string',
             'type' => 'required|string|in:1,2',
             'dose_amount' => 'required|string',
             'usage_intervals' => 'required|in:Daily,BD,TDS,QID,Every Other Day,Weekly,Monthly,PRN,نا مشخص,سایر',
             'has_alert' => 'required|in:0,1',
             'description' => 'required|string',
+            'last_dose_date' => 'date',
+
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);

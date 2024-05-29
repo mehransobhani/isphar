@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,23 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::get("home_page", [\App\Http\Controllers\Api\HomePageController::class, "index"]);
 
 Route::get("blog", [\App\Http\Controllers\Api\BlogController::class, "getByCatId"]);
 Route::get("blog/{id}", [\App\Http\Controllers\Api\BlogController::class, "view"]);
-
 
 Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::post('/register', [\App\Http\Controllers\Api\AuthController::class, 'register']);
 Route::post('/forgot', [\App\Http\Controllers\Api\AuthController::class, 'forgot']);
 Route::post('/forgot_code_verify', [\App\Http\Controllers\Api\AuthController::class, 'forgotCodeVerify']);
 Route::post('/reset_password', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
-Route::group(["as" => "user", "prefix" => "user"   ,'middleware' => 'auth:sanctum'], function () {
-//    ,'middleware' => 'auth:sanctum'
+
+Route::post('/demo-request', [\App\Http\Controllers\Api\DemoRequestController::class, 'submit']);
+
+
+Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'], function () {
     Route::group(["as" => "patient", "prefix" => "patient"], function () {
         Route::get("/", [\App\Http\Controllers\Api\PatientController::class, "index"]);
         Route::get("search", [\App\Http\Controllers\Api\PatientController::class, "search"]);
@@ -40,8 +37,6 @@ Route::group(["as" => "user", "prefix" => "user"   ,'middleware' => 'auth:sanctu
         Route::patch("tarkhis", [\App\Http\Controllers\Api\PatientController::class, "tarkhis"]);
         Route::patch("dead", [\App\Http\Controllers\Api\PatientController::class, "dead"]);
         Route::get("/{id}", [\App\Http\Controllers\Api\PatientController::class, "find"]);
-
-
     });
 
     Route::group(["as" => "drp", "prefix" => "drp"], function () {
@@ -54,7 +49,10 @@ Route::group(["as" => "user", "prefix" => "user"   ,'middleware' => 'auth:sanctu
     Route::group(["as" => "calcs", "prefix" => "calcs"], function () {
         Route::post("calc_insert", [\App\Http\Controllers\Api\CalcsHistoryController::class, "calc_insert"]);
         Route::get("crcl_history", [\App\Http\Controllers\Api\CalcsHistoryController::class, "crcl_history"]);
-
+    });
+    Route::group(["as" => "drugs", "prefix" => "drugs"], function () {
+        Route::get("search", [\App\Http\Controllers\Api\DrugController::class, "search"]);
+        Route::get("insert", [\App\Http\Controllers\Api\DrugController::class, "insert"]);
     });
 
     Route::post("add_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "insert"]);
@@ -65,10 +63,7 @@ Route::group(["as" => "user", "prefix" => "user"   ,'middleware' => 'auth:sanctu
     Route::delete("delete_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "delete"]);
     Route::patch("update_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "update"]);
 
-    Route::get("drugs/search", [\App\Http\Controllers\Api\DrugController::class, "search"]);
     Route::get("dashboard", [\App\Http\Controllers\Api\DashboardController::class, "index"]);
     Route::patch("update", [\App\Http\Controllers\Api\UserController::class, "index"]);
     Route::post("change_pwd", [\App\Http\Controllers\Api\UserController::class, "changePwd"]);
-
-
 });

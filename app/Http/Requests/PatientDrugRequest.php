@@ -9,14 +9,16 @@ class PatientDrugRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "type" => "required",
-            "user_id" => "required",
-            "name" => "required",
-            "patient_id" => "required",
-            "usage_intervals" => "required",
-            "dose_amount" => "required",
-            "has_alert" => "required",
-            "description" => "required",
+            'patient_id' => 'required|numeric',
+            "user_id" => "required|numeric",
+            'name' => 'required|string',
+            'type' => 'required|string|in:1,2',
+            'dose_amount' => 'required|string',
+            'usage_intervals' => 'required|in:Daily,BD,TDS,QID,Every Other Day,Weekly,Monthly,PRN,نا مشخص,سایر',
+            'has_alert' => 'required|in:0,1',
+            'description' => 'required|string',
+            'last_dose_date' => 'date',
+
         ];
     }
     public function store()

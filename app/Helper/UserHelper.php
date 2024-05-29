@@ -3,7 +3,7 @@ function userId()
 {
     return auth()->user()->id;
 }
-function user()
+function myUser()
 {
     return auth()->user();
 }
