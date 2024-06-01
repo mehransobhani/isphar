@@ -12,7 +12,21 @@ class UserController extends Controller
 {
     public function update(Request $request)
     {
-        User::where("id", $request->id)->update($request->all());
+        $validator = Validator::make($request->all(), [
+            'id' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return $this->apiResponse(['error' => $validator->errors()], 422);
+        }
+        if($request->file('sign_image')) {
+            $fileName = time() . '.' . $request->image->extension();
+            $request->file('sign_image')->storeAs('sign_image', $fileName, 'public');
+            $request["sign_image"] = $fileName;
+        }
+        User::where("id", $request->id)->update(
+            $request->only(
+                ["name","pharmacist_firstname","tell","pharmacist_lastname","medical_code"]
+            ));
         return $this->apiResponse(["message" => "Completed"]);
     }
 
