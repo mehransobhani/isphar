@@ -15,6 +15,12 @@ class DrpReportController extends Controller
         return $this->apiResponse(["data" => $drpReport]);
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->q;
+        $drpReport = DrpReport::whereRaw("egfr_mdrd like ?", "%{$query}%")->paginate();
+        return $this->apiResponse(["data" => $drpReport]);
+    }
     public function insert(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -31,8 +37,8 @@ class DrpReportController extends Controller
         }
         $request["user_id"]=userId();
         $request["created_at"]=createdAt();
-        DrpReport::create($request->all());
-        return $this->apiResponse(["message" => "Completed"]);
+        $model=DrpReport::create($request->all());
+        return $this->apiResponse(["message" => "Completed" , "id"=>$model->id]);
     }
     public function update(Request $request)
     {

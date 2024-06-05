@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-Route::group(['middleware' => 'auth:admin'], function () {
-//Route::group([ ], function () {
+//Route::group(['middleware' => 'auth:admin'], function () {
+Route::group([ ], function () {
     Route::get("logout", [\App\Http\Controllers\AuthController::class, "logout"])->name("logout");
 
     Route::resource("patient", \App\Http\Controllers\PatientController::class)->except("destroy", "show");

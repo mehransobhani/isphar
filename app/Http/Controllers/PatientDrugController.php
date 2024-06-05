@@ -20,8 +20,8 @@ class PatientDrugController extends Controller
 
     public function view($id)
     {
-        $model=PatientDrug::with("Patient")->find($id);
-        return  view("admin.patientDrug.view",compact("model"));
+        $models=PatientDrug::with("Patient")->where("patient_id",$id)->get();
+        return  view("admin.patientDrug.view",compact("models"));
     }
     public function edit($id)
     {

@@ -18,7 +18,6 @@ class PatientDrugController extends Controller
              'dose_amount' => 'required|string',
              'usage_intervals' => 'required|in:Daily,BD,TDS,QID,Every Other Day,Weekly,Monthly,PRN,نا مشخص,سایر',
              'has_alert' => 'required|in:0,1',
-             'description' => 'required|string',
              'last_dose_date' => 'date',
         ]);
         if ($validator->fails()) {
@@ -28,8 +27,8 @@ class PatientDrugController extends Controller
         $request["created_at"]=createdAt();
         $request["user_id"]=userId();
 
-        PatientDrug::create($request->all());
-        return $this->apiResponse(["message"=>"Completed"]);
+        $model=PatientDrug::create($request->all());
+        return $this->apiResponse(["message"=>"Completed" , "id"=>$model->id]);
     }
     public function delete(Request $request)
     {
@@ -47,7 +46,6 @@ class PatientDrugController extends Controller
             'dose_amount' => 'required|string',
             'usage_intervals' => 'required|in:Daily,BD,TDS,QID,Every Other Day,Weekly,Monthly,PRN,نا مشخص,سایر',
             'has_alert' => 'required|in:0,1',
-            'description' => 'required|string',
             'last_dose_date' => 'date',
 
         ]);

@@ -96,10 +96,11 @@
                                                     <label for="type">نوع دارو : </label>
                                                     <div class="input-group">
                                                         <select  class="form-control select2"name="type">
-                                                            @foreach(config("PatientDrug.type") as $item) @endforeach
-                                                            <option value="{{$item->id}}">
-                                                                {{$item->name}}
+                                                            @foreach(config("PatientDrug.type") as $item)
+                                                            <option value="{{$item["id"]}}">
+                                                                {{$item["name"]}}
                                                             </option>
+                                                            @endforeach
                                                         </select>
                                                     </div>
                                                 </div>

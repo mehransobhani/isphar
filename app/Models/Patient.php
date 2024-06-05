@@ -17,7 +17,15 @@ class Patient extends Model
     }
     public function patientDrug()
     {
-        return $this->hasOne(PatientDrug::class,"patient_id","id");
+        return $this->hasMany(PatientDrug::class,"patient_id","id");
+    }
+    public function patientHistory()
+    {
+        return $this->hasMany(PatientHistory::class,"patient_id","id");
+    }
+    public function drpReport()
+    {
+        return $this->hasMany(DrpReport::class,"patient_id","id");
     }
 
 }

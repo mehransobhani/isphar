@@ -24,7 +24,7 @@ Route::post('/forgot', [\App\Http\Controllers\Api\AuthController::class, 'forgot
 Route::post('/forgot_code_verify', [\App\Http\Controllers\Api\AuthController::class, 'forgotCodeVerify']);
 Route::post('/reset_password', [\App\Http\Controllers\Api\AuthController::class, 'resetPassword']);
 
-Route::post('/demo-request', [\App\Http\Controllers\Api\DemoRequestController::class, 'submit']);
+Route::post('/request_demo', [\App\Http\Controllers\Api\DemoRequestController::class, 'submit']);
 
 
 Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'], function () {
@@ -34,8 +34,8 @@ Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'
         Route::delete("delete", [\App\Http\Controllers\Api\PatientController::class, "delete"]);
         Route::post("insert", [\App\Http\Controllers\Api\PatientController::class, "insert"]);
         Route::patch("update", [\App\Http\Controllers\Api\PatientController::class, "update"]);
-        Route::patch("tarkhis", [\App\Http\Controllers\Api\PatientController::class, "tarkhis"]);
-        Route::patch("dead", [\App\Http\Controllers\Api\PatientController::class, "dead"]);
+        Route::post("tarkhis", [\App\Http\Controllers\Api\PatientController::class, "tarkhis"]);
+        Route::post("dead", [\App\Http\Controllers\Api\PatientController::class, "dead"]);
         Route::get("/{id}", [\App\Http\Controllers\Api\PatientController::class, "find"]);
     });
 
@@ -44,6 +44,8 @@ Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'
         Route::delete("delete", [\App\Http\Controllers\Api\DrpReportController::class, "delete"]);
         Route::post("insert", [\App\Http\Controllers\Api\DrpReportController::class, "insert"]);
         Route::patch("update", [\App\Http\Controllers\Api\DrpReportController::class, "update"]);
+        Route::get("search", [\App\Http\Controllers\Api\DrpReportController::class, "search"]);
+
     });
 
     Route::group(["as" => "calcs", "prefix" => "calcs"], function () {

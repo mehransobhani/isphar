@@ -25,8 +25,8 @@ class CalcsHistoryController extends Controller
             return $this->apiResponse(['error' => 'type is not valid !'], 400);
         }
         $request["created_at"]=createdAt();
-        CalcsHistory::create($request->all());
-        return $this->apiResponse(['message' => "completed"]);
+        $model=CalcsHistory::create($request->all());
+        return $this->apiResponse(['message' => "completed","id"=>$model->id]);
 
     }
     public function crcl_history(Request $request)

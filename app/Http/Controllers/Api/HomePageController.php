@@ -19,7 +19,7 @@ class HomePageController extends Controller
             "image",
             "content",
             "title"
-        )->latest('id')->first();
+        )->latest('id')->limit(5)->get();
         $response->last_posts = $lastPost;
         return $this->apiResponse($response);
     }

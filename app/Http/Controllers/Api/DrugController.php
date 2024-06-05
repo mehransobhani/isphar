@@ -24,7 +24,7 @@ class DrugController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $request["created_at"]=createdAt();
-        Drug::create($request->all());
-        return $this->apiResponse(['message' => "completed"]);
+        $model=Drug::create($request->all());
+        return $this->apiResponse(['message' => "completed","id"=>$model->id]);
     }
 }

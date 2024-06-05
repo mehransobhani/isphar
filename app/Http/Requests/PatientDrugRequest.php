@@ -16,7 +16,6 @@ class PatientDrugRequest extends FormRequest
             'dose_amount' => 'required|string',
             'usage_intervals' => 'required|in:Daily,BD,TDS,QID,Every Other Day,Weekly,Monthly,PRN,نا مشخص,سایر',
             'has_alert' => 'required|in:0,1',
-            'description' => 'required|string',
             'last_dose_date' => 'date',
 
         ];

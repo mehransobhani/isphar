@@ -13,20 +13,35 @@ class PatientController extends Controller
     public function index()
     {
         $patients = Patient::latest("id")->paginate();
+        $patients->getCollection()->transform(function ($patient) {
+            $patient->talfigh_paziresh = $patient->patientDrug->isNotEmpty();
+            $patient->talfigh_paziresh_date = $patient->patientDrug->isNotEmpty()?$patient->patientDrug->max("created_at"):null;
+            unset($patient["patientDrug"]);
+            return $patient;
+        });
+
         return $this->apiResponse(["data" => $patients]);
     }
 
     public function find($id)
     {
-        $patient = Patient::findOrFail($id);
+        $patient = Patient::with("PatientSpecialCondition")
+            ->with("patientDrug")
+            ->with("patientHistory")
+            ->with("drpReport")
+            ->findOrFail($id);
         return $this->apiResponse(["data" => $patient]);
     }
 
     public function search(Request $request)
     {
         $query = $request->q;
-        $patient = Patient::whereRaw("fullname like ?", "%{$query}%")->paginate();
-        return $this->apiResponse(["data" => $patient]);
+        $patient = Patient::where('fullname', 'like', "%{$query}%")
+            ->orWhere('national_code', 'like', "%{$query}%")
+            ->orWhere('file_number', 'like', "%{$query}%")
+            ->latest('id')
+            ->paginate();
+         return $this->apiResponse(["data" => $patient]);
     }
 
     public function delete(Request $request)
@@ -54,7 +69,7 @@ class PatientController extends Controller
         $request["created_date"] = createdAt();
         $Patient=Patient::create($request->all());
         PatientHistoryBuilder::insert($Patient->id);
-        return $this->apiResponse(["message" => "Completed"]);
+        return $this->apiResponse(["message" => "Completed" , "id"=>$Patient->id]);
     }
 
     public function update(Request $request)

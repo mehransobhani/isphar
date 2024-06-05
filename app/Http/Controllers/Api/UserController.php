@@ -12,21 +12,22 @@ class UserController extends Controller
 {
     public function update(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-        ]);
-        if ($validator->fails()) {
-            return $this->apiResponse(['error' => $validator->errors()], 422);
-        }
-        if($request->file('sign_image')) {
+        $user = myUser();
+
+        $fieldsToUpdate = ["name", "pharmacist_firstname", "tell", "pharmacist_lastname", "medical_code"];
+
+        $updateData = array_filter($request->only($fieldsToUpdate), function($value) {
+            return !is_null($value) && $value !== '';
+        });
+
+        if ($request->file('sign_image')) {
             $fileName = time() . '.' . $request->image->extension();
             $request->file('sign_image')->storeAs('sign_image', $fileName, 'public');
-            $request["sign_image"] = $fileName;
+            $updateData["sign_image"] = $fileName;
         }
-        User::where("id", $request->id)->update(
-            $request->only(
-                ["name","pharmacist_firstname","tell","pharmacist_lastname","medical_code"]
-            ));
+        if (!empty($updateData)) {
+            User::where('id', $user->id)->update($updateData);
+        }
         return $this->apiResponse(["message" => "Completed"]);
     }
 
@@ -39,11 +40,12 @@ class UserController extends Controller
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
-        $user =myUser();
+        $user = myUser();
         if (!Hash::check($request->password, $user->password)) {
             return $this->apiResponse(["message" => "current password is wrong !"], 400);
         }
         $user->update(["password" => bcrypt($request->newPassword)]);
-        return $this->apiResponse(["message" => "Completed"]);
+        $token = $user->createToken('auth-token')->plainTextToken;
+        return $this->apiResponse(['token' => $token]);
     }
 }

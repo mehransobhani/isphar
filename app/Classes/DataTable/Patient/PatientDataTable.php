@@ -35,7 +35,7 @@ class PatientDataTable implements  DataTableInterface
                 $check = $data->patientDrug;
 
                 if ($check)
-                    return "<a class='btn btn-danger waves-effect waves-light' href='" . route('patient_drug.view', $data->patientDrug->id) . "'>مشاهده شرایط خاص بیمار</a>";
+                    return "<a class='btn btn-danger waves-effect waves-light' href='" . route('patient_drug.view', $data->id) . "'>مشاهده تلفیق دارویی بیمار</a>";
                 else
                     return "";
             })

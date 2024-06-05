@@ -17,7 +17,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
                         <h3 class="box-title m-b-10">  شرایط خاص بیمار  {{$model->Patient->fullname}}  </h3>
-                        <a href="{{route("patient.create")}}">
+                        <a href="{{route("PatientSpecialCondition.edit",$model->id)}}">
                             <button type="submit" class="btn btn-success waves-effect waves-light m-l-10">
                                 ویرایش شرایط خاص بیمار
                             </button>

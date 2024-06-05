@@ -31,13 +31,13 @@ class PatientSpecialConditionController extends Controller
         }
         $request["created_at"] = createdAt();
         $request["user_id"] = userId();
-        PatientSpecialCondition::create($request->all());
-        return $this->apiResponse(["message" => "Completed"]);
+        $model=PatientSpecialCondition::create($request->all());
+        return $this->apiResponse(["message" => "Completed" , "id"=>$model->id]);
     }
 
-    public function delete($id)
+    public function delete(Request $request)
     {
-        PatientSpecialCondition::findOrFail($id)->delete();
+        PatientSpecialCondition::findOrFail($request->id)->delete();
         return $this->apiResponse(["message" => "Completed"]);
     }
 

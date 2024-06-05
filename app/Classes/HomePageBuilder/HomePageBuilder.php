@@ -27,7 +27,7 @@ class HomePageBuilder
                 $object->content = $item->content;
             }
             if ($item->has_image) {
-                $object->image = $item->image;
+                $object->image =  asset('storage/contents/' . $item->image);
             }
             if ($type == self::$STD) {
                 if (!isset($collection->$alias))

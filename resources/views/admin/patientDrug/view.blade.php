@@ -13,6 +13,8 @@
                     </h4>
                 </div>
             </div>
+            @foreach($models as $model)
+
             <div class="row">
                 <div class="col-lg-12">
                     <div class="white-box">
@@ -71,6 +73,8 @@
                     </div>
                 </div>
             </div>
+
+            @endforeach
         </div>
     </div>
 @endsection
