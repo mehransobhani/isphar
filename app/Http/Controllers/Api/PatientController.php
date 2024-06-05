@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Classes\PatientHistory\PatientHistoryBuilder;
 use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use Illuminate\Http\Request;
@@ -31,6 +32,7 @@ class PatientController extends Controller
     public function delete(Request $request)
     {
         $id = $request->id;
+        PatientHistoryBuilder::delete($id);
         Patient::findOrFail($id)->delete();
         return $this->apiResponse(["message" => "Completed"]);
     }
@@ -50,7 +52,8 @@ class PatientController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $request["created_date"] = createdAt();
-        Patient::create($request->all());
+        $Patient=Patient::create($request->all());
+        PatientHistoryBuilder::insert($Patient->id);
         return $this->apiResponse(["message" => "Completed"]);
     }
 
@@ -70,6 +73,8 @@ class PatientController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         Patient::where("id", $request->id)->update($request->all());
+        PatientHistoryBuilder::update($request->id);
+
         return $this->apiResponse(["message" => "Completed"]);
     }
 
@@ -82,6 +87,7 @@ class PatientController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         Patient::where("id", $request->id)->update(["tarkhis"=>1]);
+        PatientHistoryBuilder::tarkhis($request->id);
         return $this->apiResponse(["message" => "Completed"]);
     }
 
@@ -94,6 +100,8 @@ class PatientController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         Patient::where("id", $request->id)->update(["dead"=>1]);
+        PatientHistoryBuilder::dead($request->id);
+
         return $this->apiResponse(["message" => "Completed"]);
     }
 }
