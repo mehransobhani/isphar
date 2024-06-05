@@ -63,9 +63,9 @@ Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'
 
     Route::post("add_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "insert"]);
     Route::delete("delete_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "delete"]);
-    Route::patch("update_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "update"]);
+    Route::post("update_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "update"]);
 
     Route::get("dashboard", [\App\Http\Controllers\Api\DashboardController::class, "index"]);
-    Route::patch("update", [\App\Http\Controllers\Api\UserController::class, "update"]);
+    Route::post("update", [\App\Http\Controllers\Api\UserController::class, "update"]);
     Route::post("change_pwd", [\App\Http\Controllers\Api\UserController::class, "changePwd"]);
 });
