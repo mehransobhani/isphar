@@ -29,6 +29,7 @@ Route::post('/request_demo', [\App\Http\Controllers\Api\DemoRequestController::c
 
 Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'], function () {
     Route::group(["as" => "patient", "prefix" => "patient"], function () {
+    Route::post('/insert_from_excel', [\App\Http\Controllers\Api\ExcelImportController::class, 'import']);
         Route::get("/", [\App\Http\Controllers\Api\PatientController::class, "index"]);
         Route::get("search", [\App\Http\Controllers\Api\PatientController::class, "search"]);
         Route::delete("delete", [\App\Http\Controllers\Api\PatientController::class, "delete"]);
