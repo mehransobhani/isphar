@@ -48,7 +48,6 @@ Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'
         Route::get("search", [\App\Http\Controllers\Api\DrpReportController::class, "search"]);
 
     });
-
     Route::group(["as" => "calcs", "prefix" => "calcs"], function () {
         Route::post("calc_insert", [\App\Http\Controllers\Api\CalcsHistoryController::class, "calc_insert"]);
         Route::get("crcl_history", [\App\Http\Controllers\Api\CalcsHistoryController::class, "crcl_history"]);
