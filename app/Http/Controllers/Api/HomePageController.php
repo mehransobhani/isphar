@@ -14,6 +14,7 @@ class HomePageController extends Controller
         $model = Content::all();
         $response = HomePageBuilder::build($model);
         $lastPost = Post::select(
+            "id",
             "alias",
             "created_at as date",
             "image",

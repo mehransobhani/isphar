@@ -87,7 +87,9 @@ class AuthController extends Controller
         if (!$user)
             return $this->apiResponse(['message' => "The user not find"], 400);
         $user->update(["password" => bcrypt($newPassword) , 'reset_pwd_code'=>null ]);
-        return $this->apiResponse(['message' => "completed"]);
+
+        $token = $user->createToken('auth-token')->plainTextToken;
+        return $this->apiResponse(['token' => $token]);
     }
 
     public function forgot(Request $request)
@@ -106,5 +108,10 @@ class AuthController extends Controller
         $user->update(["reset_pwd_code" => $code, "reset_pwd_date" => date("Y-m-d H:i:s", time())]);
         Sms::send($user->mobile, $code);
         return $this->apiResponse(['message' => "completed"]);
+    }
+    public function profile(Request $request)
+    {
+        $user=myUser();
+        return $this->apiResponse(['data' => $user]);
     }
 }

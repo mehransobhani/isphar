@@ -10,15 +10,24 @@ use Illuminate\Support\Facades\Validator;
 
 class PatientController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $patients = Patient::latest("id")->paginate();
-        $patients->getCollection()->transform(function ($patient) {
-            $patient->talfigh_paziresh = $patient->patientDrug->isNotEmpty();
-            $patient->talfigh_paziresh_date = $patient->patientDrug->isNotEmpty()?$patient->patientDrug->max("created_at"):null;
-            unset($patient["patientDrug"]);
-            return $patient;
-        });
+        if ($request->page == -1) {
+            $patients = Patient::latest("id")->get();
+            foreach ($patients as $patient) {
+                $patient->talfigh_paziresh = $patient->patientDrug->isNotEmpty();
+                $patient->talfigh_paziresh_date = $patient->patientDrug->isNotEmpty() ? $patient->patientDrug->max("created_at") : null;
+                unset($patient["patientDrug"]);
+            }
+        } else {
+            $patients = Patient::latest("id")->paginate();
+            $patients->getCollection()->transform(function ($patient) {
+                $patient->talfigh_paziresh = $patient->patientDrug->isNotEmpty();
+                $patient->talfigh_paziresh_date = $patient->patientDrug->isNotEmpty() ? $patient->patientDrug->max("created_at") : null;
+                unset($patient["patientDrug"]);
+                return $patient;
+            });
+        }
 
         return $this->apiResponse(["data" => $patients]);
     }
@@ -41,7 +50,7 @@ class PatientController extends Controller
             ->orWhere('file_number', 'like', "%{$query}%")
             ->latest('id')
             ->paginate();
-         return $this->apiResponse(["data" => $patient]);
+        return $this->apiResponse(["data" => $patient]);
     }
 
     public function delete(Request $request)
@@ -62,14 +71,16 @@ class PatientController extends Controller
             'admission_date' => 'required|date',
             'file_number' => 'required|string',
             'room_name' => 'required|string',
+            'age' => 'required|string',
+            'section_name' => 'required|string',
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $request["created_date"] = createdAt();
-        $Patient=Patient::create($request->all());
+        $Patient = Patient::create($request->all());
         PatientHistoryBuilder::insert($Patient->id);
-        return $this->apiResponse(["message" => "Completed" , "id"=>$Patient->id]);
+        return $this->apiResponse(["message" => "Completed", "id" => $Patient->id]);
     }
 
     public function update(Request $request)
@@ -83,6 +94,8 @@ class PatientController extends Controller
             'admission_date' => 'required|date',
             'file_number' => 'required|string',
             'room_name' => 'required|string',
+            'age' => 'required|string',
+            'section_name' => 'required|string',
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
@@ -101,7 +114,7 @@ class PatientController extends Controller
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
-        Patient::where("id", $request->id)->update(["tarkhis"=>1]);
+        Patient::where("id", $request->id)->update(["tarkhis" => 1]);
         PatientHistoryBuilder::tarkhis($request->id);
         return $this->apiResponse(["message" => "Completed"]);
     }
@@ -114,7 +127,7 @@ class PatientController extends Controller
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
-        Patient::where("id", $request->id)->update(["dead"=>1]);
+        Patient::where("id", $request->id)->update(["dead" => 1]);
         PatientHistoryBuilder::dead($request->id);
 
         return $this->apiResponse(["message" => "Completed"]);

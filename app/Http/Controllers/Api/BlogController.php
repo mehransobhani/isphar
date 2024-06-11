@@ -11,15 +11,20 @@ class BlogController extends Controller
     public function getByCatId(Request $request)
     {
         $catId=$request->cat_id;
-        $response=Post::whereHas("cat",function ($query) use ($catId){
+        if ($request->page == -1)
+            $response=Post::whereHas("cat",function ($query) use ($catId){
+                $query->where("id",$catId);
+            })->with("cat")->get();
+        else
+            $response=Post::whereHas("cat",function ($query) use ($catId){
             $query->where("id",$catId);
-        })->paginate(24);
+        })->with("cat")->paginate(24);
         return $this->apiResponse($response);
     }
 
     public function view($id)
     {
-        $response=Post::find($id);
+        $response=Post::with("cat")->where("id",$id)->orWhere("alias",$id)->first();
         return $this->apiResponse($response);
     }
 }

@@ -27,7 +27,7 @@ Route::post('/reset_password', [\App\Http\Controllers\Api\AuthController::class,
 Route::post('/request_demo', [\App\Http\Controllers\Api\DemoRequestController::class, 'submit']);
 
 
-Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'], function () {
+Route::group(["as" => "user", "prefix" => "user", "middleware" => "auth:sanctum" ], function () {
     Route::group(["as" => "patient", "prefix" => "patient"], function () {
     Route::post('/insert_from_excel', [\App\Http\Controllers\Api\ExcelImportController::class, 'import']);
         Route::get("/", [\App\Http\Controllers\Api\PatientController::class, "index"]);
@@ -68,4 +68,7 @@ Route::group(["as" => "user", "prefix" => "user", 'middleware' => 'auth:sanctum'
     Route::get("dashboard", [\App\Http\Controllers\Api\DashboardController::class, "index"]);
     Route::post("update", [\App\Http\Controllers\Api\UserController::class, "update"]);
     Route::post("change_pwd", [\App\Http\Controllers\Api\UserController::class, "changePwd"]);
+
+    Route::get("profile", [\App\Http\Controllers\Api\AuthController::class, "profile"]);
+
 });
