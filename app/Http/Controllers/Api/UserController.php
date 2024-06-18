@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         $user = myUser();
 
-        $fieldsToUpdate = ["name", "pharmacist_firstname", "tell", "pharmacist_lastname", "medical_code"];
+        $fieldsToUpdate = ["name", "pharmacist_firstname", "tell", "pharmacist_lastname", "medical_code", "personel_code"];
 
         $updateData = array_filter($request->only($fieldsToUpdate), function($value) {
             return !is_null($value) && $value !== '';
