@@ -17,7 +17,8 @@ class Patient extends Model
     }
     public function patientDrug()
     {
-        return $this->hasMany(PatientDrug::class,"patient_id","id");
+        return $this->hasMany(PatientDrug::class,"patient_id","id")
+        ->join('drugs', 'drugs.id', '=', 'patient_drugs.drug_id');
     }
     public function patientHistory()
     {
