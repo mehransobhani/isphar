@@ -71,7 +71,7 @@ Route::group(["as" => "user", "prefix" => "user", "middleware" => "auth:sanctum"
 
     Route::get("dashboard", [\App\Http\Controllers\Api\DashboardController::class, "index"]);
     Route::post("update", [\App\Http\Controllers\Api\UserController::class, "update"]);
-    Route::post("get", [\App\Http\Controllers\Api\UserController::class, "get"]);
+    Route::get("get", [\App\Http\Controllers\Api\UserController::class, "get"]);
     Route::post("change_pwd", [\App\Http\Controllers\Api\UserController::class, "changePwd"]);
 
     Route::get("profile", [\App\Http\Controllers\Api\AuthController::class, "profile"]);
