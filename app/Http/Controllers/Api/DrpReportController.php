@@ -27,11 +27,11 @@ class DrpReportController extends Controller
     public function search(Request $request)
     {
         $q = $request->q;
-        $drpReport = DrpReport::with("patient")->whereHas("patient", function ($query) use ($q) {
+        $drpReport = DrpReport::whereHas("patient", function ($query) use ($q) {
             $query->where('fullname', 'like', "%{$q}%")
                 ->orWhere('national_code', 'like', "%{$q}%")
                 ->orWhere('file_number', 'like', "%{$q}%");
-        })->paginate();
+        })->with("patient")->paginate();
         return $this->apiResponse(["data" => $drpReport]);
     }
 
