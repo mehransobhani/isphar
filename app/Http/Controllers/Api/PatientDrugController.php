@@ -55,4 +55,9 @@ class PatientDrugController extends Controller
         PatientDrug::where("id",$request->id)->update($request->all());
         return $this->apiResponse(["message"=>"Completed"]);
     }
+    public function get()
+    {
+        $data=PatientDrug::latest("id")->paginate();
+        return $this->apiResponse(["data"=>$data]);
+    }
 }

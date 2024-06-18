@@ -13,14 +13,14 @@ class PatientController extends Controller
     public function index(Request $request)
     {
         if ($request->page == -1) {
-            $patients = Patient::latest("id")->get();
+            $patients = Patient::with("drpReport")->latest("id")->get();
             foreach ($patients as $patient) {
                 $patient->talfigh_paziresh = $patient->patientDrug->isNotEmpty();
                 $patient->talfigh_paziresh_date = $patient->patientDrug->isNotEmpty() ? $patient->patientDrug->max("created_at") : null;
                 unset($patient["patientDrug"]);
             }
         } else {
-            $patients = Patient::latest("id")->paginate();
+            $patients = Patient::with("drpReport")->latest("id")->paginate();
             $patients->getCollection()->transform(function ($patient) {
                 $patient->talfigh_paziresh = $patient->patientDrug->isNotEmpty();
                 $patient->talfigh_paziresh_date = $patient->patientDrug->isNotEmpty() ? $patient->patientDrug->max("created_at") : null;
@@ -45,7 +45,8 @@ class PatientController extends Controller
     public function search(Request $request)
     {
         $query = $request->q;
-        $patient = Patient::where('fullname', 'like', "%{$query}%")
+        $patient = Patient::with("drpReport")->
+        where('fullname', 'like', "%{$query}%")
             ->orWhere('national_code', 'like', "%{$query}%")
             ->orWhere('file_number', 'like', "%{$query}%")
             ->latest('id')

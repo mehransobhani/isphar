@@ -25,6 +25,7 @@ class PatientSpecialConditionController extends Controller
             "soe_masrafe_mavad" => "required|in:1,0",
             "anti_biotic" => "required|in:1,0",
             "vaksan" => "required|in:1,0",
+            "peyvand_ozv" => "required|in:1,0",
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
@@ -58,11 +59,18 @@ class PatientSpecialConditionController extends Controller
             "soe_masrafe_mavad" => "required|in:1,0",
             "anti_biotic" => "required|in:1,0",
             "vaksan" => "required|in:1,0",
+            "peyvand_ozv" => "required|in:1,0",
+
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         PatientSpecialCondition::where("id", $request->id)->update($request->all());
         return $this->apiResponse(["message" => "Completed"]);
+    }
+    public function get()
+    {
+        $data=PatientSpecialCondition::latest("id")->paginate();
+        return $this->apiResponse(["data"=>$data]);
     }
 }

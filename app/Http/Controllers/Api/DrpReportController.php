@@ -9,12 +9,18 @@ use Illuminate\Support\Facades\Validator;
 
 class DrpReportController extends Controller
 {
+  
     public function index(Request $request)
     {
         if ($request->page == -1)
-            $drpReport = DrpReport::latest("id")->get();
+            $drpReport = DrpReport::with("patient")->latest("id")->get();
         else
-            $drpReport = DrpReport::latest("id")->paginate();
+            $drpReport = DrpReport::with("patient")->latest("id")->paginate();
+        return $this->apiResponse(["data" => $drpReport]);
+    }
+    public function find($id)
+    {
+        $drpReport = DrpReport::with("patient")->find($id);
         return $this->apiResponse(["data" => $drpReport]);
     }
 

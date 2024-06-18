@@ -46,6 +46,8 @@ Route::group(["as" => "user", "prefix" => "user", "middleware" => "auth:sanctum"
         Route::post("insert", [\App\Http\Controllers\Api\DrpReportController::class, "insert"]);
         Route::patch("update", [\App\Http\Controllers\Api\DrpReportController::class, "update"]);
         Route::get("search", [\App\Http\Controllers\Api\DrpReportController::class, "search"]);
+        Route::get("/{id}", [\App\Http\Controllers\Api\DrpReportController::class, "find"]);
+
 
     });
     Route::group(["as" => "calcs", "prefix" => "calcs"], function () {
@@ -54,16 +56,18 @@ Route::group(["as" => "user", "prefix" => "user", "middleware" => "auth:sanctum"
     });
     Route::group(["as" => "drugs", "prefix" => "drugs"], function () {
         Route::get("search", [\App\Http\Controllers\Api\DrugController::class, "search"]);
-        Route::get("insert", [\App\Http\Controllers\Api\DrugController::class, "insert"]);
+        Route::post("insert", [\App\Http\Controllers\Api\DrugController::class, "insert"]);
     });
 
     Route::post("add_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "insert"]);
     Route::delete("delete_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "delete"]);
     Route::patch("update_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "update"]);
+    Route::get("get_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "get"]);
 
     Route::post("add_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "insert"]);
     Route::delete("delete_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "delete"]);
     Route::post("update_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "update"]);
+    Route::get("get_patient_drug", [\App\Http\Controllers\Api\PatientDrugController::class, "get"]);
 
     Route::get("dashboard", [\App\Http\Controllers\Api\DashboardController::class, "index"]);
     Route::post("update", [\App\Http\Controllers\Api\UserController::class, "update"]);
