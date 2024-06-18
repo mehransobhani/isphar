@@ -38,7 +38,6 @@ class PatientSpecialConditionController extends Controller
 
     public function delete(Request $request)
     {
-        dump($request->id);
         PatientSpecialCondition::findOrFail($request->id)->delete();
         return $this->apiResponse(["message" => "Completed"]);
     }
