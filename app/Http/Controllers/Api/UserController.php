@@ -48,4 +48,9 @@ class UserController extends Controller
         $token = $user->createToken('auth-token')->plainTextToken;
         return $this->apiResponse(['token' => $token]);
     }
+
+    public function get(){
+        $user = myUser();
+        return $this->apiResponse(["data" => $user]);
+    }
 }
