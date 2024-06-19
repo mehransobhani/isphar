@@ -91,15 +91,15 @@ class PatientController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required|string',
-            'fullname' => 'optional|string',
-            'national_code' => 'optional|size:10',
-            'birth_date' => 'optional|date',
-            'gender' => 'optional|in:man,woman',
-            'admission_date' => 'optional|date',
-            'file_number' => 'optional|string',
-            'room_name' => 'optional|string',
-            'age' => 'optional|string',
-            'section_name' => 'optional|string',
+            'fullname' => 'nullable|string',
+            'national_code' => 'nullable|size:10',
+            'birth_date' => 'nullable|date',
+            'gender' => 'nullable|in:man,woman',
+            'admission_date' => 'nullable|date',
+            'file_number' => 'nullable|string',
+            'room_name' => 'nullable|string',
+            'age' => 'nullable|string',
+            'section_name' => 'nullable|string',
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
