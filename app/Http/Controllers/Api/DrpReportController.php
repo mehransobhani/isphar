@@ -25,6 +25,9 @@ class DrpReportController extends Controller
                 $query->with(["drug"=>function($query){
                     $query->select("drugs.*");
                 }])->select("patient_drugs.*");
+            }])
+            ->with(["PatientSpecialCondition"=>function($query){
+                $query->select("weight, height");
             }]);
         }])->find($id);
         return $this->apiResponse(["data" => $drpReport]);

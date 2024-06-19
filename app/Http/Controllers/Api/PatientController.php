@@ -41,9 +41,6 @@ class PatientController extends Controller
             ->with(["patientHistory"=> function ($query) {
                 return $query->with("user:id,name");
             }])
-            ->with(["PatientSpecialCondition"=>function($query){
-                $query->select("weight, height");
-            }])
             ->with("drpReport")
             ->findOrFail($id);
         return $this->apiResponse(["data" => $patient]);
