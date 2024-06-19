@@ -44,7 +44,7 @@ Route::group(["as" => "user", "prefix" => "user", "middleware" => "auth:sanctum"
         Route::get("/", [\App\Http\Controllers\Api\DrpReportController::class, "index"]);
         Route::delete("delete", [\App\Http\Controllers\Api\DrpReportController::class, "delete"]);
         Route::post("insert", [\App\Http\Controllers\Api\DrpReportController::class, "insert"]);
-        Route::patch("update", [\App\Http\Controllers\Api\DrpReportController::class, "update"]);
+        Route::post("update", [\App\Http\Controllers\Api\DrpReportController::class, "update"]);
         Route::get("search", [\App\Http\Controllers\Api\DrpReportController::class, "search"]);
         Route::get("/{id}", [\App\Http\Controllers\Api\DrpReportController::class, "find"]);
 
