@@ -88,6 +88,7 @@ class PatientController extends Controller
 
     public function update(Request $request)
     {
+        Artisan::call('optimize:clear');
         $validator = Validator::make($request->all(), [
             'id' => 'required',
             'fullname' => 'optional|string',
