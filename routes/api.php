@@ -59,7 +59,7 @@ Route::group(["as" => "user", "prefix" => "user", "middleware" => "auth:sanctum"
         Route::post("insert", [\App\Http\Controllers\Api\DrugController::class, "insert"]);
     });
 
-    Route::post("add_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "insert"]);
+    Route::post("add_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "insert2"]);
     Route::delete("delete_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "delete"]);
     Route::patch("update_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "update"]);
     Route::get("get_special_conditions", [\App\Http\Controllers\Api\PatientSpecialConditionController::class, "get"]);
