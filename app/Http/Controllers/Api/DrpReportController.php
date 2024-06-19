@@ -21,7 +21,9 @@ class DrpReportController extends Controller
     public function find($id)
     {
         $drpReport = DrpReport::with(["patient"=>function ($query) {
-            return $query->with("patientDrug");
+            return $query->with(["patientDrug"=>function($query2){
+                return $query2->select("drug_id");
+            }]);
         }])->find($id);
         return $this->apiResponse(["data" => $drpReport]);
     }
