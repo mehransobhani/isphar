@@ -38,7 +38,7 @@ class PatientController extends Controller
         $patient = Patient::with("PatientSpecialCondition")
             ->with("patientDrug")
             ->with(["patientHistory"=> function ($query) {
-                return $query->with("user");
+                return $query->with("user")->select('name');;
             }])
             ->with("drpReport")
             ->findOrFail($id);
