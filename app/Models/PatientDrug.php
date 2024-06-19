@@ -19,4 +19,8 @@ class PatientDrug extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function drug()
+    {
+        return $this->belongsTo(Drug::class);
+    }
 }
