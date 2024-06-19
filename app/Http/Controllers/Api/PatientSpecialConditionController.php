@@ -25,6 +25,7 @@ class PatientSpecialConditionController extends Controller
             "soe_masrafe_mavad" => "required|in:1,0",
             "anti_biotic" => "required|in:1,0",
             "vaksan" => "required|in:1,0",
+            "bardari" => "required|in:1,0",
             "peyvand_ozv" => "required|in:1,0",
         ]);
         if ($validator->fails()) {
