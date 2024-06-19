@@ -38,8 +38,6 @@ class PatientDrugController extends Controller
     }
     public function update(Request $request)
     {
-        dd($request->all());
-        dd("sdf");
         $validator = Validator::make($request->all(), [
             'id' => 'required|numeric',
             'patient_id' => 'required|numeric',
