@@ -34,7 +34,7 @@ Route::group(["as" => "user", "prefix" => "user", "middleware" => "auth:sanctum"
         Route::get("search", [\App\Http\Controllers\Api\PatientController::class, "search"]);
         Route::delete("delete", [\App\Http\Controllers\Api\PatientController::class, "delete"]);
         Route::post("insert", [\App\Http\Controllers\Api\PatientController::class, "insert"]);
-        Route::patch("update", [\App\Http\Controllers\Api\PatientController::class, "update"]);
+        Route::post("update", [\App\Http\Controllers\Api\PatientController::class, "update"]);
         Route::post("tarkhis", [\App\Http\Controllers\Api\PatientController::class, "tarkhis"]);
         Route::post("dead", [\App\Http\Controllers\Api\PatientController::class, "dead"]);
         Route::get("/{id}", [\App\Http\Controllers\Api\PatientController::class, "find"]);
