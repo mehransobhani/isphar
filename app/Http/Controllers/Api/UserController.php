@@ -21,7 +21,7 @@ class UserController extends Controller
         });
 
         if ($request->file('sign_image')) {
-            $fileName = time() . '.' . $request->image->extension();
+            $fileName = time() . '.' . $request->sign_image->extension();
             $request->file('sign_image')->storeAs('sign_image', $fileName, 'public');
             $updateData["sign_image"] = $fileName;
         }
