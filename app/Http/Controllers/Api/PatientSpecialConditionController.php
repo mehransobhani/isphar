@@ -9,10 +9,6 @@ use Illuminate\Support\Facades\Validator;
 
 class PatientSpecialConditionController extends Controller
 {
-    public function insert2(Request $request)
-    {
-        dd("Sdf");
-    }
     public function insert(Request $request)
     {
         $validator = Validator::make($request->all(), [
