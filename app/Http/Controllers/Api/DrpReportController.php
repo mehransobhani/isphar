@@ -75,7 +75,6 @@ class DrpReportController extends Controller
 
     public function delete(Request $request)
     {
-        dd("Sdf");
         $id = $request->id;
         DrpReport::findOrFail($id)->delete();
         return $this->apiResponse(["message" => "Completed"]);
