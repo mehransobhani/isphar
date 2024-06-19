@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Artisan;
 
 class PatientController extends Controller
 {
