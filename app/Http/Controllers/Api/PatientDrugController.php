@@ -58,6 +58,7 @@ class PatientDrugController extends Controller
     public function get(Request $request)
     {
         dd($request->all());
+        dd("sdf");
         $data=PatientDrug::where("patient_id", $request->patient_id)->latest("id")->get();
         return $this->apiResponse(["data"=>$data]);
     }
