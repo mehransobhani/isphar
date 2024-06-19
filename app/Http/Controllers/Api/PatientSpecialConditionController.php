@@ -15,7 +15,6 @@ class PatientSpecialConditionController extends Controller
     }
     public function insert(Request $request)
     {
-        dd("Sdf");
         $validator = Validator::make($request->all(), [
             "weight" => "required",
             "height" => "required",
