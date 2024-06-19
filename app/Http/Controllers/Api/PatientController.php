@@ -88,8 +88,6 @@ class PatientController extends Controller
 
     public function update(Request $request)
     {
-        dd($request->all());
-        dd("sdf");
         $validator = Validator::make($request->all(), [
             'id' => 'required',
             'fullname' => 'optional|string',
