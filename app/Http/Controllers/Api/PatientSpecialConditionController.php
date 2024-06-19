@@ -31,7 +31,7 @@ class PatientSpecialConditionController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $request["created_at"] = createdAt();
-        $request["user_id"] = userId();
+        // $request["user_id"] = userId();
         $model=PatientSpecialCondition::create($request->all());
         return $this->apiResponse(["message" => "Completed" , "id"=>$model->id]);
     }
