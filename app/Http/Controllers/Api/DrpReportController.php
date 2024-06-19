@@ -20,7 +20,7 @@ class DrpReportController extends Controller
     }
     public function find($id)
     {
-        $drpReport = DrpReport::with("patient")->find($id);
+        $drpReport = DrpReport::with("patient")->with("patientDrug")->find($id);
         return $this->apiResponse(["data" => $drpReport]);
     }
 
