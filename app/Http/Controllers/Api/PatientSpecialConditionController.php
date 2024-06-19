@@ -31,11 +31,11 @@ class PatientSpecialConditionController extends Controller
             "vaksan" => "required|in:1,0",
             "peyvand_ozv" => "required|in:1,0",
         ]);
+        $request["user_id"] = userId();
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $request["created_at"] = createdAt();
-        $request["user_id"] = userId();
         $model=PatientSpecialCondition::create($request->all());
         return $this->apiResponse(["message" => "Completed" , "id"=>$model->id]);
     }
