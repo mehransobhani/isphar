@@ -64,13 +64,7 @@ class DrpReportController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'patient_id' => 'required',
-            'egfr_mdrd' => 'required',
-            'egfr_ckd_epi' => 'required',
-            'crcl' => 'required',
-            'child_pough_score' => 'required',
-            'source' => 'required',
-            'form' => 'required',
+            'id' => 'required'
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
