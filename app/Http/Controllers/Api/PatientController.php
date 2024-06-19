@@ -89,7 +89,7 @@ class PatientController extends Controller
     public function update(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => 'required',
+            'id' => 'required|string',
             'fullname' => 'optional|string',
             'national_code' => 'optional|size:10',
             'birth_date' => 'optional|date',
