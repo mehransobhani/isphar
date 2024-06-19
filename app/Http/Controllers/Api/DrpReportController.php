@@ -63,7 +63,6 @@ class DrpReportController extends Controller
 
     public function update(Request $request)
     {
-        dd("sdf");
         $validator = Validator::make($request->all(), [
             'id' => 'required'
         ]);
