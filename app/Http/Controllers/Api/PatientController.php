@@ -13,7 +13,7 @@ class PatientController extends Controller
 {
     public function index(Request $request)
     {
-        Artisan::call("optimize:clear");
+        // Artisan::call("optimize:clear");
         if ($request->page == -1) {
             $patients = Patient::with("drpReport")->latest("id")->get();
             foreach ($patients as $patient) {
