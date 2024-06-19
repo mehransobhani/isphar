@@ -22,7 +22,7 @@ class DrpReportController extends Controller
     {
         $drpReport = DrpReport::with(["patient"=>function ($query) {
             $query->with(["patientDrug"=>function($query){
-                $query->with(["drugs"=>function($query){
+                $query->with(["drug"=>function($query){
                     $query->select("drugs.*");
                 }])->select("patient_drugs.*");
             }]);
