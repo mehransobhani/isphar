@@ -11,8 +11,22 @@ class PatientSpecialConditionController extends Controller
 {
     public function insert(Request $request)
     {
+        dd("Sdf");
         $validator = Validator::make($request->all(), [
             "weight" => "required",
+            "height" => "required",
+            "patient_id" => "required",
+            "naresayi_koliavi" => "required|in:1,0",
+            "masrafe_sigar" => "required|in:1,0",
+            "kambode_g6pd" => "required|in:1,0",
+            "naresayi_kabedi" => "required|in:1,0",
+            "radiology" => "required|in:1,0",
+            "masrafe_alcol" => "required|in:1,0",
+            "hasasiate_daruyi" => "required|in:1,0",
+            "soe_masrafe_mavad" => "required|in:1,0",
+            "anti_biotic" => "required|in:1,0",
+            "vaksan" => "required|in:1,0",
+            "peyvand_ozv" => "required|in:1,0",
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
