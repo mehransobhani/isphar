@@ -19,7 +19,7 @@ class DrpReportController extends Controller
                         $query->select("drugs.*");
                     }])->select("patient_drugs.*");
                 }])
-                ->with(["PatientSpecialCondition:id,weight,height"]);
+                ->with(["PatientSpecialCondition"]);
             }])->latest("id")->get();
         else
             $drpReport = DrpReport::with("patient")->latest("id")->paginate();
@@ -33,7 +33,7 @@ class DrpReportController extends Controller
                     $query->select("drugs.*");
                 }])->select("patient_drugs.*");
             }])
-            ->with(["PatientSpecialCondition:id,weight,height"]);
+            ->with(["PatientSpecialCondition"]);
         }])->find($id);
         return $this->apiResponse(["data" => $drpReport]);
     }
@@ -42,10 +42,10 @@ class DrpReportController extends Controller
     {
         $q = $request->q;
         $drpReport = DrpReport::whereHas("patient", function ($query) use ($q) {
-            $query->with(["PatientSpecialCondition"]);
             $query->where('fullname', 'like', "%{$q}%")
                 ->orWhere('national_code', 'like', "%{$q}%")
                 ->orWhere('file_number', 'like', "%{$q}%");
+            $query->with(["PatientSpecialCondition"]);
         })->paginate();
         return $this->apiResponse(["data" => $drpReport]);
     }
