@@ -55,8 +55,7 @@ class DrpReportController extends Controller
             $query->where('fullname', 'like', "%{$q}%")
                 ->orWhere('national_code', 'like', "%{$q}%")
                 ->orWhere('file_number', 'like', "%{$q}%");
-            $query->with(["PatientSpecialCondition"]);
-        })->paginate();
+        })->with(["PatientSpecialCondition"])->paginate();
         return $this->apiResponse(["data" => $drpReport]);
     }
 
