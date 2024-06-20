@@ -37,7 +37,7 @@ class DrpReportController extends Controller
     {
         $q = $request->q;
         $drpReport = DrpReport::whereHas("patient", function ($query) use ($q) {
-            $query->with(["PatientSpecialCondition"]);
+            $q->with(["PatientSpecialCondition"]);
             $query->where('fullname', 'like', "%{$q}%")
                 ->orWhere('national_code', 'like', "%{$q}%")
                 ->orWhere('file_number', 'like', "%{$q}%");
