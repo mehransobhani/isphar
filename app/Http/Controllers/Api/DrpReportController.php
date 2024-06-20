@@ -12,7 +12,7 @@ class DrpReportController extends Controller
   
     public function index(Request $request)
     {
-        if ($request->page == -1)
+        if ($request->page == -1){
             $drpReport = DrpReport::with(["patient"=>function ($query) {
                 $query->with(["patientDrug"=>function($query){
                     $query->with(["drug"=>function($query){
@@ -21,8 +21,18 @@ class DrpReportController extends Controller
                 }])
                 ->with(["PatientSpecialCondition"]);
             }])->latest("id")->get();
-        else
+        }else if($request->page != -1){
             $drpReport = DrpReport::with("patient")->latest("id")->paginate();
+        }else if(isset($request->patient_id)){
+            $drpReport = DrpReport::with(["patient"=>function ($query) {
+                $query->with(["patientDrug"=>function($query){
+                    $query->with(["drug"=>function($query){
+                        $query->select("drugs.*");
+                    }])->select("patient_drugs.*");
+                }])
+                ->with(["PatientSpecialCondition"]);
+            }])->latest("id")->get();
+        }
         return $this->apiResponse(["data" => $drpReport]);
     }
     public function find($id)
