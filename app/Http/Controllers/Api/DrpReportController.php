@@ -12,7 +12,6 @@ class DrpReportController extends Controller
   
     public function index(Request $request)
     {
-        dd($request->page);
         if ($request->page == -1){
             $drpReport = DrpReport::with(["patient"=>function ($query) {
                 $query->with(["patientDrug"=>function($query){
@@ -22,7 +21,7 @@ class DrpReportController extends Controller
                 }])
                 ->with(["PatientSpecialCondition"]);
             }])->latest("id")->get();
-        }else if($request->page != -1){
+        }else if($request->page != -1 && $request->page != null){
             $drpReport = DrpReport::with("patient")->latest("id")->paginate();
         }else if(isset($request->patient_id)){
             $drpReport = DrpReport::with(["patient"=>function ($query) {
