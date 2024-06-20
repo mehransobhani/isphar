@@ -35,7 +35,7 @@ class DrpReportController extends Controller
                 }])->select("patient_drugs.*");
             }])
             ->with(["PatientSpecialCondition"=>function($query){
-                $query->select(["weight","height"]);
+                $query->select("weight");
             }]);
         }])->find($id);
         return $this->apiResponse(["data" => $drpReport]);
