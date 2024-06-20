@@ -12,7 +12,7 @@ class DrpReportController extends Controller
   
     public function index(Request $request)
     {
-        dd("sdf");
+        dd($request->page);
         if ($request->page == -1){
             $drpReport = DrpReport::with(["patient"=>function ($query) {
                 $query->with(["patientDrug"=>function($query){
