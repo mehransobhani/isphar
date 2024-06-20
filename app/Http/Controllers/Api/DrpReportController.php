@@ -24,7 +24,6 @@ class DrpReportController extends Controller
         }else if($request->page != -1 && $request->page != null){
             $drpReport = DrpReport::with("patient")->latest("id")->paginate();
         }else if(isset($request->patient_id)){
-            echo $request->patient_id;
             $drpReport = DrpReport::with(["patient"=>function ($query) {
                 $query->with(["patientDrug"=>function($query){
                     $query->with(["drug"=>function($query){
