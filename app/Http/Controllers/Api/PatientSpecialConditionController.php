@@ -44,12 +44,10 @@ class PatientSpecialConditionController extends Controller
 
     public function update(Request $request)
     {
-        var_dump($request->id);
         $validator = Validator::make($request->all(), [
             "id" => "required",
             "weight" => "required",
             "height" => "required",
-            "patient_id" => "required|numeric",
             "naresayi_koliavi" => "required|in:1,0",
             "masrafe_sigar" => "required|in:1,0",
             "kambode_g6pd" => "required|in:1,0",
