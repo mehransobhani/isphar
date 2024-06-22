@@ -13,9 +13,9 @@ class PatientController extends Controller
 {
     public function index(Request $request)
     {
-        Artisan::call("optimize:clear");
-        Artisan::call("cache:clear");
-        Artisan::call("route:clear");
+        // Artisan::call("optimize:clear");
+        // Artisan::call("cache:clear");
+        // Artisan::call("route:clear");
         if ($request->page == -1) {
             $patients = Patient::with("drpReport")->latest("id")->get();
             foreach ($patients as $patient) {
@@ -38,7 +38,7 @@ class PatientController extends Controller
 
     public function find($id)
     {
-        $patient = Patient::with("PatientSpecialCondition")
+        $patient = Patient::with("PatientSpecialCondition:id,weight")
             ->with("patientDrug")
             ->with(["patientHistory"=> function ($query) {
                 return $query->with("user:id,name");

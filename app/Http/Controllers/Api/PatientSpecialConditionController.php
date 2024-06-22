@@ -65,7 +65,6 @@ class PatientSpecialConditionController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $inputs = removeNullFields($request->all());
-        var_dump($inputs);
         PatientSpecialCondition::where("id", $request->id)->update($inputs);
         return $this->apiResponse(["message" => "Completed"]);
     }
