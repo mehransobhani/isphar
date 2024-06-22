@@ -64,7 +64,7 @@ class PatientSpecialConditionController extends Controller
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
-        $inputs = array_filter($linksArray->all());
+        $inputs = array_filter($request->all());
         var_dump($inputs);
         PatientSpecialCondition::where("id", $request->id)->update($inputs);
         return $this->apiResponse(["message" => "Completed"]);
