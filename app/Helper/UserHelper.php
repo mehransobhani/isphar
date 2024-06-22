@@ -9,9 +9,9 @@ function myUser()
 }
 function removeNullFields($array){
     var_dump($array);
-    for($k=0; $k<count($array); $k++){
-        if($array[$k]=="null"){
-            unset($array[$k]);
+    foreach($array as $key=>$value){
+        if($value=="null"){
+            unset($array[$key]);
         }
     }
     return array_values($array);
