@@ -33,6 +33,7 @@ class PatientDrugController extends Controller
     public function delete(Request $request)
     {
         $id=$request->id;
+        var_dump($id);
         PatientDrug::findOrFail($id)->delete();
         return $this->apiResponse(["message"=>"Completed"]);
     }
