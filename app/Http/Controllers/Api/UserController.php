@@ -52,7 +52,7 @@ class UserController extends Controller
     public function get(){
         $user = myUser();
         if($user->sign_image != null){
-            $user->sign_image = asset('storage/contents/' . $user->sign_image);
+            $user->sign_image = asset('storage/sign_image/' . $user->sign_image);
         }
         return $this->apiResponse(["data" => $user]);
     }
