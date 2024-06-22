@@ -38,9 +38,7 @@ class PatientController extends Controller
 
     public function find($id)
     {
-        $patient = Patient::with(["PatientSpecialCondition"=> function ($query) {
-            return $query->select("id", "weight");
-        }])
+        $patient = Patient::with(["PatientSpecialCondition"])
             ->with("patientDrug")
             ->with(["patientHistory"=> function ($query) {
                 return $query->with("user:id,name");
