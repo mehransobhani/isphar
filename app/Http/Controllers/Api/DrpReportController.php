@@ -72,10 +72,6 @@ class DrpReportController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'patient_id' => 'required',
-            'egfr_mdrd' => 'required',
-            'egfr_ckd_epi' => 'required',
-            'crcl' => 'required',
-            'child_pough_score' => 'required',
             'source' => 'required',
             'form' => 'required',
         ]);
