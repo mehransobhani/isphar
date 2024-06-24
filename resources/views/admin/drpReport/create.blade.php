@@ -77,48 +77,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row">
 
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="egfr_mdrd">egfr_mdrd : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="egfr_mdrd"
-                                                               name="egfr_mdrd">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="egfr_ckd_epi">egfr_ckd_epi : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="egfr_ckd_epi"
-                                                               name="egfr_ckd_epi">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
 
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="crcl">crcl : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="crcl"
-                                                               name="crcl">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-6 col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="child_pough_score">child_pough_score : </label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="child_pough_score"
-                                                               name="child_pough_score">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="row">
 
                                             <div class="col-lg-6 col-md-6 col-12">

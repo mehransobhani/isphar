@@ -116,7 +116,7 @@
       </li>
 
         <li>
-        <a href= "{{route("content.index")}}" class="waves-effect">
+        <a href= "{{route("post_cat.index")}}" class="waves-effect">
           <i class="fa fa-list zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu"> دسته بندی بلاگ
               <span class="fa arrow"></span>
@@ -124,7 +124,7 @@
         </a>
       </li>
         <li>
-        <a href= "{{route("content.index")}}" class="waves-effect">
+        <a href= "{{route("post.index")}}" class="waves-effect">
           <i class="fa fa-paper-plane zmdi-hc-fw fa-fw"></i>
           <span class="hide-menu">بلاگ
               <span class="fa arrow"></span>

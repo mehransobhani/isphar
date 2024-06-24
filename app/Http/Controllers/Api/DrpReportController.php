@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class DrpReportController extends Controller
 {
-  
+
     public function index(Request $request)
     {
         if ($request->page == -1){
@@ -91,6 +91,11 @@ class DrpReportController extends Controller
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
+        }
+        $model=DrpReport::findOrFail($request->id);
+        if($model->user_id!=userId())
+        {
+            return $this->apiResponse(["message" => "Forbidden",403]);
         }
         DrpReport::where("id", $request->id)->update($request->all());
         return $this->apiResponse(["message" => "Completed"]);

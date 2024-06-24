@@ -65,6 +65,13 @@ class PatientSpecialConditionController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $inputs = removeNullFields($request->all());
+
+        $model=PatientSpecialCondition::findOrFail($request->id);
+        if($model->user_id!=userId())
+        {
+            return $this->apiResponse(["message" => "Forbidden",403]);
+        }
+
         PatientSpecialCondition::where("id", $request->id)->update($inputs);
         return $this->apiResponse(["message" => "Completed"]);
     }
