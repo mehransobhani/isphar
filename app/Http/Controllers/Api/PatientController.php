@@ -19,7 +19,6 @@ class PatientController extends Controller
         if ($request->page == -1) {
             $patients = Patient::with("drpReport")->latest("id")->get();
             foreach ($patients as $patient) {
-                $patient->drugss = $patient->patientDrug;
                 $patient->talfigh_paziresh = $patient->patientDrug->isNotEmpty();
                 $patient->talfigh_paziresh_date = $patient->patientDrug->isNotEmpty() ? $patient->patientDrug->max("created_at") : null;
                 unset($patient["patientDrug"]);
@@ -27,6 +26,7 @@ class PatientController extends Controller
         } else {
             $patients = Patient::with("drpReport")->latest("id")->paginate();
             $patients->getCollection()->transform(function ($patient) {
+                $patient->drugss = $patient->patientDrug;
                 $patient->talfigh_paziresh = $patient->patientDrug->isNotEmpty();
                 $patient->talfigh_paziresh_date = $patient->patientDrug->isNotEmpty() ? $patient->patientDrug->max("created_at") : null;
                 unset($patient["patientDrug"]);
