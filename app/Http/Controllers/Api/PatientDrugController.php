@@ -12,10 +12,11 @@ class PatientDrugController extends Controller
 {
     public function insert(Request $request)
     {
+        $params = faToEnNumbers($request->all());
 
-        $request["created_at"]=createdAt();
-        $request["user_id"]=userId();
-        $validator = Validator::make($request->all(), [
+        $params["created_at"]=createdAt();
+        $params["user_id"]=userId();
+        $validator = Validator::make($params, [
             'patient_id' => 'required|numeric',
              'name' => 'required|string',
              'type' => 'required|string|in:1,2',
@@ -28,7 +29,7 @@ class PatientDrugController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
 
-        $model=PatientDrug::create($request->all());
+        $model=PatientDrug::create($params);
         return $this->apiResponse(["message"=>"Completed" , "id"=>$model->id]);
     }
     public function delete(Request $request)
@@ -39,7 +40,8 @@ class PatientDrugController extends Controller
     }
     public function update(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $params = faToEnNumbers($request->all());
+        $validator = Validator::make($params, [
             'id' => 'required|numeric',
             'patient_id' => 'required|numeric',
             'name' => 'required|string',
@@ -53,12 +55,12 @@ class PatientDrugController extends Controller
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
-        $model=PatientDrug::findOrFail($request->id);
+        $model=PatientDrug::findOrFail($params["id"]);
         if($model->user_id!=userId())
         {
             return $this->apiResponse(["message" => "Forbidden",403]);
         }
-        PatientDrug::where("id",$request->id)->update($request->all());
+        PatientDrug::where("id",$params->id)->update($params);
         return $this->apiResponse(["message"=>"Completed"]);
     }
     public function get(Request $request)
