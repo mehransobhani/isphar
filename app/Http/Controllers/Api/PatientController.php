@@ -84,8 +84,8 @@ class PatientController extends Controller
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
-        $request["created_date"] = createdAt();
-        $request["user_id"] = myUser()->id;
+        $params["created_date"] = createdAt();
+        $params["user_id"] = myUser()->id;
         $Patient = Patient::create($params);
         PatientHistoryBuilder::insert($Patient->id);
         return $this->apiResponse(["message" => "Completed", "id" => $Patient->id]);
