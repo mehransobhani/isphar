@@ -29,8 +29,8 @@ class PatientDrugController extends Controller
 
         var_dump($request->all());
 
-        $model=PatientDrug::create($request->all());
-        return $this->apiResponse(["message"=>"Completed" , "id"=>$model->id]);
+        // $model=PatientDrug::create($request->all());
+        return $this->apiResponse(["message"=>"Completed" , "id"=>"1"]);
     }
     public function delete(Request $request)
     {
