@@ -69,7 +69,8 @@ class PatientController extends Controller
 
     public function insert(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $params = faToEnNumbers($request->all());
+        $validator = Validator::make($params, [
             'fullname' => 'required|string',
             'national_code' => 'required|size:10|unique:patients',
             'birth_date' => 'required|date',
@@ -85,7 +86,7 @@ class PatientController extends Controller
         }
         $request["created_date"] = createdAt();
         $request["user_id"] = myUser()->id;
-        $Patient = Patient::create($request->all());
+        $Patient = Patient::create($params);
         PatientHistoryBuilder::insert($Patient->id);
         return $this->apiResponse(["message" => "Completed", "id" => $Patient->id]);
     }
