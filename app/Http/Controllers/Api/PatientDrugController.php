@@ -11,6 +11,9 @@ class PatientDrugController extends Controller
 {
     public function insert(Request $request)
     {
+
+        $request["created_at"]=createdAt();
+        $request["user_id"]=userId();
         $validator = Validator::make($request->all(), [
             'patient_id' => 'required|numeric',
              'name' => 'required|string',
@@ -24,13 +27,8 @@ class PatientDrugController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
 
-        $request["created_at"]=createdAt();
-        $request["user_id"]=userId();
-
-        var_dump($request->all());
-
-        // $model=PatientDrug::create($request->all());
-        return $this->apiResponse(["message"=>"Completed" , "id"=>"1"]);
+        $model=PatientDrug::create($request->all());
+        return $this->apiResponse(["message"=>"Completed" , "id"=>$model->id]);
     }
     public function delete(Request $request)
     {
