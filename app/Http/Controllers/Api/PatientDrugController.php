@@ -60,7 +60,7 @@ class PatientDrugController extends Controller
         {
             return $this->apiResponse(["message" => "Forbidden",403]);
         }
-        PatientDrug::where("id",$params->id)->update($params);
+        PatientDrug::where("id",$request->id)->update($params);
         return $this->apiResponse(["message"=>"Completed"]);
     }
     public function get(Request $request)
