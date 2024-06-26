@@ -9,7 +9,6 @@ class PatientDrug extends Model
 {
     use HasFactory;
     protected $guarded=["id"];
-    protected $fillable=["drug_id"];
     public $timestamps=false;
     public function patient()
     {
