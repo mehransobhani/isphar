@@ -18,7 +18,10 @@ class Patient extends Model
     public function patientDrug()
     {
         return $this->hasMany(PatientDrug::class,"patient_id","id")
-        ;
+        ->whereHas('users', function (Builder $query) {
+            $query->where('patient_drugs.user_id', 'users.id'); // Add your condition here
+        })
+        ->leftjoin('drugs', 'drugs.id', '=', 'patient_drugs.drug_id')->select("patient_drugs.*");
     }
     public function patientHistory()
     {
