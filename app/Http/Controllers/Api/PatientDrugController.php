@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\PatientDrug;
+use App\Models\PatientSpecialCondition;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -51,6 +52,11 @@ class PatientDrugController extends Controller
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
+        }
+        $model=PatientDrug::findOrFail($request->id);
+        if($model->user_id!=userId())
+        {
+            return $this->apiResponse(["message" => "Forbidden",403]);
         }
         PatientDrug::where("id",$request->id)->update($request->all());
         return $this->apiResponse(["message"=>"Completed"]);
