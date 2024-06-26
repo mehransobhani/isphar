@@ -27,6 +27,8 @@ class PatientDrugController extends Controller
         $request["created_at"]=createdAt();
         $request["user_id"]=userId();
 
+        var_dump($request->all());
+
         $model=PatientDrug::create($request->all());
         return $this->apiResponse(["message"=>"Completed" , "id"=>$model->id]);
     }
