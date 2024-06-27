@@ -25,9 +25,7 @@ class DrpReportController extends Controller
             ->where("users.id", userId())->latest("drp_reports.id")
             ->latest("id")->get();
         }else if($request->page != -1 && $request->page != null){
-            $drpReport = DrpReport::with("patient")
-            ->join("users", "users.id", "=", "drp_reports.user_id")
-            ->where("users.id", userId())->latest("drp_reports.id")->paginate();
+            $drpReport = DrpReport::with(["users","patient"])->paginate();
         }else if(isset($request->patient_id)){
             $drpReport = DrpReport::with(["patient"=>function ($query) {
                 $query->with(["patientDrug"=>function($query){
@@ -45,16 +43,14 @@ class DrpReportController extends Controller
     }
     public function find($id)
     {
-        $drpReport = DrpReport::
-        with(["patient"=>function ($query) {
+        $drpReport = DrpReport::with(["patient"=>function ($query) {
             $query->with(["patientDrug"=>function($query){
                 $query->with(["drug"=>function($query){
                     $query->select("drugs.*");
                 }])->select("patient_drugs.*");
             }])
             ->with(["PatientSpecialCondition"]);
-        }, "users"])
-        ->where("drp_reports.id",$id);
+        }])->where("drp_reports.id",$id);
         return $this->apiResponse(["data" => $drpReport]);
     }
 
