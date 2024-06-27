@@ -22,6 +22,7 @@ class DrpReportController extends Controller
                 ->with(["PatientSpecialCondition"]);
             }])
             ->join("users", "users.id", "=", "drp_reports.user_id")
+            ->where("users.id", userId())->latest("drp_reports.id")
             ->latest("id")->get();
         }else if($request->page != -1 && $request->page != null){
             $drpReport = DrpReport::with("patient")
@@ -37,6 +38,7 @@ class DrpReportController extends Controller
                 ->with(["PatientSpecialCondition"]);
             }])
             ->join("users", "users.id", "=", "drp_reports.user_id")
+            ->where("users.id", userId())->latest("drp_reports.id")
             ->find($request->patient_id);
         }
         return $this->apiResponse(["data" => $drpReport]);
@@ -50,7 +52,9 @@ class DrpReportController extends Controller
                 }])->select("patient_drugs.*");
             }])
             ->with(["PatientSpecialCondition"]);
-        }])->find($id);
+        }])
+        ->join("users", "users.id", "=", "drp_reports.user_id")
+        ->where("users.id", userId())->latest("drp_reports.id")->find($id);
         return $this->apiResponse(["data" => $drpReport]);
     }
 
@@ -62,6 +66,8 @@ class DrpReportController extends Controller
                 ->orWhere('national_code', 'like', "%{$q}%")
                 ->orWhere('file_number', 'like', "%{$q}%");
         })
+        ->join("users", "users.id", "=", "drp_reports.user_id")
+        ->where("users.id", userId())->latest("drp_reports.id")
         ->with(["patient"=>function ($query) {
             $query->with(["patientDrug"=>function($query){
                 $query->with(["drug"=>function($query){
