@@ -14,7 +14,7 @@ class CalcsHistoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'type' => 'required|string',
-            'patient_id' => 'required|string',
+            'patient_id' => 'required',
             'result' => 'required',
         ]);
         if ($validator->fails()) {
