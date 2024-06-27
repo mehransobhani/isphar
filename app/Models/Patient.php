@@ -17,7 +17,8 @@ class Patient extends Model
     }
     public function patientDrug()
     {
-        return $this->hasManyThrough(PatientDrug::class, User::class,"id", "patient_id", "user_id", "id")
+        return $this->hasMany(PatientDrug::class,"patient_id", "id")
+        ->join("users", "users.id", "=", "patient_drugs.user_id")
         ->leftjoin('drugs', 'drugs.id', '=', 'patient_drugs.drug_id')->select("patient_drugs.*");
     }
     public function patientHistory()
