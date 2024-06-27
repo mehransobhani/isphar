@@ -24,7 +24,8 @@ class DrpReportController extends Controller
             ->join("users", "users.id", "=", "drp_reports.user_id")
             ->latest("id")->get();
         }else if($request->page != -1 && $request->page != null){
-            $drpReport = DrpReport::with("patient")->latest("id")->paginate();
+            $drpReport = DrpReport::with("patient")
+            ->join("users", "users.id", "=", "drp_reports.user_id")->latest("id")->paginate();
         }else if(isset($request->patient_id)){
             $drpReport = DrpReport::with(["patient"=>function ($query) {
                 $query->with(["patientDrug"=>function($query){
