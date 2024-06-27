@@ -54,7 +54,7 @@ class DrpReportController extends Controller
             ->with(["PatientSpecialCondition"]);
         }])
         ->join("users", "users.id", "=", "drp_reports.user_id")
-        ->where("users.id", userId())->latest("drp_reports.id")->find($id);
+        ->where("users.id", userId())->latest("drp_reports.id")->where("drp_reports.id",$id);
         return $this->apiResponse(["data" => $drpReport]);
     }
 
