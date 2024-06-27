@@ -14,6 +14,7 @@ class CalcsHistoryController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'type' => 'required|string',
+            'patient_id' => 'required|string',
             'result' => 'required',
         ]);
         if ($validator->fails()) {
@@ -42,7 +43,8 @@ class CalcsHistoryController extends Controller
         {
             return $this->apiResponse(['error' => 'type is not valid !'], 400);
         }
-        $CalcsHistory=CalcsHistory::where("type",$request->type)->latest("id")->limit(10)->get();
+        $CalcsHistory=CalcsHistory::where("type",$request->type)
+        ->where("patient_id", $request->patient_id)->latest("id")->limit(10)->get();
         return $this->apiResponse(['data' => $CalcsHistory]);
 
     }
