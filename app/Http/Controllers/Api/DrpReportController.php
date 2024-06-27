@@ -53,7 +53,7 @@ class DrpReportController extends Controller
                 }])->select("patient_drugs.*");
             }])
             ->with(["PatientSpecialCondition"]);
-        }])->where("drp_reports.id",$id);
+        }])->find($id);
         return $this->apiResponse(["data" => $drpReport]);
     }
 
