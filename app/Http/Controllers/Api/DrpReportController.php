@@ -45,7 +45,9 @@ class DrpReportController extends Controller
     }
     public function find($id)
     {
-        $drpReport = DrpReport::with(["patient"=>function ($query) {
+        $drpReport = DrpReport::join("users", "users.id", "=", "drp_reports.user_id")
+        ->where("users.id", userId())->latest("drp_reports.id")
+        ->with(["patient"=>function ($query) {
             $query->with(["patientDrug"=>function($query){
                 $query->with(["drug"=>function($query){
                     $query->select("drugs.*");
@@ -53,8 +55,7 @@ class DrpReportController extends Controller
             }])
             ->with(["PatientSpecialCondition"]);
         }])
-        ->join("users", "users.id", "=", "drp_reports.user_id")
-        ->where("users.id", userId())->latest("drp_reports.id")->where("drp_reports.id",$id);
+        ->where("drp_reports.id",$id);
         return $this->apiResponse(["data" => $drpReport]);
     }
 
