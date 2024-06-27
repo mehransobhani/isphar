@@ -20,7 +20,9 @@ class DrpReportController extends Controller
                     }])->select("patient_drugs.*");
                 }])
                 ->with(["PatientSpecialCondition"]);
-            }])->latest("id")->get();
+            }])
+            ->join("users", "users.id", "=", "drp_reports.user_id")
+            ->latest("id")->get();
         }else if($request->page != -1 && $request->page != null){
             $drpReport = DrpReport::with("patient")->latest("id")->paginate();
         }else if(isset($request->patient_id)){
