@@ -23,7 +23,6 @@ class AuthController extends Controller
         }
         $request->merge(["mobile"=>convertPersianArabicToEnglish($request->mobile)]);
         $credentials = $request->only('mobile', 'password');
-        var_dump($credentials);
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $user->createToken('auth-token')->plainTextToken;
