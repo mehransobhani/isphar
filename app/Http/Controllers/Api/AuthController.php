@@ -22,8 +22,8 @@ class AuthController extends Controller
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
         $request->mobile = convertPersianArabicToEnglish($request->mobile);
-        var_dump($request->mobile);
         $credentials = $request->only('mobile', 'password');
+        var_dump($credentials);
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
             $token = $user->createToken('auth-token')->plainTextToken;
