@@ -35,7 +35,12 @@ class PatientDrugController extends Controller
     public function delete(Request $request)
     {
         $id=$request->id;
-        PatientDrug::findOrFail($id)->delete();
+        $model=PatientDrug::findOrFail($id);
+        if($model->user_id!=userId())
+        {
+            return $this->apiResponse(["message" => "Forbidden",403]);
+        }
+        $model->delete();
         return $this->apiResponse(["message"=>"Completed"]);
     }
     public function update(Request $request)

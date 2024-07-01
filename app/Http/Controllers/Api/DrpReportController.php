@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\DrpReport;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -88,6 +89,12 @@ class DrpReportController extends Controller
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
+        }
+
+        $model=Patient::findOrFail($request->patient_id);
+        if($model->user_id!=userId())
+        {
+            return  $this->apiResponse("forbidden",403,"forbidden");
         }
         $request["user_id"] = userId();
         $request["created_at"] = createdAt();

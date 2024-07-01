@@ -19,9 +19,9 @@
           <b class="hidden-xs">{{auth("admin")->user()->name??""}}</b>
         </a>
         <ul class="dropdown-menu dropdown-user scale-up">
-          <li><a href=" "><i class=" zmdi zmdi-account-o"></i> پروفایل من</a></li>
+          <li><a  href="{{route("profile")}}"><i class=" zmdi zmdi-account-o"></i> پروفایل من</a></li>
           <li role="separator" class="divider"></li>
-          <li><a href=" "><i class="fa fa-power-off"></i> خروج</a></li>
+          <li><a  href="{{route("logout")}}"><i class="fa fa-power-off"></i> خروج</a></li>
         </ul>
       </li>
     </ul>

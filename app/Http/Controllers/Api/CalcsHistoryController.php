@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Classes\CalcTypes\CalcTypeValidate;
 use App\Http\Controllers\Controller;
 use App\Models\CalcsHistory;
+use App\Models\Patient;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -24,6 +25,11 @@ class CalcsHistoryController extends Controller
         if(!$validate)
         {
             return $this->apiResponse(['error' => 'type is not valid !'], 400);
+        }
+        $model=Patient::findOrFail($request->patient_id);
+        if($model->user_id!=userId())
+        {
+            return  $this->apiResponse("forbidden",403,"forbidden");
         }
         $request["created_at"]=createdAt();
         $model=CalcsHistory::create($request->all());

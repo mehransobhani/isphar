@@ -16,7 +16,7 @@
                 <div class="col-lg-12">
                     <div class="white-box">
                         <h3 class="box-title m-b-10"> لیست  بلاگ ها </h3>
-                        <a href="{{route("drug.create")}}">
+                        <a href="{{route("post.create")}}">
                             <button type="submit" class="btn btn-success waves-effect waves-light m-l-10"> افزودن
                                  بلاگ
                             </button>

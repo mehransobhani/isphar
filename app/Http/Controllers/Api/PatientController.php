@@ -110,6 +110,11 @@ class PatientController extends Controller
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
+        $model=Patient::findOrFail($request->id);
+        if($model->user_id!=userId())
+        {
+            return  $this->apiResponse("forbidden",403,"forbidden");
+        }
         Patient::where("id", $request->id)->update($request->all());
         PatientHistoryBuilder::update($request->id);
 
@@ -124,6 +129,11 @@ class PatientController extends Controller
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
         }
+        $model=Patient::findOrFail($request->id);
+        if($model->user_id!=userId())
+        {
+            return  $this->apiResponse("forbidden",403,"forbidden");
+        }
         Patient::where("id", $request->id)->update(["tarkhis" => 1]);
         PatientHistoryBuilder::tarkhis($request->id);
         return $this->apiResponse(["message" => "Completed"]);
@@ -136,6 +146,11 @@ class PatientController extends Controller
         ]);
         if ($validator->fails()) {
             return $this->apiResponse(['error' => $validator->errors()], 422);
+        }
+        $model=Patient::findOrFail($request->id);
+        if($model->user_id!=userId())
+        {
+            return  $this->apiResponse("forbidden",403,"forbidden");
         }
         Patient::where("id", $request->id)->update(["dead" => 1]);
         PatientHistoryBuilder::dead($request->id);
